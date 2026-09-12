@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Vnitřní kompas</title>
+  <desc id="desc">Čistý otevřený kompas s bílou ručně vedenou linkou a jedinou žlutou severní ručičkou.</desc>
+  <rect width="1024" height="1024" fill="#111111"/>
+  <path d="M484 157 C636 146 778 226 850 355 C876 402 892 454 895 501"
+        fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round"/>
+  <path d="M894 548 C883 696 784 824 646 872 C603 887 558 894 519 893"
+        fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round"/>
+  <path d="M473 891 C326 873 204 772 160 633 C146 589 140 548 142 515"
+        fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round"/>
+  <path d="M145 467 C163 325 264 209 400 170 C421 164 442 160 459 159"
+        fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round"/>
+  <path d="M511 82 L511 158 M894 512 L970 512 M511 893 L511 969 M66 512 L142 512"
+        fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round"/>
+  <path d="M329 650 C277 549 297 421 380 338 C448 270 549 251 635 291 C714 329 764 412 753 499"
+        fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/>
+  <path d="M512 245 L573 505 L512 480 L451 505Z"
+        fill="#FFD928" stroke="#FFD928" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M512 751 L451 520 L512 542 L573 520Z"
+        fill="#FFFFFF" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="512" cy="512" r="31" fill="#111111" stroke="#FFFFFF" stroke-width="10"/>
+</svg>

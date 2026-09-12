@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title description">
+  <title id="title">Vnitřní kompas složený z pěti navazujících dílků</title>
+  <desc id="description">Hand drawn doodle vizualizace. Emoce, potřeby, hodnoty, identita a vize se spojují do jednoho směru, kterým prochází nepřerušená žlutá linka.</desc>
+  <defs>
+    <style>
+      @font-face {
+        font-family: "Caveat KK";
+        src: url("../Caveat-Variable.ttf") format("truetype");
+        font-weight: 400 700;
+      }
+      @font-face {
+        font-family: "Manrope KK";
+        src: url("../Manrope-Variable.ttf") format("truetype");
+        font-weight: 300 900;
+      }
+      .sans { font-family: "Manrope KK", Manrope, Arial, sans-serif; fill: #111111; }
+      .hand { font-family: "Caveat KK", Caveat, cursive; fill: #111111; }
+    </style>
+    <clipPath id="art-window">
+      <rect x="28" y="160" width="1544" height="770" rx="0"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1600" height="1100" fill="#FFFFFF"/>
+
+  <g transform="translate(80 54)">
+    <text class="sans" x="0" y="0" dominant-baseline="hanging" font-size="18" font-weight="850" letter-spacing=".22em">VNITŘNÍ KOMPAS</text>
+    <text class="hand" x="0" y="42" dominant-baseline="hanging" font-size="55" font-weight="650">Pět částí. Jedna cesta k životu podle sebe.</text>
+  </g>
+
+  <g clip-path="url(#art-window)">
+    <image href="vnitrni-kompas-puzzle-doodle-art-v1.png" x="28" y="124" width="1544" height="844" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+
+  <g text-anchor="middle">
+    <g transform="translate(196 920)">
+      <text class="sans" x="0" y="0" font-size="15" font-weight="850" letter-spacing=".17em">EMOCE</text>
+      <text class="hand" x="0" y="39" font-size="30" font-weight="600">všimnu si</text>
+    </g>
+    <g transform="translate(495 920)">
+      <text class="sans" x="0" y="0" font-size="15" font-weight="850" letter-spacing=".17em">POTŘEBY</text>
+      <text class="hand" x="0" y="39" font-size="30" font-weight="600">pochopím</text>
+    </g>
+    <g transform="translate(797 920)">
+      <text class="sans" x="0" y="0" font-size="15" font-weight="850" letter-spacing=".17em">HODNOTY</text>
+      <text class="hand" x="0" y="39" font-size="30" font-weight="600">zvolím</text>
+    </g>
+    <g transform="translate(1093 920)">
+      <text class="sans" x="0" y="0" font-size="15" font-weight="850" letter-spacing=".17em">IDENTITA</text>
+      <text class="hand" x="0" y="39" font-size="30" font-weight="600">vyzkouším</text>
+    </g>
+    <g transform="translate(1394 920)">
+      <text class="sans" x="0" y="0" font-size="15" font-weight="850" letter-spacing=".17em">VIZE</text>
+      <text class="hand" x="0" y="39" font-size="30" font-weight="600">žiju po svém</text>
+    </g>
+  </g>
+
+  <path d="M112 1016 H1488" fill="none" stroke="#D9D9D3" stroke-width="2"/>
+  <circle cx="1456" cy="1049" r="13" fill="#FFD928"/>
+  <text class="hand" x="800" y="1061" text-anchor="middle" font-size="29" font-weight="600">Každý dílek přidá jednu vrstvu. Teprve spolu ukazují celý směr.</text>
+</svg>

@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+  <title id="title">Vnitřní kompas: jedna cesta od emoce k vizi</title>
+  <desc id="description">Propojená ručně kreslená cesta programem. Emoce upozorní na potřebu, potřeba pomůže zvolit hodnotu, hodnota se promění v čin, opakované činy staví identitu a identita dává směr vizi.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M1 1 L11 6 L1 11" fill="none" stroke="#111111" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <filter id="marker-wobble" x="-6%" y="-8%" width="112%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency=".009 .035" numOctaves="1" seed="23" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.55" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <style>
+      @font-face {
+        font-family: "Caveat KK";
+        src: url("../Caveat-Variable.ttf") format("truetype");
+        font-weight: 400 700;
+      }
+      .sans { font-family: Manrope, Arial, sans-serif; fill: #111111; }
+      .hand { font-family: "Caveat KK", Caveat, cursive; fill: #111111; }
+      .line { fill: none; stroke: #111111; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; filter: url(#marker-wobble); }
+      .thin { fill: none; stroke: #111111; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; filter: url(#marker-wobble); }
+      .flow { fill: none; stroke: #FFD928; stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; filter: url(#marker-wobble); }
+      .step { font-size: 17px; font-weight: 850; letter-spacing: .18em; }
+      .question { font-size: 25px; font-weight: 600; }
+      .number { font-size: 27px; font-weight: 850; }
+      .link-copy { font-size: 19px; font-weight: 650; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+
+  <g transform="translate(86 60)">
+    <text class="sans" x="0" y="0" dominant-baseline="hanging" font-size="18" font-weight="850" letter-spacing=".22em">VNITŘNÍ KOMPAS</text>
+    <text class="sans" x="0" y="48" dominant-baseline="hanging" font-size="57" font-weight="500">Jedna cesta od toho, co cítím,</text>
+    <text class="hand" x="0" y="109" dominant-baseline="hanging" font-size="61" font-weight="650">k životu, který chci tvořit.</text>
+  </g>
+
+  <!-- Jedna nepřerušená žlutá linka drží celý program pohromadě. -->
+  <path class="flow" d="M192 416 C278 408 326 419 408 416 C499 412 559 411 646 416 C739 421 805 421 895 416 C988 411 1053 413 1140 416 C1238 420 1320 390 1428 320"/>
+
+  <!-- 01 Emoce: konkrétní situace se nejdřív ozve v těle. -->
+  <g transform="translate(70 248)">
+    <circle cx="122" cy="168" r="110" fill="#FFFFFF"/>
+    <text class="sans number" x="28" y="8">01</text>
+    <circle class="line" cx="122" cy="85" r="23"/>
+    <path class="line" d="M78 205 C78 151 94 119 122 118 C150 119 166 151 166 205"/>
+    <path class="thin" d="M94 138 L63 169 M150 138 L181 168"/>
+    <path class="thin" d="M103 91 C109 97 119 99 127 96"/>
+    <circle cx="122" cy="166" r="18" fill="#FFD928"/>
+    <path class="thin" d="M122 139 C106 143 100 155 103 169 M122 193 C138 187 144 175 141 160"/>
+    <path class="thin" d="M73 132 C59 125 51 113 49 100 M175 132 C189 125 197 113 199 100"/>
+    <path class="thin" d="M58 115 L44 109 M186 115 L200 109"/>
+    <text class="sans step" x="122" y="300" text-anchor="middle">EMOCE</text>
+    <text class="hand question" x="122" y="344" text-anchor="middle">
+      <tspan x="122">Co se ve mně</tspan><tspan x="122" dy="29">děje?</tspan>
+    </text>
+  </g>
+
+  <!-- 02 Potřeby: to, co se ozvalo, dostane péči a konkrétní význam. -->
+  <g transform="translate(358 248)">
+    <circle cx="122" cy="168" r="110" fill="#FFFFFF"/>
+    <text class="sans number" x="28" y="8">02</text>
+    <circle cx="122" cy="151" r="18" fill="#FFD928"/>
+    <path class="line" d="M52 187 C72 166 91 159 113 163 C103 182 84 194 61 198"/>
+    <path class="line" d="M192 187 C172 166 153 159 131 163 C141 182 160 194 183 198"/>
+    <path class="thin" d="M60 198 C82 206 101 209 122 205 C143 209 162 206 184 198"/>
+    <path class="thin" d="M122 151 C121 128 122 111 123 92"/>
+    <path class="line" d="M123 123 C101 123 87 109 87 93 C105 92 119 102 123 123 Z"/>
+    <path class="line" d="M123 108 C145 108 159 94 159 78 C141 77 127 87 123 108 Z"/>
+    <path class="thin" d="M72 138 C65 128 62 117 63 106 M182 138 C189 128 192 117 191 106"/>
+    <text class="sans step" x="122" y="300" text-anchor="middle">POTŘEBY</text>
+    <text class="hand question" x="122" y="344" text-anchor="middle">
+      <tspan x="122">Co ve mně žádá</tspan><tspan x="122" dy="29">pozornost?</tspan>
+    </text>
+  </g>
+
+  <!-- 03 Hodnoty: z více možností volím směr. -->
+  <g transform="translate(646 248)">
+    <circle cx="122" cy="168" r="110" fill="#FFFFFF"/>
+    <text class="sans number" x="28" y="8">03</text>
+    <circle class="line" cx="122" cy="168" r="71"/>
+    <circle class="thin" cx="122" cy="168" r="8"/>
+    <path class="line" d="M122 97 L143 157 L122 238 L101 178 Z"/>
+    <path d="M122 97 L143 157 L122 168 L101 178 Z" fill="#FFD928"/>
+    <path class="thin" d="M122 82 V68 M122 267 V253 M36 168 H50 M194 168 H208"/>
+    <text class="sans step" x="122" y="300" text-anchor="middle">HODNOTY</text>
+    <text class="hand question" x="122" y="344" text-anchor="middle">
+      <tspan x="122">Čemu chci dát</tspan><tspan x="122" dy="29">přednost?</tspan>
+    </text>
+  </g>
+
+  <!-- 04 Identita: hodnota se ukáže až v konkrétním kroku. -->
+  <g transform="translate(934 248)">
+    <circle cx="122" cy="168" r="110" fill="#FFFFFF"/>
+    <text class="sans number" x="28" y="8">04</text>
+    <circle class="line" cx="112" cy="104" r="23"/>
+    <path class="line" d="M112 129 C89 138 80 160 82 188 M112 129 C135 138 145 160 143 188 M82 188 C99 200 124 200 143 188"/>
+    <path class="thin" d="M82 153 L53 176 M143 153 L171 174 M97 197 L82 230 M128 197 L148 226"/>
+    <ellipse cx="69" cy="232" rx="20" ry="8" transform="rotate(-16 69 232)" fill="#FFD928"/>
+    <ellipse cx="158" cy="236" rx="20" ry="8" transform="rotate(17 158 236)" fill="#FFD928"/>
+    <path class="thin" d="M36 248 C64 238 79 239 97 246 M133 253 C151 246 169 247 190 257"/>
+    <text class="sans step" x="122" y="300" text-anchor="middle">IDENTITA</text>
+    <text class="hand question" x="122" y="344" text-anchor="middle">
+      <tspan x="122">Kým se svými</tspan><tspan x="122" dy="29">kroky stávám?</tspan>
+    </text>
+  </g>
+
+  <!-- 05 Vize: směr získá podobu obyčejného života. -->
+  <g transform="translate(1222 188)">
+    <circle cx="122" cy="228" r="110" fill="#FFFFFF"/>
+    <text class="sans number" x="28" y="68">05</text>
+    <path class="line" d="M27 263 C62 244 91 247 119 263 C145 278 173 278 203 258"/>
+    <path class="line" d="M62 261 L62 199 L116 158 L171 199 L171 261"/>
+    <path class="thin" d="M85 261 V217 H111 V261 M137 204 H154 V223 H137 Z"/>
+    <circle cx="161" cy="126" r="29" fill="#FFD928"/>
+    <path class="thin" d="M161 80 V65 M161 187 V172 M115 126 H100 M222 126 H207 M129 94 L118 83 M202 165 L191 154 M193 94 L204 83"/>
+    <path class="thin" d="M45 269 C77 283 104 282 129 272 C153 263 178 263 204 273"/>
+    <text class="sans step" x="122" y="360" text-anchor="middle">VIZE</text>
+    <text class="hand question" x="122" y="404" text-anchor="middle">
+      <tspan x="122">Jak chci</tspan><tspan x="122" dy="29">doopravdy žít?</tspan>
+    </text>
+  </g>
+
+  <!-- Význam návaznosti: jedna linka, čtyři jasné přechody, žádné křížení. -->
+  <g class="hand link-copy" text-anchor="middle">
+    <path class="thin" d="M282 405 C315 392 342 393 373 407" marker-end="url(#arrow)"/>
+    <text x="328" y="370">upozorňuje</text>
+
+    <path class="thin" d="M570 405 C603 392 630 393 661 407" marker-end="url(#arrow)"/>
+    <text x="616" y="370">ukazuje, o co jde</text>
+
+    <path class="thin" d="M858 405 C891 392 918 393 949 407" marker-end="url(#arrow)"/>
+    <text x="904" y="370">proměňuji v čin</text>
+
+    <path class="thin" d="M1146 405 C1181 391 1210 378 1242 356" marker-end="url(#arrow)"/>
+    <text x="1192" y="337">opakování dává směr</text>
+  </g>
+
+  <!-- Dolní linka je jednoduchý scénář pro vysvětlující video. -->
+  <g transform="translate(120 735)">
+    <path class="thin" d="M0 0 H1360"/>
+    <text class="sans" x="0" y="47" font-size="16" font-weight="850" letter-spacing=".15em">VŠIMNOUT SI</text>
+    <text class="hand" x="199" y="50" font-size="33">→</text>
+    <text class="sans" x="247" y="47" font-size="16" font-weight="850" letter-spacing=".15em">POCHOPIT</text>
+    <text class="hand" x="420" y="50" font-size="33">→</text>
+    <text class="sans" x="468" y="47" font-size="16" font-weight="850" letter-spacing=".15em">ZVOLIT</text>
+    <text class="hand" x="610" y="50" font-size="33">→</text>
+    <text class="sans" x="658" y="47" font-size="16" font-weight="850" letter-spacing=".15em">VYZKOUŠET</text>
+    <text class="hand" x="855" y="50" font-size="33">→</text>
+    <text class="sans" x="903" y="47" font-size="16" font-weight="850" letter-spacing=".15em">ŽÍT PO SVÉM</text>
+    <circle cx="1327" cy="40" r="13" fill="#FFD928"/>
+  </g>
+
+  <text class="hand" x="800" y="854" text-anchor="middle" font-size="30">Nejde o to se opravit. Jde o to naučit se číst vlastní kompas.</text>
+</svg>
