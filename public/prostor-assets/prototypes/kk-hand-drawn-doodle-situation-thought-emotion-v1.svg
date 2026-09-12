@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
-  <title id="title">Tři vrstvy jedné zkušenosti</title><desc id="desc">Tři ručně kreslené rámečky pod sebou propojuje jedna klidná svislá čára.</desc>
-  <g fill="none" stroke="#111" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="132" y="36" width="376" height="104" rx="17" transform="rotate(-1 320 88)"/><rect x="132" y="188" width="376" height="104" rx="17" transform="rotate(1 320 240)"/><rect x="132" y="340" width="376" height="104" rx="17" transform="rotate(-1 320 392)"/>
-    <path d="M320 140v48M320 292v48"/><path d="M304 171l16 17 16-17M304 323l16 17 16-17"/>
-  </g>
-  <circle cx="320" cy="240" r="16" fill="#FFD928"/>
-</svg>
