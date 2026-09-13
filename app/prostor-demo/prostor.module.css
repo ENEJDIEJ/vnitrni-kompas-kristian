@@ -151,6 +151,11 @@
 .recordV7Form{position:relative;overflow:hidden}.recordV7Form::after{content:'';position:absolute;right:-115px;bottom:-135px;width:260px;height:260px;background:url('/brand-pattern-yellow.png') center/contain no-repeat;opacity:.14;pointer-events:none}.recordV7Form>*{position:relative;z-index:1}
 @media(max-width:740px){.appV7 .topbarBrand{display:flex;align-items:center;gap:8px}.appV7 .topbarBrand p{display:block;margin:0;color:#11110f}.appV7 .topbarBrand p strong{display:block;font-size:10px;line-height:1.1;letter-spacing:.04em}.appV7 .topbarBrand p small{display:block;margin-top:2px;color:#777770;font-size:6px;line-height:1.1;letter-spacing:.04em}.appV7 .main::before{right:-105px;bottom:-110px;width:310px;height:310px;opacity:.045}.todayV7Visual::after{right:-58px;top:-67px;width:220px;height:220px}}
 
+@media(max-width:740px){
+  .appV7 .todayV7,
+  .appV7 .recordV7 { padding-left:38px; padding-right:38px; }
+}
+
 /* Softer emotion maps with grain instead of heavy black outlines. */
 .appV7 .miniWheel span {
   isolation: isolate;
