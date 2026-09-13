@@ -4139,6 +4139,22 @@
 }
 .lessonV7 .practiceEntry label{margin-top:0!important}
 
+/* Module intro keeps the typography scale without the oversized black panel. */
+.journeyV7 .journeyIntro{
+  background:linear-gradient(145deg,#fff184 0%,#ffd82b 62%,#dbaa00 100%)!important;
+  color:#11110f!important;
+  border:1px solid rgba(17,17,15,.12)!important;
+  border-radius:11px!important;
+}
+.journeyV7 .journeyIntro [class*='eyebrow'],
+.journeyV7 .journeyIntro h2,
+.journeyV7 .journeyIntro p{color:#11110f!important}
+.journeyV7 .journeyIntro [class*='eyebrow']{font-size:10px!important}
+.journeyV7 .journeyIntro h2{font-size:clamp(22px,2.5vw,30px)!important;line-height:1.1!important}
+.journeyV7 .journeyIntro p{font-size:12px!important;line-height:1.5!important}
+.journeyV7 .journeyIntro::before{opacity:.1!important;mix-blend-mode:multiply!important}
+.journeyV7 .journeyIntro::after{opacity:.2!important;mix-blend-mode:multiply!important}
+
 @media(max-width:740px){
   .lessonV7 .recognitionSection h2,
   .lessonV7 .educationHeader h2,
