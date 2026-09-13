@@ -46,7 +46,7 @@ export function LocalAccountSettings() {
       <section className={styles.shell}>
         <header className={styles.header}>
           <a className={styles.brand} href={returnHref} aria-label="Zpět do Vnitřního kompasu">
-            <img src="/vnitrni-kompas-logo-dark.png" alt="" aria-hidden="true" />
+            <img src="/vnitrni-kompas-logo.png" alt="" aria-hidden="true" />
             <span><strong>VNITŘNÍ KOMPAS</strong><small>ÚČET A NASTAVENÍ</small></span>
           </a>
           <a className={styles.back} href={returnHref}>← ZPĚT DO APLIKACE</a>

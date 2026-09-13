@@ -1589,8 +1589,10 @@ function Journey({ onNavigate, onOpenLesson, onOpenNeeds, onOpenValues, onOpenId
       const marker = window.innerWidth <= 740 ? 72 : 96;
       let activeId = sectionIds[0];
       sectionIds.forEach((id) => {
-        if ((document.getElementById(id)?.getBoundingClientRect().top ?? 99999) <= marker) activeId = id;
+        const element = document.getElementById(id);
+        if (element && documentTop(element) - window.scrollY <= marker) activeId = id;
       });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24) activeId = sectionIds[sectionIds.length - 1];
       setJourneySection(activeId.replace("cesta-", "") as "kroky" | "etapy" | "vrstvy" | "integrace");
     };
     updateActiveSection();
@@ -1748,9 +1750,14 @@ function NeedsJourney({ onNavigate, onOpenLesson, readDays, practiceEntries }: {
 
   return (
     <section className={flow.journeyV7}>
-      <PageIntro eyebrow="MODUL 02 · POTŘEBY" title="Co se za mými emocemi ozývá?" text="Během tří etap poznáš, co je pro tebe důležité, oddělíš potřebu od známé strategie a vytvoříš si vlastní nabídku vědomějších možností." />
+      <PageSectionRail items={[
+        { id: "potreby-uvod", label: "Přehled" },
+        { id: "potreby-dny", label: "Dny a etapy" },
+        { id: "potreby-vystupy", label: "Výstupy" },
+      ]} />
+      <PageIntro id="potreby-uvod" eyebrow="MODUL 02 · POTŘEBY" title="Co se za mými emocemi ozývá?" text="Během tří etap poznáš, co je pro tebe důležité, oddělíš potřebu od známé strategie a vytvoříš si vlastní nabídku vědomějších možností." />
 
-      <article className={flow.journeyDetail}>
+      <article id="potreby-dny" className={flow.journeyDetail}>
         <header className={flow.journeyIntro}>
           <div>
             <span className={styles.eyebrow}>CELÝ MODUL JE OTEVŘENÝ</span>
@@ -1786,6 +1793,7 @@ function NeedsJourney({ onNavigate, onOpenLesson, readDays, practiceEntries }: {
         ))}
       </article>
 
+      <div id="potreby-vystupy" className={flow.railAnchor} aria-hidden="true" />
       {[firstStageComplete, secondStageComplete, thirdStageComplete].map((complete, index) => complete ? (
         <section className={flow.weekComplete} key={index}>
           <div className={flow.weekCompleteMark} aria-hidden="true">✓</div>
@@ -1837,7 +1845,13 @@ function NeedsMap({ onNavigate, onOpenLesson, readDays, practiceEntries }: { onN
 
   return (
     <section className={`${flow.needsMapPage} ${flow.dashboardTypography} ${flow.mapV7}`}>
-      <PageIntro eyebrow="MOJE MAPA · POTŘEBY" title="Ne nálepka. Mapa toho, co je pro mě důležité a jak o to pečuju." text="Všechno, co tu vidíš, vzniklo z tvých vlastních odpovědí. Mapa nic nediagnostikuje. Vrací ti souvislosti, ke kterým se můžeš vracet." />
+      <PageSectionRail items={[
+        { id: "potreby-mapa-uvod", label: "Postup" },
+        { id: "potreby-mapa-odznaky", label: "Odznaky" },
+        { id: "potreby-mapa-vzorec", label: "Moje cesta" },
+        { id: "potreby-mapa-odpovedi", label: "Odpovědi" },
+      ]} />
+      <PageIntro id="potreby-mapa-uvod" eyebrow="MOJE MAPA · POTŘEBY" title="Ne nálepka. Mapa toho, co je pro mě důležité a jak o to pečuju." text="Všechno, co tu vidíš, vzniklo z tvých vlastních odpovědí. Mapa nic nediagnostikuje. Vrací ti souvislosti, ke kterým se můžeš vracet." />
 
       <section className={flow.needsMapHero}>
         <div>
@@ -1861,7 +1875,7 @@ function NeedsMap({ onNavigate, onOpenLesson, readDays, practiceEntries }: { onN
         <button className={styles.primaryButton} onClick={() => onOpenLesson(Math.min(21, readDays.length + 1))}>{readDays.length >= 21 ? "Projít poslední den" : "Pokračovat v cestě"}</button>
       </section>
 
-      <section className={flow.badgeSection}>
+      <section id="potreby-mapa-odznaky" className={flow.badgeSection}>
         <header><span className={styles.eyebrow}>ODZNAKY DOVEDNOSTÍ</span><h2>Neodměňují dokonalost. Připomínají, čeho sis už dokázal všimnout.</h2></header>
         <div>{badges.map((badge) => {
           const unlocked = readDays.includes(badge.day);
@@ -1869,7 +1883,7 @@ function NeedsMap({ onNavigate, onOpenLesson, readDays, practiceEntries }: { onN
         })}</div>
       </section>
 
-      <section className={flow.needsMapPath}>
+      <section id="potreby-mapa-vzorec" className={flow.needsMapPath}>
         <header><span className={styles.eyebrow}>MOJE OPAKUJÍCÍ SE CESTA</span><h2>Jedna potřeba. Známá strategie. A místo, kde může vzniknout větší volba.</h2></header>
         <div>
           {[
@@ -1894,7 +1908,7 @@ function NeedsMap({ onNavigate, onOpenLesson, readDays, practiceEntries }: { onN
         <div><span className={styles.eyebrow}>OTÁZKA, KTEROU SI BERU DÁL</span><blockquote>{nextQuestion || "Když nemůžu naplnit všechno najednou, podle čeho se chci rozhodnout?"}</blockquote></div>
       </section>
 
-      <section className={flow.practiceMap}>
+      <section id="potreby-mapa-odpovedi" className={flow.practiceMap}>
         <header><span className={styles.eyebrow}>VŠECHNY MOJE ODPOVĚDI</span><h2>Každý záznam zůstává součástí mapy.</h2><p>Můžeš se vracet k jednotlivým dnům a odpovědi kdykoliv upravit.</p></header>
         {practiceEntries.length ? <div>{practiceEntries.map((entry) => <button key={entry.day} onClick={() => onOpenLesson(entry.day)}><span>DEN {entry.day}</span><small>{entry.question}</small><p>{formatPracticeEntry(entry)}</p></button>)}</div> : <article className={flow.practiceMapEmpty}><strong>Zatím tu není žádná odpověď.</strong><p>Otevři první den a napiš první poctivou větu.</p></article>}
       </section>
@@ -1968,8 +1982,13 @@ function AdvancedModuleJourney({ kind, onNavigate, onOpenLesson, readDays, pract
 
   return (
     <section className={flow.journeyV7}>
-      <PageIntro eyebrow={`MODUL ${config.number} · ${config.title.toUpperCase()}`} title={config.eyebrow === "PODLE ČEHO CHCI ŽÍT" ? "Podle čeho chci skutečně žít?" : "Kdo jsem a kým se chci stávat?"} text={config.intro} />
-      <article className={flow.journeyDetail}>
+      <PageSectionRail items={[
+        { id: `${kind}-uvod`, label: "Přehled" },
+        { id: `${kind}-dny`, label: "Dny a etapy" },
+        { id: `${kind}-vystupy`, label: "Výstupy" },
+      ]} />
+      <PageIntro id={`${kind}-uvod`} eyebrow={`MODUL ${config.number} · ${config.title.toUpperCase()}`} title={config.eyebrow === "PODLE ČEHO CHCI ŽÍT" ? "Podle čeho chci skutečně žít?" : "Kdo jsem a kým se chci stávat?"} text={config.intro} />
+      <article id={`${kind}-dny`} className={flow.journeyDetail}>
         <header className={flow.journeyIntro}>
           <div><span className={styles.eyebrow}>CELÝ MODUL JE OTEVŘENÝ</span><h2>{config.journeyTitle}</h2></div>
           <p>{config.journeyText}</p>
@@ -2001,6 +2020,7 @@ function AdvancedModuleJourney({ kind, onNavigate, onOpenLesson, readDays, pract
         ))}
       </article>
 
+      <div id={`${kind}-vystupy`} className={flow.railAnchor} aria-hidden="true" />
       {[1, 2, 3].map((stage) => {
         const complete = readDays.filter((day) => Math.ceil(day / 7) === stage).length === 7;
         if (!complete) return null;
@@ -2092,7 +2112,14 @@ function AdvancedModuleMap({ kind, onNavigate, onOpenLesson, readDays, practiceE
 
   return (
     <section className={`${flow.needsMapPage} ${flow.dashboardTypography} ${flow.mapV7}`}>
-      <PageIntro eyebrow={`MŮJ OSOBNÍ REPORT · ${config.title.toUpperCase()}`} title={config.finalTitle} text={`${config.finalDescription} Není to hodnocení člověka. Je to zrcadlo vytvořené z tvých vlastních záznamů.`} />
+      <PageSectionRail items={[
+        { id: `${kind}-mapa-uvod`, label: "Postup" },
+        { id: `${kind}-mapa-zrcadlo`, label: "Zrcadlo" },
+        { id: `${kind}-mapa-milniky`, label: "Milníky" },
+        { id: `${kind}-mapa-kompas`, label: "Kompas" },
+        { id: `${kind}-mapa-archiv`, label: "Archiv" },
+      ]} />
+      <PageIntro id={`${kind}-mapa-uvod`} eyebrow={`MŮJ OSOBNÍ REPORT · ${config.title.toUpperCase()}`} title={config.finalTitle} text={`${config.finalDescription} Není to hodnocení člověka. Je to zrcadlo vytvořené z tvých vlastních záznamů.`} />
       <section className={flow.needsMapHero}>
         <div><span className={styles.eyebrow}>TVŮJ POSTUP</span><strong>{readDays.length} z 21 dní</strong><p>{completedStages === 3 ? "Dokončil jsi všechny tři etapy. Tvoje mapa je připravená k dalšímu používání a úpravám." : `Dokončené etapy: ${completedStages} ze 3. Každá další odpověď přidá mapě další vrstvu.`}</p></div>
         <div className={flow.needsMapProgress}>
@@ -2117,7 +2144,7 @@ function AdvancedModuleMap({ kind, onNavigate, onOpenLesson, readDays, practiceE
         ))}
       </section>
 
-      <section className={flow.personalMirror}>
+      <section id={`${kind}-mapa-zrcadlo`} className={flow.personalMirror}>
         <header>
           <span className={styles.eyebrow}>TVOJE ZRCADLO V JEDNOM POHLEDU</span>
           <h2>Ne obecné rady. Věty, které vznikly z toho, co sis během cesty přiznal.</h2>
@@ -2133,7 +2160,7 @@ function AdvancedModuleMap({ kind, onNavigate, onOpenLesson, readDays, practiceE
         </div>
       </section>
 
-      <section className={flow.reportMilestones}>
+      <section id={`${kind}-mapa-milniky`} className={flow.reportMilestones}>
         <header>
           <span className={styles.eyebrow}>TŘI HLAVNÍ MILNÍKY</span>
           <h2>Tvoje cesta není dlouhý seznam. Má tři kapitoly, ke kterým se můžeš vracet.</h2>
@@ -2170,7 +2197,7 @@ function AdvancedModuleMap({ kind, onNavigate, onOpenLesson, readDays, practiceE
         <h2>{kind === "values" ? "Tohle je směr, který sis vybral ze svých skutečných situací." : "Tohle je spojení dnešní reality, zvoleného směru a obyčejného dalšího kroku."}</h2>
       </section>
 
-      <section className={flow.compassGrid}>
+      <section id={`${kind}-mapa-kompas`} className={flow.compassGrid}>
         {finalCards.map(([label, value], index) => <article key={label} className={index === finalCards.length - 1 ? flow.compassAccent : ""}><span>0{index + 1}</span><small>{label}</small><strong>{value || "Doplní se z tvých odpovědí"}</strong><button type="button" onClick={() => onOpenLesson(finalCardSourceDays[index])}>UPRAVIT ZDROJ →</button></article>)}
       </section>
 
@@ -2191,7 +2218,7 @@ function AdvancedModuleMap({ kind, onNavigate, onOpenLesson, readDays, practiceE
         </section>
       ) : null}
 
-      <section className={flow.practiceMap}>
+      <section id={`${kind}-mapa-archiv`} className={flow.practiceMap}>
         <header><span className={styles.eyebrow}>ARCHIV MÝCH DŮKAZŮ</span><h2>Všech 21 dní zůstává uvnitř reportu.</h2><p>Otevři etapu, najdi konkrétní záznam a vrať se přímo do cvičení, ze kterého vznikl.</p></header>
         {practiceEntries.length ? <div className={flow.reportArchive}>{config.phases.map((phase, phaseIndex) => {
           const startDay = phaseIndex * 7 + 1;
@@ -2622,7 +2649,14 @@ function VisionBoard({ data, identityEntries, onChange, onNavigate }: { data: Vi
 
   return (
     <section className={`${flow.visionBoardPage} ${flow.dashboardTypography} ${flow.studioV7}`}>
-      <PageIntro eyebrow="ZÁVĚR CESTY · MOJE OBRAZOVÁ VIZE" title="Nejdřív jí dej slova. Potom jí dovol získat obraz." text="Nejde o seznam věcí, které musíš splnit. Vytváříš připomínku směru, který sis během cesty vybral. Piš konkrétně, ale nech ve své vizi i prostor pro překvapení." />
+      <PageSectionRail items={[
+        { id: "vize-uvod", label: "Začátek" },
+        { id: "vize-slova", label: "Moje slova" },
+        { id: "vize-zadani", label: "Zadání" },
+        { id: "vize-obraz", label: "Obrázek" },
+        { id: "vize-zaver", label: "Závěr" },
+      ]} />
+      <PageIntro id="vize-uvod" eyebrow="ZÁVĚR CESTY · MOJE OBRAZOVÁ VIZE" title="Nejdřív jí dej slova. Potom jí dovol získat obraz." text="Nejde o seznam věcí, které musíš splnit. Vytváříš připomínku směru, který sis během cesty vybral. Piš konkrétně, ale nech ve své vizi i prostor pro překvapení." />
 
       <section className={flow.visionProgress}>
         <div><strong>{filledCount} ze 6</strong><span>částí vize popsaných</span></div>
@@ -2630,7 +2664,7 @@ function VisionBoard({ data, identityEntries, onChange, onNavigate }: { data: Vi
         <p>Nemusíš vyplnit všechno najednou. Začni částí, u které se ti objeví nejživější obraz.</p>
       </section>
 
-      <section className={flow.visionWorkspace}>
+      <section id="vize-slova" className={flow.visionWorkspace}>
         <div className={flow.visionQuestions}>
           <header><span className={styles.eyebrow}>MOJE SLOVA</span><h2>Jak chci, aby můj život vypadal a jak se v něm chci cítit?</h2><p>Nepiš reklamní slogan. Popiš obyčejné chvíle, ve kterých poznáš, že žiješ více podle sebe.</p></header>
           {VISION_FIELDS.map((item, index) => (
@@ -2657,7 +2691,7 @@ function VisionBoard({ data, identityEntries, onChange, onNavigate }: { data: Vi
         </aside>
       </section>
 
-      <section className={flow.visionAssistant}>
+      <section id="vize-zadani" className={flow.visionAssistant}>
         <div>
           <span className={styles.eyebrow}>OBRAZOVÝ ASISTENT</span>
           <h2>Tvoje odpovědi jsme přeložili do jednoho zadání pro tvorbu obrazu.</h2>
@@ -2672,7 +2706,7 @@ function VisionBoard({ data, identityEntries, onChange, onNavigate }: { data: Vi
         <pre>{prompt}</pre>
       </section>
 
-      <section className={flow.visionUpload}>
+      <section id="vize-obraz" className={flow.visionUpload}>
         <div>
           <span className={styles.eyebrow}>VRAŤ OBRAZ DO SVÉHO KOMPASU</span>
           <h2>Nahraj výsledný obrázek. Psaná i obrazová vize zůstanou spolu.</h2>
@@ -2685,7 +2719,7 @@ function VisionBoard({ data, identityEntries, onChange, onNavigate }: { data: Vi
         </figure>
       </section>
 
-      <section className={flow.visionClosing}>
+      <section id="vize-zaver" className={flow.visionClosing}>
         <img src="/prostor-assets/identity-day-18.png" alt="Ručně kreslený most směrem ke slunci" />
         <div>
           <span className={styles.eyebrow}>TOHLE NENÍ KONEC</span>
@@ -2831,13 +2865,20 @@ function ModuleLesson({ day, onNavigate, onComplete, readDays, practiceEntries, 
 
   return (
     <article className={`${flow.lessonPage} ${flow.lessonV7}`}>
+      <PageSectionRail items={[
+        { id: "lekce-uvod", label: "Úvod" },
+        { id: "lekce-poznani", label: "Poznání" },
+        { id: "lekce-vysvetleni", label: "Vysvětlení" },
+        { id: "lekce-trenink", label: "Trénink" },
+        { id: "lekce-zaver", label: "Závěr" },
+      ]} />
       <nav className={flow.lessonNav} aria-label="Navigace lekcí">
         <button type="button" onClick={() => onNavigate(backView)}>← Zpět na cestu</button>
         <div><span>{isRead ? `DEN ${day} · PŘEČTENO ✓` : `DEN ${day} Z ${totalDays}`}</span><i><b style={{ width: `${(day / totalDays) * 100}%` }} /></i></div>
         <small>{minuteLabel(dayMeta.minutes).toUpperCase()}</small>
       </nav>
 
-      <section className={flow.storySection}>
+      <section id="lekce-uvod" className={flow.storySection}>
         <div className={flow.storyCopy}>
           <span className={styles.eyebrow}>{lesson.opening.eyebrow}</span>
           <h1>{lesson.opening.title}</h1>
@@ -2857,12 +2898,12 @@ function ModuleLesson({ day, onNavigate, onComplete, readDays, practiceEntries, 
         </div>
       </section>
 
-      <section className={flow.recognitionSection}>
+      <section id="lekce-poznani" className={flow.recognitionSection}>
         <header><span className={styles.eyebrow}>POZNÁVÁŠ SE V TOM?</span><h2>{lesson.recognition.title}</h2></header>
         <div>{lesson.recognition.items.map((item, index) => <article key={item}><span>0{index + 1}</span><p>{item}</p></article>)}</div>
       </section>
 
-      <section className={flow.educationSection}>
+      <section id="lekce-vysvetleni" className={flow.educationSection}>
         <div className={flow.educationCopy}>
           <header className={flow.educationHeader}>
             <span className={styles.eyebrow}>POJĎME TOMU ROZUMĚT</span>
@@ -2917,7 +2958,7 @@ function ModuleLesson({ day, onNavigate, onComplete, readDays, practiceEntries, 
         </div>
       </aside>
 
-      <section className={flow.practiceSection}>
+      <section id="lekce-trenink" className={flow.practiceSection}>
         <div className={flow.practiceIntro}>
           <span className={styles.eyebrow}>TEĎ SI TO VYZKOUŠEJ</span>
           <h2>{lesson.practice.title}</h2>
@@ -2974,7 +3015,7 @@ function ModuleLesson({ day, onNavigate, onComplete, readDays, practiceEntries, 
         </form>
       </section>
 
-      <footer className={flow.lessonFooter}>
+      <footer id="lekce-zaver" className={flow.lessonFooter}>
         <div className={flow.lessonClosing}>{lesson.closing[0]}<br /><mark>{lesson.closing[1]}</mark></div>
         <div className={flow.lessonActions}>
           <button className={styles.primaryButton} onClick={() => isRead && day === totalDays ? onNavigate(finalView) : onComplete(day)}>{isRead ? day < totalDays ? `Přečteno ✓ · Otevřít den ${day + 1}` : `Přečteno ✓ · ${finalLabel}` : day < totalDays ? "Dokončit den a pokračovat" : "Dokončit etapu a otevřít mapu"}</button>
@@ -3169,7 +3210,14 @@ function EmotionMap({ entries, practiceEntries, readDays, onNavigate }: { entrie
 
   return (
     <section className={`${flow.dashboardTypography} ${flow.mapV7}`}>
-      <section className={flow.mapGameHero}>
+      <PageSectionRail items={[
+        { id: "emoce-mapa-uvod", label: "Přehled" },
+        { id: "emoce-mapa-cesta", label: "Cesta" },
+        { id: "emoce-mapa-odznaky", label: "Odznaky" },
+        { id: "emoce-mapa-souvislosti", label: "Souvislosti" },
+        { id: "emoce-mapa-odpovedi", label: "Odpovědi" },
+      ]} />
+      <section id="emoce-mapa-uvod" className={flow.mapGameHero}>
         <div className={flow.mapGameCopy}>
           <span className={styles.eyebrow}>MOJE EMOČNÍ MAPA</span>
           <h1>Tvoje mapa ožívá s každým poctivým zastavením.</h1>
@@ -3184,7 +3232,7 @@ function EmotionMap({ entries, practiceEntries, readDays, onNavigate }: { entrie
         </div>
       </section>
 
-      <section className={flow.journeyBoard}>
+      <section id="emoce-mapa-cesta" className={flow.journeyBoard}>
         <header><span className={styles.eyebrow}>TVOJE CESTA</span><p>Každá kapitola přidává mapě další vrstvu.</p></header>
         <div className={flow.journeyChapters}>
           {chapters.map((chapter, index) => {
@@ -3202,7 +3250,7 @@ function EmotionMap({ entries, practiceEntries, readDays, onNavigate }: { entrie
         </div>
       </section>
 
-      <section className={flow.badgeShelf}>
+      <section id="emoce-mapa-odznaky" className={flow.badgeShelf}>
         <header><div><span className={styles.eyebrow}>CO UŽ UMÍŠ</span><h2>Odznaky za dovednosti, které si opravdu odnášíš.</h2></div><p>Žádný z nich neříká, že jsi lepší člověk. Jen ti připomíná, co už dokážeš zachytit.</p></header>
         <div className={flow.badgeGrid}>
           {badges.map((badge) => <article key={badge.title} className={badge.unlocked ? flow.badgeUnlocked : flow.badgeLocked}>
@@ -3215,7 +3263,7 @@ function EmotionMap({ entries, practiceEntries, readDays, onNavigate }: { entrie
       </section>
 
       {firstWeekComplete || secondWeekComplete || thirdWeekComplete ? <div className={flow.mapMilestone}><i>✓</i><div><strong>{thirdWeekComplete ? "Modul Emoce je dokončený." : secondWeekComplete ? "Druhá etapa je dokončená." : "První etapa je dokončená."}</strong><span>{thirdWeekComplete ? "Tvoje mapa teď obsahuje první verzi osobního emočního manuálu." : secondWeekComplete ? "Do mapy se přidal tvůj první emoční slovník." : "Tahle mapa teď obsahuje tvoje první týdenní ohlédnutí."}</span></div></div> : null}
-      <div className={styles.mapLayout}>
+      <div id="emoce-mapa-souvislosti" className={styles.mapLayout}>
         <article className={styles.frequencyCard}><div className={styles.cardMeta}><span>NEJČASTĚJI ZAZNAMENANÉ</span><strong>{entries.length} ZÁZNAMŮ</strong></div><div className={styles.bars}>{stats.map((item) => <div key={item.id}><div><span style={{ background: item.color }} /><strong>{item.label}</strong><small>{item.count}×</small></div><i><b style={{ width: `${(item.count / max) * 100}%`, background: item.color }} /></i></div>)}</div></article>
         <article className={`${styles.mapInsight} ${flow.mapInsightSpacing}`}><span className={styles.eyebrow}>CO UŽ MŮŽE BÝT VIDĚT</span><h2>{hasData ? `${top.label} se zatím objevuje nejčastěji.` : "Nejdřív potřebujeme několik zachycených chvil."}</h2><p>{hasData ? "To samo o sobě není dobře ani špatně. Je to první stopa, ke které se můžeš vrátit a hledat souvislosti ve svých vlastních situacích." : "Jedna emoce ještě nevytváří vzorec. Zkus během několika dní zachytit konkrétní situace a mapa začne vznikat sama."}</p><blockquote>{hasData ? "Co bývá v takových chvílích nejtěžší?" : "Nejdřív sbírej. Potom teprve vykládej."}</blockquote><small>Tohle je otázka k pozorování, ne hotový výklad.</small></article>
       </div>
@@ -3260,7 +3308,7 @@ function EmotionMap({ entries, practiceEntries, readDays, onNavigate }: { entrie
           <blockquote><span>OTÁZKA, KTEROU SI BERU DÁL</span><strong>{nextQuestion || "Co v takové chvíli skutečně potřebuji?"}</strong></blockquote>
         </section>
       ) : null}
-      <section className={flow.practiceMap}>
+      <section id="emoce-mapa-odpovedi" className={flow.practiceMap}>
         <header><span className={styles.eyebrow}>MOJE ODPOVĚDI Z TRÉNINKU</span><h2>Tohle nejsou úkoly. Jsou to věty, ke kterým se můžeš vracet.</h2><p>Každá odpověď z části „Teď si to vyzkoušej“ se ukládá k danému dni. Společně s emočními záznamy postupně skládá tvoji osobní mapu.</p></header>
         {practiceEntries.length ? <div>{practiceEntries.map((entry) => <article key={entry.day}><span>DEN {entry.day}</span><small>{entry.question}</small><p>{formatPracticeEntry(entry)}</p></article>)}</div> : <article className={flow.practiceMapEmpty}><strong>Zatím tu není žádná odpověď.</strong><p>Vrať se do dnešní lekce a zapiš první větu. Nemusí být dokonalá.</p></article>}
       </section>
@@ -3308,14 +3356,64 @@ function EmotionWheel({ selected, onSelect }: { selected: EmotionFamily; onSelec
   );
 }
 
-function PageIntro({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
-  return <header className={`${styles.pageIntro} ${flow.pageIntroSpacing}`}><span className={styles.eyebrow}>{eyebrow}</span><h1>{title}</h1><p>{text}</p></header>;
+function PageIntro({ eyebrow, title, text, id }: { eyebrow: string; title: string; text: string; id?: string }) {
+  return <header id={id} className={`${styles.pageIntro} ${flow.pageIntroSpacing}`}><span className={styles.eyebrow}>{eyebrow}</span><h1>{title}</h1><p>{text}</p></header>;
+}
+
+type PageRailItem = { id: string; label: string };
+
+function PageSectionRail({ items }: { items: PageRailItem[] }) {
+  const [activeId, setActiveId] = useState(items[0]?.id ?? "");
+  const itemKey = items.map((item) => item.id).join("|");
+
+  useEffect(() => {
+    const ids = itemKey.split("|").filter(Boolean);
+    const updateActive = () => {
+      const marker = Math.min(window.innerHeight * .34, 220);
+      let next = ids[0] ?? "";
+      ids.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element && documentTop(element) - window.scrollY <= marker) next = id;
+      });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24) next = ids[ids.length - 1] ?? next;
+      setActiveId(next);
+    };
+    updateActive();
+    window.addEventListener("scroll", updateActive, { passive: true });
+    return () => window.removeEventListener("scroll", updateActive);
+  }, [itemKey]);
+
+  return (
+    <nav className={flow.pageSectionRail} aria-label="Rychlý výběr části stránky">
+      {items.map((item, index) => (
+        <button type="button" key={item.id} className={activeId === item.id ? flow.pageSectionRailActive : ""} onClick={() => {
+          setActiveId(item.id);
+          document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+          window.setTimeout(() => setActiveId(item.id), 500);
+        }} aria-label={item.label} aria-current={activeId === item.id ? "location" : undefined}>
+          <i aria-hidden="true" />
+          <span aria-hidden="true">{index + 1}</span>
+          <strong>{item.label}</strong>
+        </button>
+      ))}
+    </nav>
+  );
 }
 
 function mostCommon(values: string[]) {
   if (!values.length) return "";
   const counts = values.reduce<Record<string, number>>((all, value) => ({ ...all, [value]: (all[value] || 0) + 1 }), {});
   return Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
+}
+
+function documentTop(element: HTMLElement) {
+  let top = 0;
+  let current: HTMLElement | null = element;
+  while (current) {
+    top += current.offsetTop;
+    current = current.offsetParent as HTMLElement | null;
+  }
+  return top;
 }
 
 function practiceValue(entry: PracticeEntry | undefined, key: string) {

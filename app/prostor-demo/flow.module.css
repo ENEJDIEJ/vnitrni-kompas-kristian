@@ -3284,7 +3284,7 @@
   column-gap: 8px !important;
 }
 
-.journeyV7 > *:not(.journeyRail) {
+.journeyV7 > *:not(.journeyRail):not(.pageSectionRail) {
   grid-column: 2 !important;
   min-width: 0 !important;
 }
@@ -3312,8 +3312,8 @@
   width: 42px;
   padding: 5px;
   border-radius: 10px;
-  background: #11110f;
-  box-shadow: 0 8px 22px rgba(17, 17, 15, .14);
+  background: transparent;
+  box-shadow: none;
 }
 
 .journeyRail button {
@@ -3334,12 +3334,14 @@
   width: 4px;
   height: 20px;
   border-radius: 4px;
-  background: #55554f;
+  background: #6e6e68;
+  box-shadow: 0 1px 3px rgba(17,17,15,.14);
   transition: height .18s ease, background .18s ease;
 }
 
 .journeyRail button span {
   display: none;
+  color: #11110f;
 }
 
 .journeyRail button strong {
@@ -3365,12 +3367,13 @@
 }
 
 .journeyRailActive {
-  background: #2a2a25 !important;
+  background: transparent !important;
 }
 
 .journeyRailActive i {
   height: 30px !important;
   background: linear-gradient(180deg, #fff184, #ffd82b 62%, #d2a100) !important;
+  box-shadow: 0 0 0 1px rgba(17,17,15,.22), 0 2px 5px rgba(17,17,15,.14) !important;
 }
 
 /* Milestone intro stays readable on its pale report surface. */
@@ -3442,5 +3445,419 @@
 
   .reportSectionActive {
     box-shadow: inset 3px 0 0 #ffd82b !important;
+  }
+}
+
+/* Lesson media: the portrait fills its frame and the caption stays legible. */
+.lessonV7 .storyVisual .storyPhoto {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: 50% 42% !important;
+}
+
+.lessonV7 .storyVisual > p {
+  left: 16px !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 16px !important;
+  width: auto !important;
+  max-width: calc(100% - 32px) !important;
+  padding: 10px 12px !important;
+  border-left: 3px solid #ffd82b !important;
+  border-radius: 0 7px 7px 0 !important;
+  background: rgba(17, 17, 15, .82) !important;
+  color: #fff !important;
+  font-family: inherit !important;
+  font-size: 13px !important;
+  font-weight: 750 !important;
+  line-height: 1.35 !important;
+  box-shadow: 0 6px 18px rgba(17, 17, 15, .18) !important;
+}
+
+/* Coaching note sits directly on the dark surface with reliable contrast. */
+.lessonV7 .expertBox {
+  border: 0 !important;
+  background: #11110f !important;
+}
+
+.lessonV7 .expertHeader [class*='eyebrow'] {
+  color: #a9a9a1 !important;
+}
+
+.lessonV7 .expertHeader h2 {
+  color: #fff !important;
+}
+
+.lessonV7 .expertText p,
+.lessonV7 .expertBox .expertLimit {
+  color: #e3e3dd !important;
+}
+
+.lessonV7 .expertAside,
+.lessonV7 .expertBox .expertLimit {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.lessonV7 .expertBox .expertLimit {
+  padding: 0 0 0 16px !important;
+  border-left: 3px solid #ffd82b !important;
+}
+
+.lessonV7 .expertBox .expertLimit strong {
+  color: #fff !important;
+}
+
+/* The closing thought is a centered statement, without a framed card. */
+.lessonV7 .lessonFooter {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  place-items: center !important;
+  gap: 22px !important;
+  padding: 38px 20px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: center !important;
+}
+
+.lessonV7 .lessonClosing {
+  width: 100% !important;
+  max-width: 980px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-size: clamp(30px, 3.3vw, 46px) !important;
+  line-height: 1.08 !important;
+  text-align: center !important;
+}
+
+.lessonV7 .lessonActions {
+  justify-content: center !important;
+}
+
+@media (max-width: 740px) {
+  .lessonV7 .storyVisual .storyPhoto {
+    object-position: 50% 38% !important;
+  }
+
+  .lessonV7 .storyVisual > p {
+    left: 12px !important;
+    bottom: 12px !important;
+    max-width: calc(100% - 24px) !important;
+    font-size: 11px !important;
+  }
+
+  .lessonV7 .expertContent {
+    grid-template-columns: 1fr !important;
+  }
+
+  .lessonV7 .expertText,
+  .lessonV7 .expertAside {
+    margin-top: 16px !important;
+  }
+
+  .lessonV7 .lessonFooter {
+    margin-bottom: calc(78px + env(safe-area-inset-bottom)) !important;
+    padding: 30px 10px 24px !important;
+  }
+
+  .lessonV7 .lessonClosing {
+    font-size: 30px !important;
+  }
+
+  .lessonV7 .lessonActions {
+    width: 100% !important;
+  }
+
+  .lessonV7 .lessonActions button {
+    width: 100% !important;
+  }
+}
+
+/* Final responsive safeguards from review. */
+.studioV7 .visionWorkspace {
+  overflow: hidden !important;
+}
+
+@media (max-width: 740px) {
+  .journeyV7 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    justify-items: stretch !important;
+  }
+
+  .journeyV7 > *:not(.journeyRail):not(.pageSectionRail) {
+    grid-column: 1 !important;
+    width: 100% !important;
+  }
+
+  .journeyRail {
+    position: fixed !important;
+    left: 5px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 32px !important;
+    padding: 4px !important;
+  }
+
+  .journeyRail button {
+    width: 24px !important;
+    min-height: 44px !important;
+  }
+
+  .journeyRail button span {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    display: block !important;
+    color: #7e7e77;
+    font-family: KKCaveat, cursive;
+    font-size: 8px;
+    line-height: 1;
+  }
+
+  .journeyRailActive span {
+    color: #11110f !important;
+  }
+
+  .journeyRailActive strong {
+    display: none !important;
+  }
+}
+
+/* Journey intro and active module share one clear left alignment. */
+.journeyV7 .pageIntroSpacing {
+  display: block !important;
+}
+
+.journeyV7 .pageIntroSpacing h1 + p {
+  max-width: 780px !important;
+  margin-top: 10px !important;
+}
+
+.journeyV7 .singleModule article {
+  grid-template-columns: 56px minmax(0, 1fr) !important;
+  padding: 18px !important;
+}
+
+.journeyV7 .singleModule article[class*='activeModule'] {
+  border: 2px solid #ffd82b !important;
+  box-shadow: 0 10px 28px rgba(186, 145, 0, .08) !important;
+}
+
+.journeyV7 .singleModule [class*='moduleTop'] > span {
+  grid-column: 1 !important;
+  grid-row: 1 / 4 !important;
+  align-self: start !important;
+  margin: 0 !important;
+  font-size: 40px !important;
+}
+
+.journeyV7 .singleModule [class*='moduleTop'] > small {
+  position: absolute !important;
+  top: 18px !important;
+  right: 18px !important;
+  margin: 0 !important;
+  font-size: 10px !important;
+}
+
+.journeyV7 .singleModule article > strong,
+.journeyV7 .singleModule article > h2,
+.journeyV7 .singleModule article > p,
+.journeyV7 .singleModule article > [class*='moduleProgress'],
+.journeyV7 .singleModule article[class*='activeModule'] > small,
+.journeyV7 .singleModule article > button {
+  grid-column: 2 !important;
+}
+
+.journeyV7 .singleModule article > [class*='moduleProgress'] {
+  grid-row: auto !important;
+  width: 100% !important;
+  margin-top: 13px !important;
+}
+
+.journeyV7 .singleModule article[class*='activeModule'] > small {
+  grid-row: auto !important;
+  justify-self: start !important;
+  margin-top: 5px !important;
+}
+
+.journeyV7 .singleModule article > button {
+  grid-row: auto !important;
+  justify-self: start !important;
+  margin-top: 10px !important;
+}
+
+@media (max-width: 740px) {
+  .journeyV7 .singleModule article {
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+    padding: 15px !important;
+  }
+
+  .journeyV7 .singleModule [class*='moduleTop'] > small {
+    top: 15px !important;
+    right: 15px !important;
+  }
+}
+
+/* Closing statement belongs to the reading column below the coaching panel. */
+.lessonV7 .lessonFooter {
+  grid-column: 1 !important;
+  grid-row: 6 !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding: 30px 18px !important;
+}
+
+.lessonV7 .lessonClosing {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  font-size: clamp(23px, 1.85vw, 28px) !important;
+}
+
+@media (max-width: 840px) {
+  .lessonV7 .lessonFooter {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+}
+
+@media (max-width: 740px) {
+  .lessonV7 .lessonClosing {
+    font-size: 23px !important;
+  }
+}
+
+/* Reusable section rail for long lessons, maps and vision workspaces. */
+.pageSectionRail {
+  position: fixed;
+  left: 6px;
+  top: 50%;
+  z-index: 45;
+  display: flex;
+  width: 38px;
+  flex-direction: column;
+  gap: 2px;
+  padding: 5px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  box-shadow: none;
+  transform: translateY(-50%);
+}
+
+.pageSectionRail button {
+  position: relative;
+  display: grid;
+  width: 28px;
+  min-height: 42px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #11110f;
+  cursor: pointer;
+}
+
+.pageSectionRail button i {
+  display: block;
+  width: 4px;
+  height: 18px;
+  border-radius: 4px;
+  background: #6e6e68;
+  box-shadow: 0 1px 3px rgba(17,17,15,.14);
+  transition: height .18s ease, background .18s ease;
+}
+
+.pageSectionRail button span {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  font-family: KKCaveat, cursive;
+  font-size: 8px;
+  line-height: 1;
+}
+
+.pageSectionRail button strong {
+  position: absolute;
+  left: 36px;
+  top: 50%;
+  display: none;
+  width: max-content;
+  padding: 7px 9px;
+  border-radius: 6px;
+  background: #11110f;
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transform: translateY(-50%);
+  box-shadow: 0 5px 16px rgba(17,17,15,.16);
+}
+
+.pageSectionRail button:hover strong,
+.pageSectionRail button:focus-visible strong {
+  display: block;
+}
+
+.pageSectionRailActive {
+  background: transparent !important;
+  color: #11110f !important;
+}
+
+.pageSectionRailActive i {
+  height: 28px !important;
+  background: linear-gradient(180deg,#fff184,#ffd82b 62%,#d2a100) !important;
+  box-shadow: 0 0 0 1px rgba(17,17,15,.22), 0 2px 5px rgba(17,17,15,.14) !important;
+}
+
+.railAnchor {
+  height: 0;
+  scroll-margin-top: 78px;
+}
+
+.lessonV7 [id^='lekce-'],
+.studioV7 [id^='vize-'],
+.mapV7 [id*='-mapa-'],
+.journeyV7 [id$='-uvod'],
+.journeyV7 [id$='-dny'],
+.journeyV7 [id$='-vystupy'] {
+  scroll-margin-top: 78px;
+}
+
+@media (max-width: 740px) {
+  .journeyV7,
+  .lessonV7,
+  .mapV7,
+  .studioV7 {
+    padding-left: 38px !important;
+    padding-right: 38px !important;
+  }
+
+  .pageSectionRail {
+    left: 4px;
+    width: 32px;
+    padding: 4px;
+    border-radius: 9px;
+  }
+
+  .pageSectionRail button {
+    width: 22px;
+    min-height: 42px;
+  }
+
+  .pageSectionRail button strong {
+    display: none !important;
   }
 }
