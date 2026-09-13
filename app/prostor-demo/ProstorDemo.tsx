@@ -1477,36 +1477,38 @@ function Today({ onNavigate, onOpenLesson, entries, currentDay, readDays }: { on
       <header className={styles.todayHeader}>
         <div className={styles.todayHeading}>
           <p className={styles.eyebrow}>DEN {currentDay} · {day.title.toUpperCase()}</p>
-          <h1>Nemusíš dnes vyřešit celý život.</h1>
-          <p>Stačí si všimnout, co se v tobě děje, ještě než si to začneš vysvětlovat.</p>
-        </div>
-        <div className={styles.todayProgress} aria-label={`${phaseRead} ze ${phaseDays.length} dní v aktuální etapě přečteno`}>
-          <div><span>AKTUÁLNÍ ETAPA</span><strong>{day.phase} / 3</strong></div>
-          <div className={styles.todayProgressTrack}><i style={{ width: `${(phaseRead / phaseDays.length) * 100}%` }} /></div>
-          <small>{phaseRead} z {phaseDays.length} dní přečteno</small>
+          <h1>Dnes stačí jeden další krok.</h1>
+          <p>Krátké zastavení, jedna otázka a prostor všimnout si sebe.</p>
         </div>
       </header>
 
       <div className={styles.todayBento}>
-        <div className={styles.todayVisual}>
-          <div className={styles.sun} />
-          <img src={lesson.illustration.src} alt={lesson.illustration.alt} />
-          <div className={styles.handNote}>Začni u sebe.<br /><mark>Ne u dalšího návodu.</mark></div>
-        </div>
         <article className={styles.lessonCard}>
-          <div className={styles.cardMeta}><span>DNEŠNÍ ZASTAVENÍ</span><strong>{minuteLabel(day.minutes).toUpperCase()}</strong></div>
-          <h2>Nejdřív něco prožijeme. Potom si vysvětlujeme, proč jsme reagovali.</h2>
-          <p>Já jsem dlouho uměl fungovat, rozhodovat a být tu pro druhé. Mnohem méně jsem ale věděl, co se děje ve mně.</p>
-          <p>Dnešní otázka je jednoduchá: <strong>{day.focus}</strong></p>
-          <button className={styles.primaryButton} onClick={() => onOpenLesson(currentDay)}>Přečíst dnešní část <span>→</span></button>
+          <div>
+            <div className={styles.cardMeta}><span>DNEŠNÍ ZASTAVENÍ</span><strong>{minuteLabel(day.minutes).toUpperCase()}</strong></div>
+            <h2>Nejdřív něco prožijeme. Potom si vysvětlujeme, proč jsme reagovali.</h2>
+            <p>Já jsem dlouho uměl fungovat, rozhodovat a být tu pro druhé. Mnohem méně jsem ale věděl, co se děje ve mně.</p>
+            <p>Dnešní otázka: <strong>{day.focus}</strong></p>
+            <button className={styles.primaryButton} onClick={() => onOpenLesson(currentDay)}>Otevřít dnešní část <span>→</span></button>
+          </div>
+          <div className={styles.todayVisual}>
+            <div className={styles.sun} />
+            <img src={lesson.illustration.src} alt={lesson.illustration.alt} />
+            <div className={styles.handNote}>Začni u sebe.</div>
+          </div>
         </article>
 
         <article className={styles.actionCard}>
-          <span className={styles.eyebrow}>TEĎ SI VŠIMNI SEBE</span>
-          <h2>Co se v tobě děje právě teď?</h2>
-          <p>Nehledej dokonalé slovo. Vyber první možnost, která je ti trochu blízko.</p>
+          <div className={styles.todayProgress} aria-label={`${phaseRead} ze ${phaseDays.length} dní v aktuální etapě přečteno`}>
+            <div><span>ETAPA {day.phase} / 3</span><strong>{phaseRead}/{phaseDays.length}</strong></div>
+            <div className={styles.todayProgressTrack}><i style={{ width: `${(phaseRead / phaseDays.length) * 100}%` }} /></div>
+            <small>přečtených dní v této etapě</small>
+          </div>
+          <span className={styles.eyebrow}>RYCHLÝ ZÁZNAM</span>
+          <h2>Co se v tobě děje?</h2>
+          <p>Vyber první možnost, která je ti trochu blízko.</p>
           <MiniWheel />
-          <button className={styles.primaryButton} onClick={() => onNavigate("zaznam")}>Zapsat svoji emoci</button>
+          <button className={styles.primaryButton} onClick={() => onNavigate("zaznam")}>Zapsat emoci</button>
         </article>
       </div>
 
@@ -1524,7 +1526,7 @@ function Today({ onNavigate, onOpenLesson, entries, currentDay, readDays }: { on
       </section>
 
       <section className={styles.pathPreview}>
-        <header><div><span className={styles.eyebrow}>TVOJE CESTA</span><h2>Teď nepotřebuješ vidět celý život. Jen další krok.</h2></div><button onClick={() => onNavigate("cesta")}>Zobrazit všech 90 dní</button></header>
+        <header><div><span className={styles.eyebrow}>TENTO TÝDEN</span><h2>Dalších sedm kroků na jednom místě.</h2></div><button onClick={() => onNavigate("cesta")}>Celá 90denní cesta →</button></header>
         <div className={styles.days}>
           {phaseDays.map((item) => {
             const isRead = readDays.includes(item.day);
@@ -3206,7 +3208,7 @@ function EmotionWheel({ selected, onSelect }: { selected: EmotionFamily; onSelec
       <div className={styles.wheelCenter}><strong>Co je<br />nejblíž?</strong><small>nemusíš si<br />být jistý</small></div>
       {FAMILIES.map((family, index) => {
         const angle = index * 60;
-        return <button type="button" key={family.id} className={selected === family.id ? styles.selectedFamily : ""} style={{ "--family": family.color, transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(calc(clamp(107px, 13vw, 140px) * -1)) rotate(${-angle}deg)` } as CSSProperties} onClick={() => onSelect(family.id)}><strong>{family.label}</strong><small>{family.hint}</small></button>;
+        return <button type="button" key={family.id} className={selected === family.id ? styles.selectedFamily : ""} style={{ "--family": family.color, "--angle": `${angle}deg` } as CSSProperties} onClick={() => onSelect(family.id)}><strong>{family.label}</strong><small>{family.hint}</small></button>;
       })}
     </div>
   );
