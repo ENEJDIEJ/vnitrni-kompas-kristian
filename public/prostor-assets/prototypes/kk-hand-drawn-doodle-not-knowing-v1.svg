@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Dostupné stopy bez přesného slova</title><desc id="desc">Postava vedle prázdné karty, kolem které jsou tři jednoduché stopy pro tělo, sílu a impulz.</desc>
+  <g fill="none" stroke="#111" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="160" cy="192" r="43"/><path d="M160 236v130M160 278l-52 57M160 278l50 57M160 364l-33 76M160 364l36 76"/>
+    <rect x="330" y="100" width="235" height="280" rx="22" transform="rotate(1 448 240)"/><path d="M374 171h148M374 239h111M374 307h139"/>
+    <path d="M253 173c35-29 55-36 77-38M254 240h76M250 316c36 29 57 36 80 39"/>
+  </g>
+  <circle cx="330" cy="240" r="16" fill="#FFD928"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Dvě emoce v jedné chvíli</title><desc id="desc">Dvě samostatné ručně kreslené vlny přicházejí k jedné postavě se žlutým bodem pozornosti.</desc>
+  <g fill="none" stroke="#111" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M44 118c89-72 165 78 257 9M44 355c89 72 165-78 257-9"/>
+    <circle cx="420" cy="235" r="48"/><path d="M420 285v121M420 326l-54 55M420 326l58 55M420 405l-34 54M420 405l39 54"/>
+    <path d="M301 127c48 5 80 31 92 66M301 346c48-5 80-31 92-66"/>
+  </g>
+  <circle cx="420" cy="235" r="15" fill="#FFD928"/>
+</svg>

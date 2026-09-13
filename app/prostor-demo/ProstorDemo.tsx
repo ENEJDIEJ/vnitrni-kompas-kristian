@@ -78,6 +78,7 @@ const VISION_BOARD_KEY = "kk-identity-vision-board";
 const INTEGRATION_DAYS_KEY = "kk-program-integration-days";
 const PROFILE_PHOTO_KEY = "kk-emotion-prototype-profile-photo";
 const PROFILE_PHOTO_POSITION_KEY = "kk-emotion-prototype-profile-photo-position";
+const PROFILE_NAME_KEY = "vnitrni-kompas-profile-name-v1";
 const LAST_LOCATION_KEY = "kk-program-last-location-v1";
 const AVAILABLE_LESSON_DAYS = 21;
 const ALL_VIEWS: View[] = ["dnes", "cesta", "lekce", "potreby", "potreby-lekce", "potreby-mapa", "hodnoty", "hodnoty-lekce", "hodnoty-mapa", "identita", "identita-lekce", "identita-mapa", "vize-board", "zaznam", "historie", "mapa", "report"];
@@ -452,6 +453,7 @@ export function ProstorDemo({
   const [visionBoard, setVisionBoard] = useState<VisionBoardData>(EMPTY_VISION_BOARD);
   const [profilePhoto, setProfilePhoto] = useState("");
   const [profilePhotoPosition, setProfilePhotoPosition] = useState({ x: 50, y: 50 });
+  const [profileName, setProfileName] = useState("Martin");
   const [photoEditorOpen, setPhotoEditorOpen] = useState(false);
   const [demoMode, setDemoMode] = useState(false);
   const [tourOpen, setTourOpen] = useState(false);
@@ -464,6 +466,12 @@ export function ProstorDemo({
 
   useEffect(() => {
     const demoTarget = new URLSearchParams(window.location.search).get("demo");
+    try {
+      const storedProfileName = window.localStorage.getItem(PROFILE_NAME_KEY)?.trim();
+      if (storedProfileName) setProfileName(storedProfileName);
+    } catch {
+      // Výchozí jméno zůstane použitelné i bez lokálního úložiště.
+    }
     const demoOnboarding = demoTarget === "onboarding";
     const demoMap = demoTarget === "mapa";
     const demoNeeds = demoTarget === "potreby";
@@ -1168,6 +1176,13 @@ export function ProstorDemo({
   const activeModule = moduleMeta[activeModuleKey];
   const totalProgramRead = readDays.length + needsReadDays.length + valuesReadDays.length + identityReadDays.length;
   const isProgramReport = view === "report";
+  const profileInitials = profileName
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase() || "MK";
   const activePrimaryNav: PrimaryNavId =
     view === "dnes"
       ? "dnes"
@@ -1193,7 +1208,7 @@ export function ProstorDemo({
               </button>
             ) : (
               <label className={styles.profilePhoto} title="Nahrát profilovou fotku">
-                <span>MK</span><i aria-hidden="true">+</i>
+                <span>{profileInitials}</span><i aria-hidden="true">+</i>
                 <input type="file" accept="image/*" onChange={(event) => uploadProfilePhoto(event.target.files?.[0])} />
               </label>
             )}
@@ -1207,7 +1222,7 @@ export function ProstorDemo({
               </div>
             ) : null}
           </div>
-          <div><strong>Martin</strong><small>{isProgramReport ? totalProgramRead : activeModule.read} přečtených dní</small></div>
+          <a className={styles.profileLink} href="/app/nastaveni"><strong>{profileName}</strong><small>{isProgramReport ? totalProgramRead : activeModule.read} přečtených dní</small></a>
         </div>
 
         <nav className={styles.nav} aria-label="Hlavní navigace">
