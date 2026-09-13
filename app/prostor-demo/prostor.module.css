@@ -180,6 +180,11 @@
 .recordV7Form .emotionWheel>button::after{opacity:.14!important;mix-blend-mode:multiply!important}
 .recordV7Form .emotionWheel>.selectedFamily{background:linear-gradient(135deg,#fff184 0%,#ffd82b 62%,#dbaa00 100%)!important;color:#11110f!important;outline:2px solid #11110f!important}
 
+/* Rýchly záznam používa rovnakú čierno-bielo-žltú rodinu ako plný formulár. */
+.todayV7CheckIn .miniWheel span{border:1px solid rgba(17,17,15,.14)!important;background:linear-gradient(145deg,#fffefa,#efefe9)!important;color:#11110f!important;box-shadow:0 5px 13px rgba(17,17,15,.08)!important}
+.todayV7CheckIn .miniWheel span::after{opacity:.12!important;mix-blend-mode:multiply!important}
+.todayV7CheckIn .miniWheel i{border:1px solid #11110f!important;background:#11110f!important;color:#fff!important}
+
 
 /* Softer emotion maps with grain instead of heavy black outlines. */
 .appV7 .miniWheel span {
