@@ -3861,3 +3861,108 @@
     display: none !important;
   }
 }
+
+/* Personal report: lighter statistics and an imperfect hand-drawn completion mark. */
+.reportV7 .programReportHeroStats {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+}
+
+.reportV7 .programReportHeroStats div {
+  display: block !important;
+  min-width: 0 !important;
+  padding: 0 18px !important;
+  border: 0 !important;
+  border-left: 1px solid rgba(17,17,15,.28) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.reportV7 .programReportHeroStats div:first-child {
+  padding-left: 0 !important;
+  border-left: 0 !important;
+}
+
+.reportV7 .programReportHeroStats strong {
+  font-size: 29px !important;
+  font-weight: 620 !important;
+}
+
+.reportV7 .programReportHeroStats span {
+  max-width: 112px;
+  margin-top: 5px !important;
+  color: #11110f !important;
+  font-size: 8px !important;
+  line-height: 1.35 !important;
+}
+
+.reportV7 .programReportSeal {
+  position: relative !important;
+  isolation: isolate;
+  width: 142px !important;
+  height: 108px !important;
+  aspect-ratio: auto !important;
+  margin: auto !important;
+  padding: 12px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  transform: rotate(-1deg) !important;
+}
+
+.reportV7 .programReportSeal::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -12px -17px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 150'%3E%3Cpath d='M28 91C18 48 60 18 119 20c55 2 93 26 90 64-3 37-47 56-101 53-45-3-83-20-82-48 1-24 27-47 67-57' fill='none' stroke='%2311110f' stroke-width='3.6' stroke-linecap='round'/%3E%3Cpath d='M30 96c8 31 48 48 101 42 45-5 76-27 75-55' fill='none' stroke='%2311110f' stroke-width='1.6' stroke-linecap='round' opacity='.36'/%3E%3C/svg%3E") center/contain no-repeat;
+  opacity: .7;
+  pointer-events: none;
+}
+
+.reportV7 .programReportSeal span {
+  font-size: 54px !important;
+  line-height: .76 !important;
+}
+
+.reportV7 .programReportSeal strong {
+  margin-top: 8px !important;
+  font-size: 8px !important;
+}
+
+.reportV7 .programReportSeal small {
+  margin-top: 4px !important;
+  font-size: 7px !important;
+}
+
+@media (max-width: 740px) {
+  .reportV7 .programReportHeroStats {
+    display: grid !important;
+    grid-template-columns: repeat(3,minmax(0,1fr)) !important;
+  }
+
+  .reportV7 .programReportHeroStats div {
+    display: block !important;
+    padding: 0 8px !important;
+  }
+
+  .reportV7 .programReportHeroStats strong {
+    font-size: 25px !important;
+  }
+
+  .reportV7 .programReportHeroStats span {
+    max-width: none !important;
+    font-size: 7.5px !important;
+  }
+
+  .reportV7 .programReportSeal {
+    display: grid !important;
+    width: 124px !important;
+    height: 96px !important;
+  }
+
+  .reportV7 .programReportSeal span {
+    font-size: 47px !important;
+  }
+}
