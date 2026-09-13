@@ -1258,6 +1258,24 @@ export function ProstorDemo({
       <main className={styles.main}>
         <header className={styles.topbar}>
           <div className={styles.topbarBrand}><img className={styles.mobileLogo} src="/vnitrni-kompas-logo-dark.png" alt="Vnitřní kompas" /><p><strong>Vnitřní kompas</strong><small>Operační systém pro práci sám se sebou</small></p></div>
+          <nav className={styles.topbarModuleNav} aria-label="Moduly programu">
+            {(Object.keys(moduleMeta) as ModuleKey[]).map((key) => {
+              const module = moduleMeta[key];
+              const available = demoMode || hasModuleAccess(key);
+              return (
+                <button
+                  type="button"
+                  key={key}
+                  disabled={!available}
+                  className={activeModuleKey === key && !isProgramReport ? styles.topbarModuleActive : ""}
+                  onClick={() => openModule(key)}
+                >
+                  <span>{module.number}</span>
+                  <strong>{module.title}</strong>
+                </button>
+              );
+            })}
+          </nav>
           <div className={styles.topbarActions}>
             <WebOnly>
               <a className={styles.sessionCta} href="/konzultace-zdarma?zdroj=vnitri-kompas">Úvodní konzultace zdarma</a>

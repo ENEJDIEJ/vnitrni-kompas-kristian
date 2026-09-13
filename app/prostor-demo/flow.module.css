@@ -2906,3 +2906,35 @@
   .programModules>div,.programMirror>div,.programMilestones>div,.programExperiments>div{grid-template-columns:1fr!important}
   .inlineLink,.practiceChoiceField button,.practiceScale button,.needsChoiceGrid button,.lessonActions button,.visionAssistantActions button,.visionUploadButton,.historyHeader button{min-height:44px!important}
 }
+
+/* V5 content composition: horizontal work rows replace nested landing-page cards. */
+.pageIntroSpacing{grid-template-columns:minmax(0,1fr) minmax(320px,.7fr)!important;align-items:center!important;min-height:82px!important;margin:0 0 12px!important;padding:5px 2px!important}
+.pageIntroSpacing h1{margin-top:5px!important;font-size:clamp(29px,3.2vw,39px)!important}
+.pageIntroSpacing h1+p{margin-top:0!important}
+.singleModule article{grid-template-columns:50px minmax(0,1fr) auto!important;min-height:74px!important;padding:13px 16px!important}
+.singleModule article>strong,.singleModule article>h2{grid-column:2!important}.singleModule article>strong{font-size:14px!important}.singleModule article>h2{font-size:20px!important}.singleModule article>p{display:none!important}.singleModule article>[class*='moduleProgress'],.singleModule article>small,.singleModule article>button{grid-column:3!important;grid-row:auto!important}
+.journeyIntro{min-height:94px!important;margin:0!important;padding:18px 20px!important}
+.journeyIntro h2{font-size:29px!important}.journeyIntro p{font-size:12px!important}
+.phaseBlock{display:grid!important;grid-template-columns:190px minmax(0,1fr)!important;align-items:stretch!important;gap:10px!important;padding:10px!important}
+.phaseHead{display:flex!important;align-items:flex-start!important;justify-content:center!important;flex-direction:column!important;gap:5px!important;padding:12px!important;border:0!important;border-right:1px solid var(--v4-line)!important}
+.phaseHead>span{width:34px!important;height:34px!important}.phaseHead>div{margin-top:4px!important}.phaseHead p{margin-top:5px!important;font-size:11px!important;line-height:1.35!important}
+.dayGrid{align-content:center!important;margin-top:0!important}.dayCard{min-height:78px!important;padding:9px!important}.dayCard strong{margin-top:7px!important;font-size:12px!important}.dayCard p{display:none!important}
+.weekComplete{border-left:4px solid #ffd82b!important}
+
+.programReportHero{background:linear-gradient(125deg,#fff184,#ffd82b 60%,#dfb000)!important;color:#11110f!important}
+.programReportHero::before{opacity:.18!important;mix-blend-mode:soft-light}.programReportHero::after{content:'';position:absolute;right:-65px;top:-95px;width:270px;height:270px;background:url('/brand-pattern-black.png') center/contain no-repeat;opacity:.13}
+.programReportHero [class*='eyebrow'],.programReportHero>div>p{color:#33332f!important}.programReportHeroStats div{border-color:rgba(17,17,15,.22)!important;background:rgba(255,255,255,.3)!important}.programReportSeal{border-color:#11110f!important;color:#11110f!important}
+.programMirror,.programModules,.programMilestones,.programExperiments,.integrationReport{border-left:0!important;border-right:0!important;border-bottom:0!important;border-radius:0!important;background:transparent!important}
+.programMirror>div>button,.programModules article,.programExperiments button{background:#fff!important}
+.programMirror>div>button:last-child{background:linear-gradient(135deg,#fff184,#ffd82b 60%,#e2b200)!important}
+.programModules>div{grid-template-columns:repeat(4,minmax(0,1fr))!important}.programModules article{min-height:0!important}
+.programMilestones>div{grid-template-columns:repeat(4,minmax(0,1fr))!important}.programMilestones>div>section{background:#fff!important}
+.programExperiments>div{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.programStatement{background:#11110f!important;color:#fff!important}.programStatement [class*='eyebrow']{color:#ffd82b!important}
+
+.needsMapHero{background:linear-gradient(125deg,#fff184,#ffd82b 60%,#dfb000)!important;color:#11110f!important}.needsMapHero [class*='eyebrow'],.needsMapHero p{color:#34342f!important}.needsMapHero::after{content:'';position:absolute;right:-55px;top:-85px;width:230px;height:230px;background:url('/brand-pattern-black.png') center/contain no-repeat;opacity:.13}
+.mapGameHero{background:#11110f!important}.journeyBoard,.badgeShelf,.emotionDictionary,.personalManual,.practiceMap,.personalMirror,.reportMilestones,.badgeSection,.needsMapPath,.needsChoiceGrid,.needsExperiment{border-left:0!important;border-right:0!important;border-radius:0!important}
+
+@media(max-width:1100px){.phaseBlock{grid-template-columns:160px minmax(0,1fr)!important}.programModules>div,.programMilestones>div,.programExperiments>div{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:900px){.pageIntroSpacing{grid-template-columns:1fr!important}.phaseBlock{grid-template-columns:1fr!important}.phaseHead{border-right:0!important;border-bottom:1px solid var(--v4-line)!important}.dayGrid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media(max-width:740px){.pageIntroSpacing{min-height:0!important}.dayGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.programModules>div,.programMilestones>div,.programExperiments>div{grid-template-columns:1fr!important}}
