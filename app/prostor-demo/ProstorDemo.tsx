@@ -899,8 +899,8 @@ export function ProstorDemo({
   };
 
   const navigatePrimary = (next: PrimaryNavId) => {
-    if (next === "dnes" && activeModuleKey !== "emotion") {
-      navigate(MODULE_ROOT_VIEW[activeModuleKey]);
+    if (next === "dnes") {
+      navigate("dnes");
       return;
     }
     if (next === "cesta") {
