@@ -3912,13 +3912,7 @@
 }
 
 .reportV7 .programReportSeal::before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  inset: -12px -17px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 150'%3E%3Cpath d='M28 91C18 48 60 18 119 20c55 2 93 26 90 64-3 37-47 56-101 53-45-3-83-20-82-48 1-24 27-47 67-57' fill='none' stroke='%2311110f' stroke-width='3.6' stroke-linecap='round'/%3E%3Cpath d='M30 96c8 31 48 48 101 42 45-5 76-27 75-55' fill='none' stroke='%2311110f' stroke-width='1.6' stroke-linecap='round' opacity='.36'/%3E%3C/svg%3E") center/contain no-repeat;
-  opacity: .7;
-  pointer-events: none;
+  content: none;
 }
 
 .reportV7 .programReportSeal span {
@@ -3964,5 +3958,72 @@
 
   .reportV7 .programReportSeal span {
     font-size: 47px !important;
+  }
+}
+
+/* Keep the report footer balanced: note on the left, actions breathing on the right. */
+.reportV7 > .reportFooter {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  grid-template-rows: auto auto !important;
+  align-items: center !important;
+  column-gap: 24px !important;
+  row-gap: 14px !important;
+  padding: 18px 24px !important;
+}
+
+.reportV7 > .reportFooter > div:last-child {
+  display: contents !important;
+}
+
+.reportV7 > .reportFooter > div:first-child {
+  grid-column: 1 / -1 !important;
+  grid-row: 1 !important;
+}
+
+.reportV7 > .reportFooter > div:last-child .inlineLink {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  justify-self: start !important;
+}
+
+.reportV7 > .reportFooter > div:last-child .primaryButton {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  justify-self: end !important;
+  margin-left: 0 !important;
+}
+
+@media (max-width: 520px) {
+  .reportV7 > .reportFooter {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    margin-bottom: 98px !important;
+  }
+
+  .reportV7 > .reportFooter > div:last-child {
+    width: auto !important;
+  }
+}
+
+/* Keep report cards useful and scannable on smaller screens. */
+@media (max-width: 740px) {
+  .reportV7 .programExperiments button {
+    min-height: 150px !important;
+    padding: 16px !important;
+  }
+
+  .reportV7 .programExperiments button strong {
+    margin-top: 16px !important;
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+  }
+
+  .reportV7 .programExperiments button small {
+    padding-top: 16px !important;
+  }
+
+  .reportV7 .programMirror > div > button {
+    min-height: 145px !important;
+    padding: 14px !important;
   }
 }

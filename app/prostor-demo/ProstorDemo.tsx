@@ -2581,7 +2581,7 @@ function ProgramDashboard({
         </ol>
       </section> : null}
 
-      <div className={styles.mapFooter}>
+      <div className={`${styles.mapFooter} ${flow.reportFooter}`}>
         <div className={styles.handNote}>Tohle není známka.<br /><mark>Je to tvoje stopa.</mark></div>
         <div><button className={flow.inlineLink} onClick={() => onNavigate("cesta")}>Projít celou cestu</button> <button className={styles.primaryButton} onClick={() => onNavigate("zaznam")}>Zapsat dnešní emoci</button></div>
       </div>
