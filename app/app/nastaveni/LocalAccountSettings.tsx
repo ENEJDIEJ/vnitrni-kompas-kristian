@@ -19,7 +19,10 @@ export function LocalAccountSettings() {
       if (document.referrer) {
         const source = new URL(document.referrer);
         const isLocalApp = source.origin === window.location.origin && (source.pathname === "/" || source.pathname === "/prostor-demo" || source.pathname === "/prostor-demo.html");
-        if (isLocalApp) setReturnHref(`${source.pathname}${source.search}`);
+        if (isLocalApp) {
+          const demo = source.searchParams.get("demo");
+          setReturnHref(`${source.pathname}${demo ? `?demo=${encodeURIComponent(demo)}` : ""}`);
+        }
       }
     } catch {
       // Formulář funguje i bez dostupného lokálního úložiště.
@@ -46,10 +49,9 @@ export function LocalAccountSettings() {
       <section className={styles.shell}>
         <header className={styles.header}>
           <a className={styles.brand} href={returnHref} aria-label="Zpět do Vnitřního kompasu">
-            <img src="/vnitrni-kompas-logo.png" alt="" aria-hidden="true" />
-            <span><strong>VNITŘNÍ KOMPAS</strong><small>ÚČET A NASTAVENÍ</small></span>
+            <span className={styles.brandMark} aria-hidden="true"><img className={styles.brandLogoWhite} src="/vnitrni-kompas-logo-dark.png" alt="" /><img className={styles.brandLogoYellow} src="/vnitrni-kompas-logo.png" alt="" /></span>
+            <span><strong>Vnitřní kompas</strong><small>Operační systém pro práci sám se sebou</small></span>
           </a>
-          <a className={styles.back} href={returnHref}>← ZPĚT DO APLIKACE</a>
         </header>
 
         <div className={styles.content}>
@@ -76,6 +78,19 @@ export function LocalAccountSettings() {
           </form>
         </div>
       </section>
+      <nav className={styles.mobileNav} aria-label="Navigace účtu">
+        {([
+          ["dnes", "⌂", "Dnes"],
+          ["cesta", "↗", "Cesta"],
+          ["zaznam", "●", "Zapsat"],
+          ["report", "◎", "Mapa"],
+        ] as const).map(([start, icon, label]) => (
+          <a key={start} href={`${returnHref}${returnHref.includes("?") ? "&" : "?"}start=${start}`}>
+            <span>{icon}</span>{label}
+          </a>
+        ))}
+        <a className={styles.mobileActive} href="/app/nastaveni" aria-current="page"><span>○</span>Profil</a>
+      </nav>
     </main>
   );
 }

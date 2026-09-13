@@ -466,6 +466,8 @@ export function ProstorDemo({
 
   useEffect(() => {
     const demoTarget = new URLSearchParams(window.location.search).get("demo");
+    const startTarget = new URLSearchParams(window.location.search).get("start");
+    const requestedView = startTarget && ALL_VIEWS.includes(startTarget as View) ? startTarget as View : null;
     try {
       const storedProfileName = window.localStorage.getItem(PROFILE_NAME_KEY)?.trim();
       if (storedProfileName) setProfileName(storedProfileName);
@@ -616,8 +618,8 @@ export function ProstorDemo({
       setIdentityPracticeEntries(IDENTITY_DEMO_PRACTICE);
       setVisionBoard(DEMO_VISION_BOARD);
       setEntered(true);
-      setView(demoReport ? "report" : "cesta");
-      if (!demoReport) restoreLastLocation();
+      setView(requestedView ?? (demoReport ? "report" : "cesta"));
+      if (!demoReport && !requestedView) restoreLastLocation();
       setReady(true);
       return;
     }
@@ -650,7 +652,10 @@ export function ProstorDemo({
       const hasEntered = window.localStorage.getItem(ONBOARDING_KEY) === "1";
       setEntered(hasEntered);
       setTourOpen(hasEntered && window.localStorage.getItem(TOUR_KEY) !== "1");
-      if (hasEntered) restoreLastLocation();
+      if (hasEntered) {
+        if (requestedView) setView(requestedView);
+        else restoreLastLocation();
+      }
     } catch {
       // Prototyp zůstane použitelný i při blokovaném lokálním úložišti.
     }

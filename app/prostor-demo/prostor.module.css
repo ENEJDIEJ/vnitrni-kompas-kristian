@@ -151,10 +151,35 @@
 .recordV7Form{position:relative;overflow:hidden}.recordV7Form::after{content:'';position:absolute;right:-115px;bottom:-135px;width:260px;height:260px;background:url('/brand-pattern-yellow.png') center/contain no-repeat;opacity:.14;pointer-events:none}.recordV7Form>*{position:relative;z-index:1}
 @media(max-width:740px){.appV7 .topbarBrand{display:flex;align-items:center;gap:8px}.appV7 .topbarBrand p{display:block;margin:0;color:#11110f}.appV7 .topbarBrand p strong{display:block;font-size:10px;line-height:1.1;letter-spacing:.04em}.appV7 .topbarBrand p small{display:block;margin-top:2px;color:#777770;font-size:6px;line-height:1.1;letter-spacing:.04em}.appV7 .main::before{right:-105px;bottom:-110px;width:310px;height:310px;opacity:.045}.todayV7Visual::after{right:-58px;top:-67px;width:220px;height:220px}}
 
-@media(max-width:740px){
-  .appV7 .todayV7,
-  .appV7 .recordV7 { padding-left:38px; padding-right:38px; }
-}
+/* Záznam: krokový prepínač patrí nad mapu a používa rovnakú horizontálnu logiku na každej šírke. */
+.recordV7Form{grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important}
+.recordV7Form .recordSteps{grid-column:1!important;grid-row:1!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;flex-direction:row!important;min-height:0!important;border-radius:10px!important;padding:8px!important}
+.recordV7Form .recordSteps li{min-height:46px!important;grid-template-columns:28px 1fr!important}
+.recordV7Form .recordSteps li:not(:last-child)::after{left:auto!important;right:-5px!important;top:50%!important;bottom:auto!important;width:10px!important;height:1px!important}
+.recordV7Form .wheelPanel{grid-column:1!important;grid-row:2!important}
+.recordV7Form .recordForm{grid-column:1!important;grid-row:3!important;border-left:0!important;border-top:1px solid rgba(17,17,15,.12)!important}
+.recordV7Form .wheelPanel .emotionWheel{justify-self:center!important;margin-inline:auto!important}
+
+/* Týždenné kroky majú vždy kontrastné čísla; dokončené dni ostávajú tmavé. */
+.todayV7Week .days button,.todayV7Week .days span,.todayV7Week .days small{color:#11110f!important}
+.todayV7Week .days .doneDay,.todayV7Week .days .doneDay span,.todayV7Week .days .doneDay small{color:#fff!important}
+
+/* Intenzita používa krátky oválny úchyt namiesto kruhovej guličky. */
+.recordForm input[type="range"]{-webkit-appearance:none;appearance:none;height:4px;padding:0!important;border:0!important;border-radius:999px;background:#d4d4cc!important;accent-color:#d4d4cc!important}
+.recordForm input[type="range"]::-webkit-slider-runnable-track{height:4px;border-radius:999px;background:#d4d4cc}
+.recordForm input[type="range"]::-moz-range-track{height:4px;border-radius:999px;background:#d4d4cc}
+.recordForm input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:8px;height:24px;border:0;border-radius:999px;background:#ffd82b;box-shadow:0 1px 4px rgba(17,17,15,.28);cursor:pointer}
+.recordForm input[type="range"]::-moz-range-thumb{width:8px;height:24px;border:0;border-radius:999px;background:#ffd82b;box-shadow:0 1px 4px rgba(17,17,15,.28);cursor:pointer}
+.recordForm .range>div{align-items:center!important}
+.recordForm .range strong{align-self:center!important;justify-self:center!important;display:grid!important;place-items:center!important;margin:0!important;line-height:1!important}
+@media(max-width:740px){.recordForm textarea,.recordForm input:not([type="range"]){font-size:13px!important}.recordForm .wordChoices button{font-size:11px!important}}
+
+/* Rodina emócií ostáva v systéme čiernej, bielej a žltej aj pri inline farbách dát. */
+.recordV7Form .emotionWheel>button{border:1px solid rgba(17,17,15,.16)!important;background:linear-gradient(145deg,#fffefa 0%,#f0f0ea 100%)!important;color:#11110f!important;box-shadow:0 8px 18px rgba(17,17,15,.08)!important}
+.recordV7Form .emotionWheel>button small{color:#686861!important}
+.recordV7Form .emotionWheel>button::after{opacity:.14!important;mix-blend-mode:multiply!important}
+.recordV7Form .emotionWheel>.selectedFamily{background:linear-gradient(135deg,#fff184 0%,#ffd82b 62%,#dbaa00 100%)!important;color:#11110f!important;outline:2px solid #11110f!important}
+
 
 /* Softer emotion maps with grain instead of heavy black outlines. */
 .appV7 .miniWheel span {

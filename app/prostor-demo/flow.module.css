@@ -3057,7 +3057,6 @@
   .mapV7,.reportV7{grid-template-columns:1fr!important}.mapV7>.pageIntroSpacing,.reportV7>.pageIntroSpacing,.mapV7>.mapGameHero,.mapV7>.needsMapHero,.reportV7>.programReportHero,.mapV7>*:not(.pageIntroSpacing):not(.mapGameHero):not(.needsMapHero),.reportV7>*:not(.pageIntroSpacing):not(.programReportHero){grid-column:1!important;grid-row:auto!important}.mapV7>.mapGameHero,.mapV7>.needsMapHero,.reportV7>.programReportHero{position:relative!important;top:auto!important;min-height:0!important}.mapV7 .needsMapStages{grid-template-columns:repeat(3,1fr)!important}.mapV7 .needsMapStages>span:nth-child(2){justify-content:center!important}.mapV7 .needsMapStages>span:last-child{justify-content:flex-end!important}
 }
 @media(max-width:740px){
-  .reportV7 { padding-left:38px !important; padding-right:38px !important; }
   .journeyV7 .journeyDetail{padding:5px!important}.journeyV7 .phaseBlock{grid-template-columns:1fr!important}.journeyV7 .phaseHead{grid-template-columns:30px 1fr!important;min-height:92px!important;border-right:0!important;border-bottom:1px solid var(--line)!important}.journeyV7 .dayCard{grid-template-columns:58px minmax(0,1fr) auto!important;min-height:54px!important}.journeyV7 .dayCard p{display:none!important}
   .lessonV7 .storySection{grid-template-columns:1fr!important}.lessonV7 .storyVisual{min-height:210px!important}.lessonV7 .educationSection{grid-template-columns:1fr!important}.lessonV7 .educationSection figure{min-height:220px!important}.lessonV7 .educationSection figure img,.lessonV7 .educationSection figure img.originalDoodle{height:190px!important}.lessonV7 .recognitionSection>div{grid-template-columns:1fr!important}
   .mapV7 .journeyChapters,.mapV7 .badgeGrid,.mapV7 .badgeSection>div{grid-template-columns:1fr!important}.mapV7 .needsMapPath article,.mapV7 .manualPath article{grid-template-columns:32px minmax(0,1fr)!important}.mapV7 .needsMapPath article strong,.mapV7 .manualPath article strong{grid-column:2!important}.mapV7 .programReportMetrics,.reportV7 .programReportMetrics,.reportV7 .programMirror>div,.reportV7 .programModules>div,.reportV7 .programMilestones>div,.reportV7 .programExperiments>div{grid-template-columns:1fr!important}
@@ -3217,7 +3216,7 @@
 
 .journeyV7 .singleModule article > h2 {
   margin: 0 !important;
-  font-size: 22px !important;
+  font-size: 20px !important;
 }
 
 .journeyV7 .singleModule article > p {
@@ -3275,9 +3274,13 @@
   }
 
   .journeyV7 .singleModule article > h2 {
-    font-size: 21px !important;
+    font-size: 20px !important;
   }
 }
+
+/* Úvodný modul má rovnakú kompaktnú typografiu ako blok „Emoce se učíš poznávat ve třech krocích“. */
+.journeyV7 .singleModule article > strong{font-size:14px!important}
+.journeyV7 .singleModule article > p{font-size:12px!important;line-height:1.4!important}
 
 /* Journey section rail: compact, touchable navigation through the long path. */
 .journeyV7 {
@@ -4028,3 +4031,44 @@
     padding: 14px !important;
   }
 }
+
+/* Keep each journey row on the same rhythm: day marker, copy, minutes. */
+.journeyV7 .dayCard {
+  grid-template-columns: 74px minmax(0, 1fr) 52px !important;
+}
+
+.journeyV7 .dayMeta > small {
+  justify-self: end !important;
+  text-align: right !important;
+  white-space: nowrap !important;
+}
+
+.journeyV7 .dayNumber {
+  color: #777770 !important;
+}
+
+.journeyV7 .dayCard.done .dayNumber,
+.journeyV7 .dayCard.current .dayNumber {
+  color: #11110f !important;
+}
+
+/* Rodina emócií drží čierno-bielo-žltý systém; farba ostáva len ako stav výberu. */
+.recordV7Form .emotionWheel > button,.appV7 .emotionWheel > button{
+  border:1px solid rgba(17,17,15,.16)!important;
+  background:linear-gradient(145deg,#fffefa 0%,#f0f0ea 100%)!important;
+  color:#11110f!important;
+  box-shadow:0 8px 18px rgba(17,17,15,.08)!important;
+}
+.recordV7Form .emotionWheel > button small,.appV7 .emotionWheel > button small{color:#686861!important}
+.recordV7Form .emotionWheel > button::after,.appV7 .emotionWheel > button::after{opacity:.14!important;mix-blend-mode:multiply!important}
+.recordV7Form .emotionWheel > button.selectedFamily,.recordV7 .emotionWheel > .selectedFamily,
+.appV7 .emotionWheel > button.selectedFamily,
+.appV7 .emotionWheel > .selectedFamily{
+  background:linear-gradient(135deg,#fff184 0%,#ffd82b 62%,#dbaa00 100%)!important;
+  color:#11110f!important;
+  outline:2px solid #11110f!important;
+}
+
+/* Aktívny marker railu zostáva krátkou oválnou čiarkou, nie bodkou. */
+.journeyRail button i,.pageSectionRail button i{border-radius:999px!important}
+.journeyRailActive i,.pageSectionRailActive i{width:5px!important;height:28px!important;border-radius:999px!important}
