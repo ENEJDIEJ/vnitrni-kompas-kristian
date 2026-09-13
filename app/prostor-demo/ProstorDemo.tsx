@@ -1193,7 +1193,7 @@ export function ProstorDemo({
           : "cesta";
 
   return (
-    <div className={styles.app}>
+    <div className={`${styles.app} ${styles.appV7}`}>
       <aside className={styles.sidebar}>
         <button className={styles.brand} onClick={() => navigate("dnes")}>
           <img src="/vnitrni-kompas-logo.png" alt="" aria-hidden="true" />
@@ -1506,72 +1506,66 @@ function Today({ onNavigate, onOpenLesson, entries, currentDay, readDays }: { on
   const phaseDays = EMOTION_DAYS.filter((item) => item.phase === day.phase);
   const phaseRead = phaseDays.filter((item) => readDays.includes(item.day)).length;
   return (
-    <section className={styles.todayDashboard}>
-      <header className={styles.todayHeader}>
+    <section className={`${styles.todayDashboard} ${styles.todayV7}`}>
+      <header className={styles.todayV7Top}>
         <div className={styles.todayHeading}>
           <p className={styles.eyebrow}>DEN {currentDay} · {day.title.toUpperCase()}</p>
           <h1>Dnes stačí jeden další krok.</h1>
           <p>Krátké zastavení, jedna otázka a prostor všimnout si sebe.</p>
         </div>
+        <div className={styles.todayV7Phase} aria-label={`${phaseRead} ze ${phaseDays.length} dní v aktuální etapě přečteno`}>
+          <span>ETAPA {day.phase} / 3</span><strong>{phaseRead}/{phaseDays.length}</strong>
+          <i><b style={{ width: `${(phaseRead / phaseDays.length) * 100}%` }} /></i>
+        </div>
       </header>
 
-      <div className={styles.todayBento}>
-        <article className={styles.lessonCard}>
-          <div>
+      <div className={styles.todayV7Workspace}>
+        <article className={styles.todayV7Task}>
+          <div className={styles.todayV7TaskCopy}>
             <div className={styles.cardMeta}><span>DNEŠNÍ ZASTAVENÍ</span><strong>{minuteLabel(day.minutes).toUpperCase()}</strong></div>
             <h2>Nejdřív něco prožijeme. Potom si vysvětlujeme, proč jsme reagovali.</h2>
             <p>Já jsem dlouho uměl fungovat, rozhodovat a být tu pro druhé. Mnohem méně jsem ale věděl, co se děje ve mně.</p>
-            <p>Dnešní otázka: <strong>{day.focus}</strong></p>
+            <div className={styles.todayV7Question}><span>DNEŠNÍ OTÁZKA</span><strong>{day.focus}</strong></div>
             <button className={styles.primaryButton} onClick={() => onOpenLesson(currentDay)}>Otevřít dnešní část <span>→</span></button>
           </div>
-          <div className={styles.todayVisual}>
+          <figure className={styles.todayV7Visual}>
             <div className={styles.sun} />
             <img src={lesson.illustration.src} alt={lesson.illustration.alt} />
-            <div className={styles.handNote}>Začni u sebe.</div>
-          </div>
+            <figcaption className={styles.handNote}>Začni u sebe.</figcaption>
+          </figure>
         </article>
 
-        <article className={styles.actionCard}>
-          <div className={styles.todayProgress} aria-label={`${phaseRead} ze ${phaseDays.length} dní v aktuální etapě přečteno`}>
-            <div><span>ETAPA {day.phase} / 3</span><strong>{phaseRead}/{phaseDays.length}</strong></div>
-            <div className={styles.todayProgressTrack}><i style={{ width: `${(phaseRead / phaseDays.length) * 100}%` }} /></div>
-            <small>přečtených dní v této etapě</small>
-          </div>
-          <span className={styles.eyebrow}>RYCHLÝ ZÁZNAM</span>
-          <h2>Co se v tobě děje?</h2>
-          <p>Vyber první možnost, která je ti trochu blízko.</p>
-          <MiniWheel />
-          <button className={styles.primaryButton} onClick={() => onNavigate("zaznam")}>Zapsat emoci</button>
-        </article>
+        <aside className={styles.todayV7Context}>
+          <article className={styles.todayV7CheckIn}>
+            <span className={styles.eyebrow}>RYCHLÝ ZÁZNAM</span>
+            <h2>Co se v tobě děje?</h2>
+            <p>Vyber první možnost, která je ti trochu blízko.</p>
+            <MiniWheel />
+            <button className={styles.primaryButton} onClick={() => onNavigate("zaznam")}>Zapsat emoci</button>
+          </article>
+          <section className={styles.todayV7Week}>
+            <header><div><span className={styles.eyebrow}>TENTO TÝDEN</span><h2>7 malých kroků</h2></div><button onClick={() => onNavigate("cesta")}>Celá cesta →</button></header>
+            <div className={styles.days}>
+              {phaseDays.map((item) => {
+                const isRead = readDays.includes(item.day);
+                return <button type="button" key={item.day} onClick={() => onOpenLesson(item.day)} className={isRead ? styles.doneDay : item.day === currentDay ? styles.currentDay : ""}><span>{isRead ? "✓" : item.day}</span><small>{isRead ? item.title : item.day === currentDay ? "Dnes" : item.title}</small></button>;
+              })}
+            </div>
+          </section>
+        </aside>
       </div>
 
-      <section className={styles.insightRow}>
-        <article>
-          <span className={styles.eyebrow}>TVŮJ POSLEDNÍ ZÁZNAM</span>
-          <div className={styles.lastEntry}><i /><div><strong>{entries[0]?.emotion ?? "Zatím bez záznamu"}</strong><p>{entries[0]?.situation ?? "Začni prvním krátkým zastavením."}</p></div><b>{entries[0]?.intensity ?? 0}/5</b></div>
-          <button className={flow.inlineLink} onClick={() => onNavigate("historie")}>Zobrazit všechny záznamy</button>
-        </article>
-        <article>
-          <span className={styles.eyebrow}>PROČ TO DĚLÁME</span>
-          <p>Když emoci dokážeš zachytit a pojmenovat, nemusíš podle ní automaticky jednat. Začíná vznikat malý prostor pro tvoji volbu.</p>
-          <div className={styles.scienceLink}>◌ <span>Co se děje pod povrchem</span></div>
-        </article>
-      </section>
-
-      <section className={styles.pathPreview}>
-        <header><div><span className={styles.eyebrow}>TENTO TÝDEN</span><h2>Dalších sedm kroků na jednom místě.</h2></div><button onClick={() => onNavigate("cesta")}>Celá 90denní cesta →</button></header>
-        <div className={styles.days}>
-          {phaseDays.map((item) => {
-            const isRead = readDays.includes(item.day);
-            return <button type="button" key={item.day} onClick={() => onOpenLesson(item.day)} className={isRead ? styles.doneDay : item.day === currentDay ? styles.currentDay : ""}><span>{isRead ? "✓" : item.day}</span><small>{isRead ? "přečteno" : item.day === currentDay ? "dnes" : `den ${item.day}`}</small></button>;
-          })}
-        </div>
-      </section>
+      <article className={styles.todayV7Evidence}>
+        <div><span className={styles.eyebrow}>POSLEDNÍ ZÁZNAM</span><div className={styles.lastEntry}><i /><div><strong>{entries[0]?.emotion ?? "Zatím bez záznamu"}</strong><p>{entries[0]?.situation ?? "Začni prvním krátkým zastavením."}</p></div><b>{entries[0]?.intensity ?? 0}/5</b></div><button className={flow.inlineLink} onClick={() => onNavigate("historie")}>Všechny záznamy</button></div>
+        <div><span className={styles.eyebrow}>PROČ TO DĚLÁME</span><p>Když emoci dokážeš zachytit a pojmenovat, nemusíš podle ní automaticky jednat. Začíná vznikat malý prostor pro tvoji volbu.</p></div>
+      </article>
     </section>
   );
 }
 
 function Journey({ onNavigate, onOpenLesson, onOpenNeeds, onOpenValues, onOpenIdentity, currentDay, readDays, entries, practiceEntries, needsReadDays, valuesReadDays }: { onNavigate: (view: View) => void; onOpenLesson: (day: number) => void; onOpenNeeds: () => void; onOpenValues: () => void; onOpenIdentity: () => void; currentDay: number; readDays: number[]; entries: EmotionEntry[]; practiceEntries: PracticeEntry[]; needsReadDays: number[]; valuesReadDays: number[] }) {
+  const [openPhase, setOpenPhase] = useState<number | null>(Math.ceil(currentDay / 7));
+  const [journeySection, setJourneySection] = useState<"kroky" | "etapy" | "vrstvy" | "integrace">("kroky");
   const firstWeekRead = readDays.filter((day) => day <= 7).length;
   const firstWeekComplete = firstWeekRead === 7;
   const firstWeekEntries = entries.filter((entry) => entry.day <= 7).length;
@@ -1589,6 +1583,26 @@ function Journey({ onNavigate, onOpenLesson, onOpenNeeds, onOpenValues, onOpenId
     { number: "04", title: "Identita a vize", verb: "Jednám", text: "Přeložím poznání do identity, vize a života, který chci postupně vytvářet.", days: "21 dní", state: valuesReadDays.length === 21 ? "available" : "locked" },
   ];
 
+  useEffect(() => {
+    const sectionIds = ["cesta-kroky", "cesta-etapy", "cesta-vrstvy", "cesta-integrace"];
+    const updateActiveSection = () => {
+      const marker = window.innerWidth <= 740 ? 72 : 96;
+      let activeId = sectionIds[0];
+      sectionIds.forEach((id) => {
+        if ((document.getElementById(id)?.getBoundingClientRect().top ?? 99999) <= marker) activeId = id;
+      });
+      setJourneySection(activeId.replace("cesta-", "") as "kroky" | "etapy" | "vrstvy" | "integrace");
+    };
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    return () => window.removeEventListener("scroll", updateActiveSection);
+  }, []);
+
+  const goToJourneySection = (section: "kroky" | "etapy" | "vrstvy" | "integrace") => {
+    setJourneySection(section);
+    document.getElementById(`cesta-${section}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   const moduleCard = (module: (typeof modules)[number]) => (
     <article key={module.number} className={module.state === "active" || module.state === "available" ? styles.activeModule : styles.lockedModule}>
       <div className={styles.moduleTop}><span>{module.number}</span><small>{module.days}</small></div>
@@ -1598,11 +1612,23 @@ function Journey({ onNavigate, onOpenLesson, onOpenNeeds, onOpenValues, onOpenId
   );
 
   return (
-    <section>
-      <PageIntro eyebrow="VNITŘNÍ KOMPAS · 90DENNÍ CESTA" title="Od první emoce k vlastnímu směru." text="Čtyři moduly tvoří 84 vedených dní. Posledních šest dní se vracíš ke svým mapám, zapisuješ skutečné chvíle a necháváš vlastní poznání pracovat v životě." />
-      <div className={`${styles.moduleGrid} ${flow.singleModule}`}>{moduleCard(modules[0])}</div>
+    <section className={flow.journeyV7}>
+      <nav className={flow.journeyRail} aria-label="Rychlý výběr části cesty">
+        {(["kroky", "etapy", "vrstvy", "integrace"] as const).map((section, index) => (
+          <button type="button" key={section} className={journeySection === section ? flow.journeyRailActive : ""} onClick={() => goToJourneySection(section)} aria-label={section === "kroky" ? "Kroky" : section === "etapy" ? "Etapy" : section === "vrstvy" ? "Další vrstvy" : "Závěrečná integrace"}>
+            <i aria-hidden="true" />
+            <span>{index + 1}</span>
+            <strong>{section === "kroky" ? "Kroky" : section === "etapy" ? "Etapy" : section === "vrstvy" ? "Další vrstvy" : "Integrace"}</strong>
+          </button>
+        ))}
+      </nav>
 
-      <article className={flow.journeyDetail}>
+      <div id="cesta-kroky" className={flow.journeySectionBlock}>
+        <PageIntro eyebrow="VNITŘNÍ KOMPAS · 90DENNÍ CESTA" title="Od první emoce k vlastnímu směru." text="Čtyři moduly tvoří 84 vedených dní. Posledních šest dní se vracíš ke svým mapám, zapisuješ skutečné chvíle a necháváš vlastní poznání pracovat v životě." />
+        <div className={`${styles.moduleGrid} ${flow.singleModule}`}>{moduleCard(modules[0])}</div>
+      </div>
+
+      <article id="cesta-etapy" className={flow.journeyDetail}>
         <header className={flow.journeyIntro}>
           <div>
             <span className={styles.eyebrow}>MODUL 01 · EMOCE</span>
@@ -1611,13 +1637,14 @@ function Journey({ onNavigate, onOpenLesson, onOpenNeeds, onOpenValues, onOpenId
           <p>Neučíš se emoce ovládat. Nejdřív si jich všimneš. Potom je zkusíš přesněji pojmenovat. Nakonec začneš poznávat, co se u tebe opakuje.</p>
         </header>
         {EMOTION_PHASES.map((phase) => (
-          <section className={flow.phaseBlock} key={phase.number}>
-            <div className={flow.phaseHead}>
+          <section className={`${flow.phaseBlock} ${openPhase === Number(phase.number) ? flow.phaseOpen : flow.phaseCollapsed}`} key={phase.number}>
+            <button type="button" className={flow.phaseHead} onClick={() => setOpenPhase((current) => current === Number(phase.number) ? null : Number(phase.number))} aria-expanded={openPhase === Number(phase.number)}>
               <span>{phase.number}</span>
               <div><small>{phase.days}</small><strong>{phase.title}</strong></div>
               <p>{phase.text}</p>
-            </div>
-            <div className={flow.dayGrid}>
+              <i aria-hidden="true">{openPhase === Number(phase.number) ? "−" : "+"}</i>
+            </button>
+            {openPhase === Number(phase.number) ? <div className={flow.dayGrid}>
               {EMOTION_DAYS.filter((day) => day.phase === Number(phase.number)).map((day) => {
                 const isRead = readDays.includes(day.day);
                 return <button key={day.day} disabled={day.day > AVAILABLE_LESSON_DAYS} className={`${flow.dayCard} ${isRead ? flow.done : day.day === currentDay ? flow.current : flow.future}`} onClick={() => onOpenLesson(day.day)}>
@@ -1631,7 +1658,7 @@ function Journey({ onNavigate, onOpenLesson, onOpenNeeds, onOpenValues, onOpenId
                   <strong>{day.title}</strong><p>{day.focus}</p>
                 </button>;
               })}
-            </div>
+            </div> : null}
           </section>
         ))}
       </article>
@@ -1687,35 +1714,40 @@ function Journey({ onNavigate, onOpenLesson, onOpenNeeds, onOpenValues, onOpenId
         </section>
       ) : null}
 
-      <div className={flow.nextModulesTitle}><span className={styles.eyebrow}>CO BUDE NÁSLEDOVAT</span><h2>Další vrstvy tvého osobního kompasu</h2></div>
-      <div className={styles.moduleGrid}>{modules.slice(1).map(moduleCard)}</div>
+      <div id="cesta-vrstvy" className={flow.journeySectionBlock}>
+        <div className={flow.nextModulesTitle}><span className={styles.eyebrow}>CO BUDE NÁSLEDOVAT</span><h2>Další vrstvy tvého osobního kompasu</h2></div>
+        <div className={styles.moduleGrid}>{modules.slice(1).map(moduleCard)}</div>
+      </div>
 
-      <article className={styles.integrationCard}>
-        <span>90</span>
-        <div>
-          <small>ZÁVĚREČNÁ INTEGRACE · DNY 85 AŽ 90</small>
-          <h2>Teď necháváš svůj kompas pracovat v životě.</h2>
-          <p>Vracíš se k tomu, co už jsi napsal a vytvořil. Pokračuješ v průběžném záznamu emocí, zkoušíš vlastní kroky v běžném životě a čteš svůj osobní report.</p>
-          <div className={styles.integrationDays}>
-            {INTEGRATION_DAYS.map(([day, title, text]) => (
-              <section key={day}><b>{day}</b><div><strong>{title}</strong><p>{text}</p></div></section>
-            ))}
+      <div id="cesta-integrace" className={flow.journeySectionBlock}>
+        <article className={styles.integrationCard}>
+          <span>90</span>
+          <div>
+            <small>ZÁVĚREČNÁ INTEGRACE · DNY 85 AŽ 90</small>
+            <h2>Teď necháváš svůj kompas pracovat v životě.</h2>
+            <p>Vracíš se k tomu, co už jsi napsal a vytvořil. Pokračuješ v průběžném záznamu emocí, zkoušíš vlastní kroky v běžném životě a čteš svůj osobní report.</p>
+            <div className={styles.integrationDays}>
+              {INTEGRATION_DAYS.map(([day, title, text]) => (
+                <section key={day}><b>{day}</b><div><strong>{title}</strong><p>{text}</p></div></section>
+              ))}
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
+      </div>
     </section>
   );
 }
 
 function NeedsJourney({ onNavigate, onOpenLesson, readDays, practiceEntries }: { onNavigate: (view: View) => void; onOpenLesson: (day: number) => void; readDays: number[]; practiceEntries: PracticeEntry[] }) {
   const currentDay = Array.from({ length: 21 }, (_, index) => index + 1).find((day) => !readDays.includes(day)) ?? 21;
+  const [openPhase, setOpenPhase] = useState<number | null>(Math.ceil(currentDay / 7));
   const stageComplete = (stage: number) => readDays.filter((day) => Math.ceil(day / 7) === stage).length === 7;
   const firstStageComplete = stageComplete(1);
   const secondStageComplete = stageComplete(2);
   const thirdStageComplete = stageComplete(3);
 
   return (
-    <section>
+    <section className={flow.journeyV7}>
       <PageIntro eyebrow="MODUL 02 · POTŘEBY" title="Co se za mými emocemi ozývá?" text="Během tří etap poznáš, co je pro tebe důležité, oddělíš potřebu od známé strategie a vytvoříš si vlastní nabídku vědomějších možností." />
 
       <article className={flow.journeyDetail}>
@@ -1728,13 +1760,14 @@ function NeedsJourney({ onNavigate, onOpenLesson, readDays, practiceEntries }: {
         </header>
 
         {NEEDS_PHASES.map((phase) => (
-          <section className={flow.phaseBlock} key={phase.number}>
-            <div className={flow.phaseHead}>
+          <section className={`${flow.phaseBlock} ${openPhase === Number(phase.number) ? flow.phaseOpen : flow.phaseCollapsed}`} key={phase.number}>
+            <button type="button" className={flow.phaseHead} onClick={() => setOpenPhase((current) => current === Number(phase.number) ? null : Number(phase.number))} aria-expanded={openPhase === Number(phase.number)}>
               <span>{phase.number}</span>
               <div><small>{phase.days}</small><strong>{phase.title}</strong></div>
               <p>{phase.text}</p>
-            </div>
-            <div className={flow.dayGrid}>
+              <i aria-hidden="true">{openPhase === Number(phase.number) ? "−" : "+"}</i>
+            </button>
+            {openPhase === Number(phase.number) ? <div className={flow.dayGrid}>
               {NEEDS_DAYS.filter((day) => day.phase === Number(phase.number)).map((day) => {
                 const isRead = readDays.includes(day.day);
                 return <button key={day.day} className={`${flow.dayCard} ${isRead ? flow.done : day.day === currentDay ? flow.current : flow.future}`} onClick={() => onOpenLesson(day.day)}>
@@ -1748,7 +1781,7 @@ function NeedsJourney({ onNavigate, onOpenLesson, readDays, practiceEntries }: {
                   <strong>{day.title}</strong><p>{day.focus}</p>
                 </button>;
               })}
-            </div>
+            </div> : null}
           </section>
         ))}
       </article>
@@ -1803,7 +1836,7 @@ function NeedsMap({ onNavigate, onOpenLesson, readDays, practiceEntries }: { onN
   ];
 
   return (
-    <section className={`${flow.needsMapPage} ${flow.dashboardTypography}`}>
+    <section className={`${flow.needsMapPage} ${flow.dashboardTypography} ${flow.mapV7}`}>
       <PageIntro eyebrow="MOJE MAPA · POTŘEBY" title="Ne nálepka. Mapa toho, co je pro mě důležité a jak o to pečuju." text="Všechno, co tu vidíš, vzniklo z tvých vlastních odpovědí. Mapa nic nediagnostikuje. Vrací ti souvislosti, ke kterým se můžeš vracet." />
 
       <section className={flow.needsMapHero}>
@@ -1931,9 +1964,10 @@ const ADVANCED_MODULES = {
 function AdvancedModuleJourney({ kind, onNavigate, onOpenLesson, readDays, practiceEntries }: { kind: AdvancedModuleKind; onNavigate: (view: View) => void; onOpenLesson: (day: number) => void; readDays: number[]; practiceEntries: PracticeEntry[] }) {
   const config = ADVANCED_MODULES[kind];
   const currentDay = Array.from({ length: 21 }, (_, index) => index + 1).find((day) => !readDays.includes(day)) ?? 21;
+  const [openPhase, setOpenPhase] = useState<number | null>(Math.ceil(currentDay / 7));
 
   return (
-    <section>
+    <section className={flow.journeyV7}>
       <PageIntro eyebrow={`MODUL ${config.number} · ${config.title.toUpperCase()}`} title={config.eyebrow === "PODLE ČEHO CHCI ŽÍT" ? "Podle čeho chci skutečně žít?" : "Kdo jsem a kým se chci stávat?"} text={config.intro} />
       <article className={flow.journeyDetail}>
         <header className={flow.journeyIntro}>
@@ -1941,13 +1975,14 @@ function AdvancedModuleJourney({ kind, onNavigate, onOpenLesson, readDays, pract
           <p>{config.journeyText}</p>
         </header>
         {config.phases.map((phase) => (
-          <section className={flow.phaseBlock} key={phase.number}>
-            <div className={flow.phaseHead}>
+          <section className={`${flow.phaseBlock} ${openPhase === Number(phase.number) ? flow.phaseOpen : flow.phaseCollapsed}`} key={phase.number}>
+            <button type="button" className={flow.phaseHead} onClick={() => setOpenPhase((current) => current === Number(phase.number) ? null : Number(phase.number))} aria-expanded={openPhase === Number(phase.number)}>
               <span>{phase.number}</span>
               <div><small>{phase.days}</small><strong>{phase.title}</strong></div>
               <p>{phase.text}</p>
-            </div>
-            <div className={flow.dayGrid}>
+              <i aria-hidden="true">{openPhase === Number(phase.number) ? "−" : "+"}</i>
+            </button>
+            {openPhase === Number(phase.number) ? <div className={flow.dayGrid}>
               {config.days.filter((day) => day.phase === Number(phase.number)).map((day) => {
                 const isRead = readDays.includes(day.day);
                 return <button key={day.day} className={`${flow.dayCard} ${isRead ? flow.done : day.day === currentDay ? flow.current : flow.future}`} onClick={() => onOpenLesson(day.day)}>
@@ -1961,7 +1996,7 @@ function AdvancedModuleJourney({ kind, onNavigate, onOpenLesson, readDays, pract
                   <strong>{day.title}</strong><p>{day.focus}</p>
                 </button>;
               })}
-            </div>
+            </div> : null}
           </section>
         ))}
       </article>
@@ -2056,7 +2091,7 @@ function AdvancedModuleMap({ kind, onNavigate, onOpenLesson, readDays, practiceE
       ];
 
   return (
-    <section className={`${flow.needsMapPage} ${flow.dashboardTypography}`}>
+    <section className={`${flow.needsMapPage} ${flow.dashboardTypography} ${flow.mapV7}`}>
       <PageIntro eyebrow={`MŮJ OSOBNÍ REPORT · ${config.title.toUpperCase()}`} title={config.finalTitle} text={`${config.finalDescription} Není to hodnocení člověka. Je to zrcadlo vytvořené z tvých vlastních záznamů.`} />
       <section className={flow.needsMapHero}>
         <div><span className={styles.eyebrow}>TVŮJ POSTUP</span><strong>{readDays.length} z 21 dní</strong><p>{completedStages === 3 ? "Dokončil jsi všechny tři etapy. Tvoje mapa je připravená k dalšímu používání a úpravám." : `Dokončené etapy: ${completedStages} ze 3. Každá další odpověď přidá mapě další vrstvu.`}</p></div>
@@ -2218,6 +2253,7 @@ function ProgramDashboard({
   onOpenValuesLesson,
   onOpenIdentityLesson,
 }: ProgramDashboardProps) {
+  const [reportSection, setReportSection] = useState<"prehled" | "kompas" | "moduly" | "milniky" | "pokusy" | "integrace">("prehled");
   const readByModule = [emotionReadDays, needsReadDays, valuesReadDays, identityReadDays];
   const totalRead = readByModule.reduce((sum, days) => sum + days.length, 0);
   const allPracticeEntries = [
@@ -2358,7 +2394,24 @@ function ProgramDashboard({
   ];
 
   return (
-    <section className={`${flow.programReport} ${flow.dashboardTypography}`}>
+    <section className={`${flow.programReport} ${flow.dashboardTypography} ${flow.reportV7}`}>
+      <nav className={flow.reportSectionNav} aria-label="Sekce osobního reportu">
+        <div><span className={styles.eyebrow}>OSOBNÍ REPORT</span><strong>Vyber, co chceš právě vidět.</strong></div>
+        {([
+          ["prehled", "Přehled", "01"],
+          ["kompas", "Můj kompas", "02"],
+          ["moduly", "Čtyři moduly", "03"],
+          ["milniky", "Milníky", "04"],
+          ["pokusy", "Pokusy", "05"],
+          ["integrace", "Integrace", "06"],
+        ] as const).map(([id, label, number]) => (
+          <button type="button" key={id} className={reportSection === id ? flow.reportSectionActive : ""} onClick={() => setReportSection(id)} aria-current={reportSection === id ? "page" : undefined}>
+            <span>{number}</span><strong>{label}</strong><i>→</i>
+          </button>
+        ))}
+      </nav>
+
+      {reportSection === "prehled" ? <>
       <section className={flow.programReportHero}>
         <div>
           <span className={styles.eyebrow}>VNITŘNÍ KOMPAS</span>
@@ -2383,8 +2436,9 @@ function ProgramDashboard({
         <article><strong>{emotionEntries.length}</strong><span>EMOČNÍCH CHVIL</span><p>Průběžná linka, která tě provází všemi částmi programu.</p></article>
         <article><strong>{visionLayers}/6</strong><span>VRSTEV VIZE</span><p>Obyčejný den, vztahy, práce, tělo, prostředí a odvážný sen.</p></article>
       </section>
+      </> : null}
 
-      <section className={flow.programMirror}>
+      {reportSection === "kompas" ? <section className={flow.programMirror}>
         <header>
           <span className={styles.eyebrow}>MŮJ VNITŘNÍ KOMPAS V JEDNOM POHLEDU</span>
           <h2>Čtyři otázky. Čtyři odpovědi, které vznikly z tvého života.</h2>
@@ -2400,9 +2454,9 @@ function ProgramDashboard({
             </button>
           ))}
         </div>
-      </section>
+      </section> : null}
 
-      <section className={flow.programModules}>
+      {reportSection === "moduly" ? <section className={flow.programModules}>
         <header>
           <span className={styles.eyebrow}>ČTYŘI ČÁSTI MOJÍ MAPY</span>
           <h2>Každý modul ukazuje jinou vrstvu stejného člověka.</h2>
@@ -2419,9 +2473,9 @@ function ProgramDashboard({
             </article>
           ))}
         </div>
-      </section>
+      </section> : null}
 
-      <section className={flow.programMilestones}>
+      {reportSection === "milniky" ? <section className={flow.programMilestones}>
         <header>
           <span className={styles.eyebrow}>12 HLAVNÍCH MILNÍKŮ</span>
           <h2>Nejsou za správné odpovědi. Připomínají místa, kde už vznikla tvoje vlastní mapa.</h2>
@@ -2443,8 +2497,9 @@ function ProgramDashboard({
             </section>
           ))}
         </div>
-      </section>
+      </section> : null}
 
+      {reportSection === "pokusy" ? <>
       <section className={flow.programExperiments}>
         <header>
           <span className={styles.eyebrow}>CO SI BERU DO ŽIVOTA</span>
@@ -2466,8 +2521,9 @@ function ProgramDashboard({
         <blockquote>{practiceValue(valuesFinal, "manifest") || "Moje hodnotová dohoda se objeví po dokončení dne 21 v Hodnotách."}</blockquote>
         <p>{practiceValue(identityFinal, "returnQuestion") || "Otázka pro návrat se objeví po dokončení osobního kompasu."}</p>
       </section>
+      </> : null}
 
-      <section className={flow.integrationReport}>
+      {reportSection === "integrace" ? <section className={flow.integrationReport}>
         <div>
           <span className={styles.eyebrow}>DNY 85 AŽ 90 · INTEGRACE</span>
           <h2>Teď už nepotřebuješ další obsah. Potřebuješ žít to, co jsi tu vytvořil.</h2>
@@ -2496,7 +2552,7 @@ function ProgramDashboard({
             );
           })}
         </ol>
-      </section>
+      </section> : null}
 
       <div className={styles.mapFooter}>
         <div className={styles.handNote}>Tohle není známka.<br /><mark>Je to tvoje stopa.</mark></div>
@@ -2565,7 +2621,7 @@ function VisionBoard({ data, identityEntries, onChange, onNavigate }: { data: Vi
   };
 
   return (
-    <section className={`${flow.visionBoardPage} ${flow.dashboardTypography}`}>
+    <section className={`${flow.visionBoardPage} ${flow.dashboardTypography} ${flow.studioV7}`}>
       <PageIntro eyebrow="ZÁVĚR CESTY · MOJE OBRAZOVÁ VIZE" title="Nejdřív jí dej slova. Potom jí dovol získat obraz." text="Nejde o seznam věcí, které musíš splnit. Vytváříš připomínku směru, který sis během cesty vybral. Piš konkrétně, ale nech ve své vizi i prostor pro překvapení." />
 
       <section className={flow.visionProgress}>
@@ -2774,7 +2830,7 @@ function ModuleLesson({ day, onNavigate, onComplete, readDays, practiceEntries, 
   };
 
   return (
-    <article className={flow.lessonPage}>
+    <article className={`${flow.lessonPage} ${flow.lessonV7}`}>
       <nav className={flow.lessonNav} aria-label="Navigace lekcí">
         <button type="button" onClick={() => onNavigate(backView)}>← Zpět na cestu</button>
         <div><span>{isRead ? `DEN ${day} · PŘEČTENO ✓` : `DEN ${day} Z ${totalDays}`}</span><i><b style={{ width: `${(day / totalDays) * 100}%` }} /></i></div>
@@ -3024,9 +3080,14 @@ function EmotionRecord({ day, onSave }: { day: number; onSave: (entry: EmotionEn
   };
 
   return (
-    <section>
+    <section className={styles.recordV7}>
       <PageIntro eyebrow="RYCHLÝ ZÁZNAM · 60 AŽ 90 SEKUND" title="Co se v tobě právě odehrálo?" text="Není to test a nemusíš si být jistý. Zachyť jednu konkrétní chvíli tak, jak ji teď dokážeš vidět." />
-      <form className={styles.recordLayout} onSubmit={submit}>
+      <form className={`${styles.recordLayout} ${styles.recordV7Form}`} onSubmit={submit}>
+        <ol className={styles.recordSteps} aria-label="Kroky záznamu">
+          <li className={styles.recordStepActive}><span>01</span><strong>Rodina</strong></li>
+          <li><span>02</span><strong>Slovo</strong></li>
+          <li><span>03</span><strong>Situace</strong></li>
+        </ol>
         <div className={styles.wheelPanel}>
           <header><span className={styles.eyebrow}>1 · VYBER NEJBLIŽŠÍ RODINU</span><p>Začni široce. Přesnější slovo vybereš potom.</p></header>
           <EmotionWheel selected={family} onSelect={chooseFamily} />
@@ -3107,7 +3168,7 @@ function EmotionMap({ entries, practiceEntries, readDays, onNavigate }: { entrie
   const unlockedBadges = badges.filter((badge) => badge.unlocked).length;
 
   return (
-    <section className={flow.dashboardTypography}>
+    <section className={`${flow.dashboardTypography} ${flow.mapV7}`}>
       <section className={flow.mapGameHero}>
         <div className={flow.mapGameCopy}>
           <span className={styles.eyebrow}>MOJE EMOČNÍ MAPA</span>
@@ -3232,7 +3293,7 @@ function SkillMedal({ icon, day, unlocked }: { icon: string; day: number; unlock
 }
 
 function MiniWheel() {
-  return <div className={styles.miniWheel}>{FAMILIES.map((family) => <span key={family.id} style={{ background: family.color }}>{family.label}</span>)}<i>?</i></div>;
+  return <div className={styles.miniWheel}>{FAMILIES.map((family) => <span key={family.id} style={{ "--family": family.color } as CSSProperties}>{family.label}</span>)}<i>VYBER</i></div>;
 }
 
 function EmotionWheel({ selected, onSelect }: { selected: EmotionFamily; onSelect: (family: EmotionFamily) => void }) {

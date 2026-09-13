@@ -2874,6 +2874,30 @@
   .journeyIntro{grid-template-columns:1fr!important;gap:9px!important;min-height:0!important;padding:19px!important}.journeyIntro h2{font-size:27px!important}.phaseBlock{padding:13px!important}.phaseHead{grid-template-columns:34px 1fr!important}.phaseHead p{grid-column:1/-1!important}.dayGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.dayCard{min-height:100px!important}.weekComplete{grid-template-columns:34px 1fr!important;gap:10px!important}.weekCompleteStats,.weekComplete .primary{grid-column:1/-1!important}.weekCompleteStats{display:grid!important;grid-template-columns:repeat(3,1fr)!important}.nextModulesTitle{align-items:flex-start!important;flex-direction:column!important}.storySection{grid-template-columns:1fr!important}.storyVisual,.storyPhoto{max-height:220px!important;order:-1}.storyCopy,.educationSection,.recognitionSection,.practiceSection{padding:18px!important}.educationHeader,.practiceIntro{grid-template-columns:1fr!important}.mapGameHero,.needsMapHero,.programReportHero{grid-template-columns:1fr!important;padding:19px!important}.mapProgressRing,.programReportSeal{display:none!important}.journeyBoard>header,.badgeShelf>header,.emotionDictionary>header,.personalManual>header,.practiceMap>header{grid-template-columns:1fr!important;gap:6px!important}.badgeGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.dictionaryGrid,.manualPath,.reportMetrics,.programReportMetrics,.compassGrid{grid-template-columns:repeat(2,1fr)!important}.needsMapPath header{grid-template-columns:1fr!important}.personalMirror>div,.reportMilestones>div,.programMirror>div,.programModules>div,.programMilestones>div,.programExperiments>div{grid-template-columns:1fr!important}.compassStatement{grid-template-columns:1fr!important;padding:20px!important}.programMirror,.programModules,.programMilestones,.programExperiments,.personalMirror,.reportMilestones,.badgeSection{padding:16px!important}.programMirror>header,.programModules>header,.programMilestones>header,.programExperiments>header{grid-template-columns:1fr!important;gap:6px!important}.integrationReport,.visionWorkspace,.visionInvitation{grid-template-columns:1fr!important}.visionInvitation img{max-height:150px!important}.historyHeader{align-items:flex-start!important;flex-direction:column!important}.historyItem{grid-template-columns:28px 7px 1fr 38px!important}.onboarding{padding:12px!important}.onboardingCopy{padding:20px!important}.onboardingPoints{grid-template-columns:1fr!important}
 }
 
+/* V7 report navigator: one concise section at a time. */
+.reportV7{display:grid!important;grid-template-columns:210px minmax(0,1fr)!important;gap:10px!important;align-items:start!important}
+.reportSectionNav{position:sticky;top:64px;grid-column:1!important;display:flex;min-height:calc(100vh - 92px);flex-direction:column;padding:12px;border-radius:12px;background:#11110f;color:#fff}
+.reportSectionNav>div{padding:8px 8px 18px;border-bottom:1px solid #383833}.reportSectionNav>div span{color:#ffd82b!important}.reportSectionNav>div strong{display:block;margin-top:8px;color:#bdbdb5;font-size:11px;line-height:1.4}
+.reportSectionNav>button{display:grid;grid-template-columns:26px 1fr auto;align-items:center;gap:8px;min-height:50px;padding:8px;border:0;border-bottom:1px solid #30302c;background:transparent;color:#92928b;text-align:left}.reportSectionNav>button span{font-family:KKCaveat,cursive;font-size:18px}.reportSectionNav>button strong{font-size:11px}.reportSectionNav>button i{font-size:11px;font-style:normal}.reportSectionNav>button:hover{color:#fff}.reportSectionActive{border-radius:7px!important;background:#292925!important;color:#fff!important;box-shadow:inset 3px 0 0 #ffd82b}.reportSectionActive span{color:#ffd82b}
+.reportV7>*:not(.reportSectionNav){grid-column:2!important;grid-row:auto!important;margin:0!important}
+.reportV7>.programReportHero{position:relative!important;top:auto!important;display:grid!important;grid-template-columns:minmax(0,1fr) 180px!important;min-height:340px!important;align-items:center!important;gap:24px!important;padding:26px!important}.reportV7>.programReportHero h1{font-size:clamp(34px,4vw,54px)!important}.reportV7 .programReportHeroStats{grid-template-columns:repeat(3,minmax(0,1fr))!important}.reportV7 .programReportSeal{width:150px!important}
+.reportV7>.programReportMetrics{grid-template-columns:repeat(4,minmax(0,1fr))!important}.reportV7>.programReportMetrics article{min-height:128px!important}
+.reportV7>.programMirror,.reportV7>.programModules,.reportV7>.programMilestones,.reportV7>.programExperiments,.reportV7>.integrationReport,.reportV7>.programStatement{min-height:calc(100vh - 128px)!important}
+.reportV7>.programMilestones{background:#11110f!important;color:#fff!important}.reportV7>.programMilestones h2{color:#fff!important}.reportV7>.programMilestones>header span{color:#ffd82b!important}.reportV7>.programMilestones>div>section{border-color:#45453f!important;background:#1d1d1a!important;color:#fff!important}.reportV7>.programMilestones section>button{border-top-color:#45453f!important;color:#b9b9b1!important}.reportV7>.programMilestones section>.programMilestoneDone{color:#fff!important}.reportV7>.programMilestones section>strong{color:#ffd82b!important}
+.reportV7>.mapFooter{min-height:0!important;padding:13px 16px!important}
+@media(max-width:900px){.reportV7{grid-template-columns:176px minmax(0,1fr)!important}.reportV7>.programReportHero{grid-template-columns:1fr!important}.reportV7>.programReportMetrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:740px){.reportV7{grid-template-columns:1fr!important}.reportSectionNav{position:sticky;top:54px;z-index:18;grid-column:1!important;min-height:0;flex-direction:row;gap:4px;padding:5px;overflow-x:auto;border-radius:8px}.reportSectionNav>div{display:none}.reportSectionNav>button{grid-template-columns:22px auto;flex:0 0 auto;min-height:38px;padding:5px 9px;border:0;border-radius:6px}.reportSectionNav>button i{display:none}.reportSectionNav>button span{font-size:15px}.reportSectionNav>button strong{font-size:9px}.reportSectionActive{box-shadow:inset 0 -3px 0 #ffd82b}.reportV7>*:not(.reportSectionNav){grid-column:1!important}.reportV7>.programReportHero{min-height:0!important;padding:19px!important}.reportV7>.programReportHero h1{font-size:35px!important}.reportV7>.programReportMetrics{grid-template-columns:1fr 1fr!important}.reportV7>.programMirror,.reportV7>.programModules,.reportV7>.programMilestones,.reportV7>.programExperiments,.reportV7>.integrationReport,.reportV7>.programStatement{min-height:0!important}}
+
+/* Supplied compass arcs become a visible, controlled part of the visual language. */
+.journeyV7 .phaseHead,.reportV7>.programMirror,.reportV7>.programModules,.reportV7>.programExperiments,.studioV7 .visionWorkspace{position:relative;overflow:hidden;isolation:isolate}
+.journeyV7 .phaseHead::after{content:'';position:absolute;z-index:-1;right:-58px;bottom:-72px;width:135px;height:135px;background:url('/brand-pattern-yellow.png') center/contain no-repeat;opacity:.2;pointer-events:none}
+.reportV7>.programReportHero::after{right:-80px!important;top:-86px!important;width:280px!important;height:280px!important;opacity:.2!important}
+.reportV7>.programMirror::after,.reportV7>.programModules::after,.reportV7>.programExperiments::after,.studioV7 .visionWorkspace::after{content:'';position:absolute;z-index:-1;right:-130px;bottom:-150px;width:330px;height:330px;background:url('/brand-pattern-yellow.png') center/contain no-repeat;opacity:.16;pointer-events:none}
+.reportV7>.programMilestones{position:relative;overflow:hidden;isolation:isolate}.reportV7>.programMilestones::after{content:'';position:absolute;z-index:-1;right:-120px;bottom:-150px;width:340px;height:340px;background:url('/brand-pattern-yellow.png') center/contain no-repeat;opacity:.26;pointer-events:none}
+.lessonV7 .storyVisual::after{content:'';position:absolute;z-index:0;right:-75px;top:-88px;width:230px;height:230px;background:url('/brand-pattern-black.png') center/contain no-repeat;opacity:.18;pointer-events:none}.lessonV7 .storyVisual>img,.lessonV7 .storyVisual>p,.lessonV7 .storyVisual>span{z-index:1}
+.studioV7 .visionWorkspace::after{background-image:url('/brand-pattern-black.png');opacity:.055}
+@media(max-width:740px){.journeyV7 .phaseHead::after{right:-45px;bottom:-58px;width:110px;height:110px}.reportV7>.programMirror::after,.reportV7>.programModules::after,.reportV7>.programExperiments::after,.studioV7 .visionWorkspace::after{right:-90px;bottom:-110px;width:240px;height:240px}}
+
 /* QA pass: tablet fit, compact secondary maps, and the vision workspace. */
 .badgeSection>div{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important}
 .badgeSection>div>article{min-height:0!important;padding:12px!important;border:1px solid var(--v4-line)!important;border-radius:9px!important;box-shadow:none!important}
@@ -2973,6 +2997,71 @@
 @media(max-width:900px){.pageIntroSpacing{grid-template-columns:1fr!important;gap:8px!important}.singleModule article{grid-template-columns:42px minmax(0,1fr) 165px!important}.phaseBlock{grid-template-columns:148px minmax(0,1fr)!important}.storySection{grid-template-columns:minmax(0,1fr) 210px!important}.programReportHero h1{font-size:34px!important}}
 @media(max-width:740px){.pageIntroSpacing h1{font-size:27px!important}.singleModule article{grid-template-columns:38px minmax(0,1fr)!important}.singleModule article>p{grid-column:2!important;-webkit-line-clamp:2}.singleModule article>[class*='moduleProgress'],.singleModule article>small,.singleModule article>button{grid-column:1/-1!important}.phaseBlock{grid-template-columns:1fr!important;padding:7px!important}.phaseHead p{-webkit-line-clamp:2}.dayGrid{gap:5px!important}.dayCard{min-height:96px!important}.dayCard p{font-size:8px!important}.weekComplete{grid-template-columns:32px 1fr!important}.weekCompleteCopy p{-webkit-line-clamp:2}.storySection{grid-template-columns:1fr!important}.storyVisual,.storyPhoto{order:-1;max-height:190px!important}.storyCopy{padding:16px!important}.lessonPage .storyCopy h1{font-size:29px!important}.lessonPage .storyCopy p{font-size:12px!important}.educationSection,.recognitionSection,.practiceSection{padding:15px!important}.badgeSection>div>article{grid-template-columns:42px 1fr!important}.badgeSection>div>article>div:first-child{width:42px!important;height:42px!important}.visionWorkspace{padding:8px!important}.onboardingCopy{padding:20px!important}.onboardingCopy h1{font-size:34px!important}.onboardingCopy>p{font-size:12px!important}}
 .practicePrompt{position:relative!important;overflow:hidden!important}
+
+/* V7: structural redesign. Each product view gets its own working composition. */
+.journeyV7{display:grid!important;gap:10px!important}
+.journeyV7>.pageIntroSpacing{margin-bottom:0!important}
+.journeyV7 .journeyDetail{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:start!important;gap:8px!important;padding:8px!important}
+.journeyV7 .journeyIntro{grid-column:1/-1!important;min-height:0!important;margin:0!important;padding:18px 20px!important}
+.journeyV7 .phaseBlock{display:flex!important;min-width:0;flex-direction:column!important;gap:0!important;margin:0!important;padding:0!important;overflow:hidden!important;border-radius:11px!important}
+.journeyV7 .phaseHead{display:grid!important;grid-template-columns:34px minmax(0,1fr) 26px!important;grid-template-rows:auto auto!important;align-content:start!important;gap:8px 10px!important;width:100%!important;min-height:124px!important;padding:14px!important;border:0!important;border-bottom:1px solid var(--line)!important;background:#11110f!important;color:#fff!important;text-align:left!important;cursor:pointer!important}
+.journeyV7 .phaseHead>span{grid-row:1/3!important;width:32px!important;height:32px!important;border:1px solid rgba(255,255,255,.3)!important;border-radius:50%!important;background:transparent!important;color:#ffd82b!important}
+.journeyV7 .phaseHead small{color:#8f8f88!important}.journeyV7 .phaseHead strong{color:#fff!important;font-size:13px!important}.journeyV7 .phaseHead p{grid-column:2!important;margin:0!important;color:#bdbdb5!important;font-size:9px!important;line-height:1.35!important;-webkit-line-clamp:2!important}.journeyV7 .phaseHead>i{grid-column:3!important;grid-row:1/3!important;display:grid!important;place-items:center!important;width:26px!important;height:26px!important;border:1px solid #505049!important;border-radius:50%!important;color:#ffd82b!important;font-size:17px!important;font-style:normal!important}.journeyV7 .phaseCollapsed .phaseHead{min-height:78px!important;border-bottom:0!important}.journeyV7 .phaseCollapsed .phaseHead p{display:none!important}.journeyV7 .phaseCollapsed{align-self:start!important}
+.journeyV7 .dayGrid{display:flex!important;flex:1;flex-direction:column!important;gap:0!important;margin:0!important;background:rgba(255,255,255,.68)!important}
+.journeyV7 .dayCard{display:grid!important;grid-template-columns:68px minmax(0,1fr) auto!important;grid-template-rows:auto auto!important;align-items:center!important;gap:2px 10px!important;min-height:58px!important;padding:9px 10px!important;border:0!important;border-bottom:1px solid rgba(17,17,15,.1)!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+.journeyV7 .dayCard:last-child{border-bottom:0!important}.journeyV7 .dayCard:hover{background:#fff!important;transform:none!important}
+.journeyV7 .dayMeta{display:contents!important}.journeyV7 .dayIdentity{grid-column:1!important;grid-row:1/3!important;display:flex!important;align-items:center!important;justify-content:flex-start!important}.journeyV7 .dayMeta>small{grid-column:3!important;grid-row:1/3!important;color:#777770!important}
+.journeyV7 .dayNumber{font-size:8px!important;letter-spacing:.07em!important}.journeyV7 .readStatus{margin-left:5px!important}.journeyV7 .readStatus i{display:grid!important;place-items:center!important;width:18px!important;height:18px!important;border-radius:50%!important;background:#ffd82b!important;color:#11110f!important}.journeyV7 .readStatus em{display:none!important}
+.journeyV7 .dayCard strong{grid-column:2!important;grid-row:1!important;margin:0!important;font-size:11px!important;line-height:1.2!important}.journeyV7 .dayCard p{display:block!important;grid-column:2!important;grid-row:2!important;margin:0!important;overflow:hidden!important;color:#777770!important;font-size:8px!important;line-height:1.2!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.journeyV7 .dayCard.done{background:rgba(255,255,255,.76)!important;color:#11110f!important}.journeyV7 .dayCard.done::before{display:none!important}.journeyV7 .dayCard.current{background:#fff!important;box-shadow:inset 4px 0 0 #ffd82b!important}.journeyV7 .dayCard.current .dayNumber{color:#11110f!important}
+.journeyV7 .weekComplete{margin:0!important}
+
+.lessonV7{display:grid!important;grid-template-columns:minmax(0,1fr) 390px!important;gap:10px!important;align-items:start!important}
+.lessonV7 .lessonNav{grid-column:1/-1!important;margin:0!important}
+.lessonV7 .storySection,.lessonV7 .recognitionSection,.lessonV7 .educationSection,.lessonV7 .expertBox{grid-column:1!important}
+.lessonV7 .storySection{grid-row:2!important;grid-template-columns:minmax(0,1.2fr) minmax(210px,.8fr)!important;min-height:310px!important;margin:0!important}
+.lessonV7 .storyVisual{min-height:310px!important;max-height:none!important}.lessonV7 .storyVisual .storyPhoto{inset:0!important;width:100%!important;height:100%!important;max-height:none!important;object-fit:cover!important}.lessonV7 .storyVisual>p{left:16px!important;right:16px!important;top:16px!important;width:fit-content!important;max-width:calc(100% - 32px)!important;padding:8px 11px!important;border-radius:7px!important;background:linear-gradient(115deg,#fff184,#ffd82b 62%,#dda900)!important;color:#11110f!important;font-size:16px!important;box-shadow:0 5px 18px rgba(17,17,15,.14)}
+.lessonV7 .recognitionSection{grid-row:3!important}.lessonV7 .educationSection{grid-row:4!important;grid-template-columns:minmax(0,1.08fr) minmax(230px,.72fr)!important;gap:20px!important}.lessonV7 .expertBox{grid-row:5!important;margin:0!important;padding:20px!important;border-width:4px!important;border-radius:12px!important}.lessonV7 .expertIcon{display:none!important}
+.lessonV7 .practiceSection{position:sticky!important;top:64px!important;grid-column:2!important;grid-row:2/6!important;display:flex!important;max-height:calc(100vh - 84px)!important;flex-direction:column!important;gap:14px!important;margin:0!important;padding:18px!important;overflow:auto!important;border-radius:12px!important;background:rgba(255,255,255,.9)!important}
+.lessonV7 .practiceIntro,.lessonV7 .practiceSteps,.lessonV7 .practiceEntry{display:block!important;order:initial!important;margin:0!important;padding:0!important;border:0!important}
+.lessonV7 .practiceIntro>h2{margin:10px 0 0!important;font-size:24px!important}.lessonV7 .practiceIntroBullets{gap:5px!important;margin:10px 0 0!important}.lessonV7 .practiceIntro .practiceIntroBullets li{padding-left:18px!important;font-size:10px!important;line-height:1.35!important}.lessonV7 .practicePrompt{margin-top:12px!important;padding:13px!important}.lessonV7 .practicePrompt strong{font-size:15px!important}
+.lessonV7 .practiceSteps{padding-top:12px!important;border-top:1px solid var(--line)!important}.lessonV7 .practiceSteps ol{display:grid!important;grid-auto-rows:auto!important;gap:4px!important;margin:8px 0 0!important}.lessonV7 .practiceSteps li{grid-template-columns:28px 1fr!important;gap:8px!important;min-height:0!important;padding:7px!important;border:0!important;border-radius:6px!important}.lessonV7 .practiceSteps li::before{width:24px!important;height:24px!important}.lessonV7 .practiceSteps li span{font-size:10px!important;line-height:1.35!important}
+.lessonV7 .practiceEntry{padding-top:12px!important;border-top:1px solid var(--line)!important}.lessonV7 .practiceEntry>div:first-child p{font-size:9px!important}.lessonV7 .practiceHintButton{margin-top:10px!important}.lessonV7 .structuredPractice{gap:10px!important;margin-top:10px!important}.lessonV7 .practiceEntry label{margin-top:10px!important}.lessonV7 .practiceEntry textarea{min-height:76px!important}.lessonV7 .practiceEntryActions{align-items:stretch!important;flex-direction:column!important;margin-top:10px!important}.lessonV7 .practiceEntryActions button{width:100%!important}
+.lessonV7 .lessonFooter{grid-column:1/-1!important;grid-row:6!important;margin:0!important}
+.lessonV7 .storyVisual,.lessonV7 .educationSection figure{position:relative!important;overflow:hidden!important;background:linear-gradient(145deg,#fff38d,#ffd82b 58%,#d9aa00)!important}.lessonV7 .storyVisual::before,.lessonV7 .educationSection figure::before{content:'';position:absolute;inset:0;background:var(--grain);opacity:.24;mix-blend-mode:soft-light;pointer-events:none}.lessonV7 .storyVisual>*,.lessonV7 .educationSection figure>*{position:relative;z-index:1}
+.lessonV7 .educationSection figure{min-height:280px!important;padding:18px!important}.lessonV7 .educationSection figure img{width:100%!important;height:250px!important;max-height:none!important;object-fit:cover!important}.lessonV7 .educationSection figure img.originalDoodle{height:230px!important;margin:auto 0!important;object-fit:contain!important;clip-path:inset(3px)!important;mix-blend-mode:multiply!important}.lessonV7 .educationSection figcaption{margin-top:10px!important;font-size:18px!important}
+
+.mapV7,.reportV7{display:grid!important;grid-template-columns:330px minmax(0,1fr)!important;gap:10px!important;align-items:start!important}
+.mapV7>.pageIntroSpacing,.reportV7>.pageIntroSpacing{grid-column:1/-1!important;margin:0!important}
+.mapV7>.mapGameHero,.mapV7>.needsMapHero,.reportV7>.programReportHero{position:sticky!important;top:64px!important;grid-column:1!important;grid-row:2/span 8!important;display:flex!important;min-height:calc(100vh - 92px)!important;min-width:0!important;flex-direction:column!important;align-items:stretch!important;justify-content:space-between!important;gap:24px!important;padding:24px!important;border-radius:13px!important}
+.mapV7>.mapGameHero{align-items:stretch!important}.mapV7 .mapGameCopy h1{margin-top:22px!important;font-size:37px!important}.mapV7 .mapGameCopy>p{margin-top:16px!important;font-size:11px!important}.mapV7 .mapGameStats{display:grid!important;grid-template-columns:1fr 1fr!important;gap:9px!important;margin-top:18px!important}.mapV7 .mapProgressRing{width:150px!important;height:150px!important;margin:auto!important;justify-self:center!important}.mapV7 .mapProgressRing strong{font-size:52px!important}
+.mapV7>.needsMapHero strong{font-size:30px!important}.mapV7>.needsMapHero>button{width:100%!important;min-width:0!important;min-height:44px!important}.mapV7 .needsMapProgress{width:100%!important}.mapV7 .needsMapStages{grid-template-columns:1fr!important;gap:6px!important}.mapV7 .needsMapStages>span,.mapV7 .needsMapStages>span:nth-child(2),.mapV7 .needsMapStages>span:last-child{justify-content:flex-start!important}
+.mapV7>*:not(.pageIntroSpacing):not(.mapGameHero):not(.needsMapHero),.reportV7>*:not(.pageIntroSpacing):not(.programReportHero){grid-column:2!important;margin:0!important}
+.mapV7 .journeyBoard,.mapV7 .badgeShelf,.mapV7 .badgeSection,.mapV7 .needsMapPath,.mapV7 .personalManual,.mapV7 .personalMirror,.mapV7 .reportMilestones,.mapV7 .emotionDictionary,.mapV7 .practiceMap,.reportV7 .programMirror,.reportV7 .programModules,.reportV7 .programMilestones,.reportV7 .programExperiments,.reportV7 .integrationReport{padding:18px!important;border:1px solid var(--line)!important;border-radius:11px!important;background:rgba(255,255,255,.62)!important}
+.mapV7 .journeyChapters,.mapV7 .badgeGrid,.mapV7 .badgeSection>div,.mapV7 .needsMapPath>div,.mapV7 .manualPath,.mapV7 .personalMirror>div,.mapV7 .reportMilestones>div{margin-top:14px!important}
+.mapV7 .journeyChapters article,.mapV7 .badgeGrid article{min-height:120px!important;padding:14px!important}.mapV7 .badgeIcon{width:48px!important;height:48px!important}.mapV7 .badgeIcon svg{width:34px!important;height:34px!important}
+.mapV7 .needsMapPath>div,.mapV7 .manualPath{grid-template-columns:1fr!important;gap:0!important}.mapV7 .needsMapPath article,.mapV7 .manualPath article{display:grid!important;grid-template-columns:36px 160px minmax(0,1fr)!important;align-items:center!important;gap:10px!important;min-height:54px!important;padding:9px!important;border:0!important;border-bottom:1px solid var(--line)!important}.mapV7 .needsMapPath article>span,.mapV7 .manualPath article>span{width:28px!important;height:28px!important}.mapV7 .needsMapPath article small,.mapV7 .manualPath article small,.mapV7 .needsMapPath article strong,.mapV7 .manualPath article strong{margin:0!important}.mapV7 .manualPath article::before,.mapV7 .manualPath article::after{display:none!important}
+.reportV7>.programReportHero{grid-row:1/span 8!important}.reportV7>.programReportHero>div{min-width:0!important}.reportV7>.programReportHero h1{max-width:100%!important;margin-top:22px!important;font-size:35px!important;overflow-wrap:anywhere}.reportV7 .programReportHeroStats{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;margin-top:20px!important}.reportV7 .programReportSeal{width:150px!important;aspect-ratio:1!important;margin:auto!important;padding:16px!important}.reportV7 .programReportSeal span{font-size:72px!important}.reportV7 .programReportMetrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}.reportV7 .programReportMetrics article{min-height:112px!important;padding:16px!important}.reportV7 .programMirror>div,.reportV7 .programModules>div,.reportV7 .programMilestones>div,.reportV7 .programExperiments>div{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}.reportV7 .programMirror>div>button{min-height:165px!important;padding:16px!important}.reportV7 .programModules article{min-height:220px!important;padding:18px!important}.reportV7 .programExperiments button{min-height:170px!important;padding:18px!important}.reportV7 .programMilestones>div>section{padding:14px!important}.reportV7 .programStatement{padding:34px!important}.reportV7 .programStatement blockquote{font-size:36px!important}.reportV7 .integrationReport{grid-template-columns:1fr!important;gap:18px!important}
+
+.studioV7{gap:10px!important}.studioV7>.pageIntroSpacing{margin:0!important}.studioV7 .visionProgress{min-height:58px!important;padding:10px 14px!important;border-radius:10px!important}.studioV7 .visionWorkspace{grid-template-columns:minmax(0,1fr) 360px!important;border-radius:12px!important;overflow:visible!important}.studioV7 .visionQuestions{gap:6px!important;padding:18px!important}.studioV7 .visionQuestions h2{margin:12px 0 8px!important;font-size:28px!important}.studioV7 .visionQuestions label{padding:10px 0!important}.studioV7 .visionQuestions textarea{min-height:64px!important}.studioV7 .writtenVision{top:64px!important;padding:18px!important}.studioV7 .writtenVision h2{margin:12px 0!important;font-size:28px!important}.studioV7 .writtenVisionImage{min-height:150px!important}.studioV7 .writtenVisionImage img{height:170px!important;object-fit:cover!important}.studioV7 .visionAssistant,.studioV7 .visionUpload,.studioV7 .visionClosing{min-height:0!important;padding:22px!important;gap:22px!important;border-radius:12px!important}.studioV7 .visionUpload figure{min-width:0!important;max-width:100%!important;min-height:280px!important;overflow:hidden!important}.studioV7 .visionUpload figure img{min-width:0!important;max-width:100%!important}.studioV7 .visionUpload .visionResultReady img{width:100%!important;height:320px!important;max-height:none!important;object-fit:cover!important}.studioV7 .visionUpload figure:not(.visionResultReady) img,.studioV7 .visionClosing>img{mix-blend-mode:multiply!important}.studioV7 .visionClosing h2{margin:16px 0!important;font-size:38px!important}
+
+.onboarding{display:grid!important;place-items:center!important}.onboardingCopy{display:grid!important;grid-template-columns:84px minmax(0,1fr)!important;grid-template-areas:'brand label' 'brand title' 'copy copy' 'points points' 'actions actions'!important;column-gap:18px!important;max-width:760px!important;padding:22px!important}.onboardingBrand{grid-area:brand!important;align-self:center!important;width:70px!important;height:70px!important}.onboardingCopy>small{grid-area:label!important;align-self:end!important;margin:0!important}.onboardingCopy>h1{grid-area:title!important;margin:4px 0 0!important;font-size:36px!important}.onboardingCopy>p{grid-area:copy!important;margin:18px 0 0!important}.onboardingPoints{grid-area:points!important;grid-template-columns:1fr!important;gap:0!important}.onboardingPoints div{display:grid!important;grid-template-columns:36px 1fr!important;align-items:center!important;min-height:50px!important}.onboardingActions{grid-area:actions!important}
+
+@media(max-width:1050px){
+  .journeyV7 .journeyDetail{grid-template-columns:1fr!important}.journeyV7 .journeyIntro{grid-column:1!important}.journeyV7 .phaseBlock{display:grid!important;grid-template-columns:175px minmax(0,1fr)!important}.journeyV7 .phaseHead{min-height:0!important;border-right:1px solid var(--line)!important;border-bottom:0!important}
+  .lessonV7{grid-template-columns:minmax(0,1fr) 340px!important}.lessonV7 .storySection{grid-template-columns:1fr 190px!important}
+  .mapV7,.reportV7{grid-template-columns:280px minmax(0,1fr)!important}
+}
+@media(max-width:840px){
+  .lessonV7{grid-template-columns:1fr!important}.lessonV7 .lessonNav,.lessonV7 .storySection,.lessonV7 .recognitionSection,.lessonV7 .educationSection,.lessonV7 .expertBox,.lessonV7 .practiceSection,.lessonV7 .lessonFooter{grid-column:1!important;grid-row:auto!important}.lessonV7 .practiceSection{position:relative!important;top:auto!important;max-height:none!important}
+  .mapV7,.reportV7{grid-template-columns:1fr!important}.mapV7>.pageIntroSpacing,.reportV7>.pageIntroSpacing,.mapV7>.mapGameHero,.mapV7>.needsMapHero,.reportV7>.programReportHero,.mapV7>*:not(.pageIntroSpacing):not(.mapGameHero):not(.needsMapHero),.reportV7>*:not(.pageIntroSpacing):not(.programReportHero){grid-column:1!important;grid-row:auto!important}.mapV7>.mapGameHero,.mapV7>.needsMapHero,.reportV7>.programReportHero{position:relative!important;top:auto!important;min-height:0!important}.mapV7 .needsMapStages{grid-template-columns:repeat(3,1fr)!important}.mapV7 .needsMapStages>span:nth-child(2){justify-content:center!important}.mapV7 .needsMapStages>span:last-child{justify-content:flex-end!important}
+}
+@media(max-width:740px){
+  .journeyV7 .journeyDetail{padding:5px!important}.journeyV7 .phaseBlock{grid-template-columns:1fr!important}.journeyV7 .phaseHead{grid-template-columns:30px 1fr!important;min-height:92px!important;border-right:0!important;border-bottom:1px solid var(--line)!important}.journeyV7 .dayCard{grid-template-columns:58px minmax(0,1fr) auto!important;min-height:54px!important}.journeyV7 .dayCard p{display:none!important}
+  .lessonV7 .storySection{grid-template-columns:1fr!important}.lessonV7 .storyVisual{min-height:210px!important}.lessonV7 .educationSection{grid-template-columns:1fr!important}.lessonV7 .educationSection figure{min-height:220px!important}.lessonV7 .educationSection figure img,.lessonV7 .educationSection figure img.originalDoodle{height:190px!important}.lessonV7 .recognitionSection>div{grid-template-columns:1fr!important}
+  .mapV7 .journeyChapters,.mapV7 .badgeGrid,.mapV7 .badgeSection>div{grid-template-columns:1fr!important}.mapV7 .needsMapPath article,.mapV7 .manualPath article{grid-template-columns:32px minmax(0,1fr)!important}.mapV7 .needsMapPath article strong,.mapV7 .manualPath article strong{grid-column:2!important}.mapV7 .programReportMetrics,.reportV7 .programReportMetrics,.reportV7 .programMirror>div,.reportV7 .programModules>div,.reportV7 .programMilestones>div,.reportV7 .programExperiments>div{grid-template-columns:1fr!important}
+  .studioV7 .visionWorkspace,.studioV7 .visionAssistant,.studioV7 .visionUpload,.studioV7 .visionClosing{grid-template-columns:1fr!important}.studioV7 .writtenVision{position:relative!important;top:auto!important}.studioV7 .visionUpload .visionResultReady img{height:260px!important}.onboardingCopy{grid-template-columns:58px 1fr!important;padding:18px!important}.onboardingBrand{width:52px!important;height:52px!important}.onboardingCopy>h1{font-size:29px!important}.onboardingActions{align-items:stretch!important;flex-direction:column!important}.onboardingActions button{width:100%!important}
+}
 .badgeSection>div>article{display:grid!important;grid-template-columns:60px minmax(0,1fr)!important;grid-template-rows:auto auto auto!important;column-gap:10px!important;align-content:center!important;align-items:start!important;min-height:112px!important}
 .badgeSection>div>article>.skillMedal{grid-column:1!important;grid-row:1/4!important;width:58px!important;height:64px!important;margin:0!important}
 .badgeSection .skillMedal::before,.badgeSection .skillMedal::after{bottom:0!important;width:18px!important;height:26px!important}.badgeSection .skillMedal::before{left:10px!important}.badgeSection .skillMedal::after{right:9px!important}
@@ -2981,3 +3070,377 @@
 .badgeSection .badgeUnlocked{color:#11110f!important}.badgeSection .badgeUnlocked p{color:#5e5e58!important}.badgeSection .badgeUnlocked small,.badgeSection .badgeUnlocked button{color:#11110f!important}
 .needsMapPage>header:first-child>*{position:relative;z-index:1}.needsMapPage>header:first-child::after{right:-28px!important;bottom:-42px!important;width:128px!important;height:44px!important;opacity:.55!important}
 @media(max-width:740px){.badgeSection>div>article{grid-template-columns:48px minmax(0,1fr)!important;min-height:104px!important}.badgeSection>div>article>.skillMedal{width:46px!important}.badgeSection .skillMedalCore{width:43px!important;height:43px!important}.badgeSection .skillMedalCore svg{width:26px!important;height:26px!important}.badgeSection .skillMedal i,.badgeSection .skillMedal b{top:30px!important}}
+
+/* Compact journey accordion headers — clear hierarchy and corner controls. */
+.journeyV7 .phaseHead {
+  position: relative !important;
+  grid-template-columns: 34px minmax(0, 1fr) !important;
+  padding-right: 48px !important;
+  text-align: left !important;
+}
+
+.journeyV7 .phaseHead > span {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  font-family: KKCaveat, cursive !important;
+  font-size: 25px !important;
+  line-height: 1 !important;
+  text-align: left !important;
+}
+
+.journeyV7 .phaseHead > div,
+.journeyV7 .phaseHead p {
+  text-align: left !important;
+}
+
+.journeyV7 .phaseHead > i {
+  position: absolute !important;
+  right: 14px !important;
+  top: 14px !important;
+  display: grid !important;
+  place-items: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  border: 1px solid #55554f !important;
+  border-radius: 7px !important;
+}
+
+@media (max-width: 740px) {
+  .journeyV7 .phaseHead {
+    grid-template-columns: 32px minmax(0, 1fr) !important;
+    min-height: 0 !important;
+    padding: 15px 48px 15px 14px !important;
+  }
+
+  .journeyV7 .phaseOpen .phaseHead {
+    min-height: 92px !important;
+  }
+
+  .journeyV7 .phaseCollapsed .phaseHead {
+    min-height: 68px !important;
+  }
+
+  .journeyV7 .phaseHead > i {
+    right: 12px !important;
+    top: 12px !important;
+  }
+
+.journeyV7 .phaseHead p {
+  margin-top: 2px !important;
+}
+}
+
+/* Keep the phase summary visible when its day list is collapsed. */
+.journeyV7 .phaseCollapsed .phaseHead p {
+  display: -webkit-box !important;
+  overflow: hidden !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+}
+
+/* One shared type and spacing rhythm for the journey intro and active module. */
+.journeyV7 .pageIntroSpacing {
+  align-items: start !important;
+  padding-inline: 2px !important;
+}
+
+.journeyV7 .pageIntroSpacing h1 {
+  max-width: 760px !important;
+  font-size: clamp(30px, 3vw, 40px) !important;
+  line-height: 1.02 !important;
+}
+
+.journeyV7 .pageIntroSpacing h1 + p,
+.journeyV7 .singleModule article > p,
+.journeyV7 .singleModule .activeModule > small {
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+
+.journeyV7 .singleModule article {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: 56px minmax(0, 1fr) !important;
+  grid-template-rows: auto auto auto auto auto !important;
+  column-gap: 14px !important;
+  row-gap: 2px !important;
+  min-height: 0 !important;
+  padding: 17px 18px !important;
+}
+
+.journeyV7 .singleModule .activeModule {
+  border: 2px solid #ffd82b !important;
+  box-shadow: 0 10px 28px rgba(186, 145, 0, .08) !important;
+}
+
+.journeyV7 .journeyIntro::after {
+  right: -112px !important;
+  bottom: -148px !important;
+  width: 250px !important;
+  height: 250px !important;
+  opacity: .14 !important;
+}
+
+.journeyV7 .singleModule .moduleTop > span {
+  grid-column: 1 !important;
+  grid-row: 1 / 4 !important;
+  align-self: start !important;
+  margin: 0 !important;
+  font-size: 40px !important;
+}
+
+.journeyV7 .singleModule .moduleTop > small {
+  position: absolute !important;
+  top: 17px !important;
+  right: 18px !important;
+  font-size: 10px !important;
+}
+
+.journeyV7 .singleModule article > strong,
+.journeyV7 .singleModule article > h2,
+.journeyV7 .singleModule article > p,
+.journeyV7 .singleModule article > [class*='moduleProgress'],
+.journeyV7 .singleModule .activeModule > small,
+.journeyV7 .singleModule .activeModule > button {
+  grid-column: 2 !important;
+}
+
+.journeyV7 .singleModule article > strong {
+  padding-right: 72px !important;
+  font-size: 16px !important;
+}
+
+.journeyV7 .singleModule article > h2 {
+  margin: 0 !important;
+  font-size: 22px !important;
+}
+
+.journeyV7 .singleModule article > p {
+  display: block !important;
+  max-width: 620px !important;
+  margin: 5px 0 0 !important;
+  color: #66665f !important;
+}
+
+.journeyV7 .singleModule article > [class*='moduleProgress'] {
+  width: 100% !important;
+  margin-top: 12px !important;
+}
+
+.journeyV7 .singleModule .activeModule > small {
+  margin-top: 4px !important;
+  color: #66665f !important;
+}
+
+.journeyV7 .singleModule .activeModule > button {
+  justify-self: start !important;
+  margin-top: 9px !important;
+}
+
+@media (max-width: 740px) {
+  .journeyV7 .pageIntroSpacing {
+    padding-inline: 4px !important;
+  }
+
+  .journeyV7 .pageIntroSpacing h1 {
+    font-size: 30px !important;
+  }
+
+  .journeyV7 .pageIntroSpacing h1 + p {
+    margin-top: 9px !important;
+    font-size: 13px !important;
+  }
+
+  .journeyV7 .singleModule article {
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+    padding: 15px !important;
+  }
+
+  .journeyV7 .singleModule .moduleTop > small {
+    top: 15px !important;
+    right: 15px !important;
+  }
+
+  .journeyV7 .singleModule .moduleTop > span {
+    font-size: 36px !important;
+  }
+
+  .journeyV7 .singleModule article > p {
+    -webkit-line-clamp: initial !important;
+  }
+
+  .journeyV7 .singleModule article > h2 {
+    font-size: 21px !important;
+  }
+}
+
+/* Journey section rail: compact, touchable navigation through the long path. */
+.journeyV7 {
+  grid-template-columns: 42px minmax(0, 1fr) !important;
+  column-gap: 8px !important;
+}
+
+.journeyV7 > *:not(.journeyRail) {
+  grid-column: 2 !important;
+  min-width: 0 !important;
+}
+
+.journeySectionBlock {
+  display: grid !important;
+  gap: 10px !important;
+  scroll-margin-top: 88px !important;
+}
+
+.journeyDetail {
+  scroll-margin-top: 88px !important;
+}
+
+.journeyRail {
+  position: sticky;
+  top: 74px;
+  z-index: 24;
+  grid-column: 1 !important;
+  grid-row: 1 / span 12 !important;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 42px;
+  padding: 5px;
+  border-radius: 10px;
+  background: #11110f;
+  box-shadow: 0 8px 22px rgba(17, 17, 15, .14);
+}
+
+.journeyRail button {
+  position: relative;
+  display: grid;
+  width: 32px;
+  min-height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.journeyRail button i {
+  display: block;
+  width: 4px;
+  height: 20px;
+  border-radius: 4px;
+  background: #55554f;
+  transition: height .18s ease, background .18s ease;
+}
+
+.journeyRail button span {
+  display: none;
+}
+
+.journeyRail button strong {
+  position: absolute;
+  left: 39px;
+  top: 50%;
+  display: none;
+  width: max-content;
+  padding: 7px 9px;
+  border-radius: 6px;
+  background: #11110f;
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transform: translateY(-50%);
+  box-shadow: 0 5px 16px rgba(17, 17, 15, .14);
+}
+
+.journeyRail button:hover strong,
+.journeyRail button:focus-visible strong {
+  display: block;
+}
+
+.journeyRailActive {
+  background: #2a2a25 !important;
+}
+
+.journeyRailActive i {
+  height: 30px !important;
+  background: linear-gradient(180deg, #fff184, #ffd82b 62%, #d2a100) !important;
+}
+
+/* Milestone intro stays readable on its pale report surface. */
+.reportV7 .programMilestones > header h2 {
+  color: #11110f !important;
+}
+
+.reportV7 .programMilestones > header .eyebrow,
+.reportV7 .programMilestones > header [class*='eyebrow'] {
+  color: #705600 !important;
+}
+
+@media (max-width: 740px) {
+  .journeyV7 {
+    grid-template-columns: 24px minmax(0, 1fr) !important;
+    column-gap: 5px !important;
+  }
+
+  .journeyRail {
+    top: 62px;
+    width: 24px;
+    padding: 3px;
+    border-radius: 8px;
+  }
+
+  .journeyRail button {
+    width: 18px;
+    min-height: 39px;
+  }
+
+  .journeyRail button i {
+    width: 3px;
+    height: 17px;
+  }
+
+  .journeyRailActive i {
+    height: 27px !important;
+  }
+
+  .journeyRail button strong {
+    display: none !important;
+  }
+
+  .journeySectionBlock,
+  .journeyDetail {
+    scroll-margin-top: 62px !important;
+  }
+}
+
+/* Mobile report sections are all visible; no hidden horizontal swipe. */
+@media (max-width: 740px) {
+  .reportSectionNav {
+    position: relative !important;
+    top: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+    padding: 5px !important;
+    overflow: visible !important;
+  }
+
+  .reportSectionNav > button {
+    grid-template-columns: 20px minmax(0, 1fr) !important;
+    width: 100% !important;
+    min-height: 38px !important;
+    padding: 6px 8px !important;
+    text-align: left !important;
+  }
+
+  .reportSectionActive {
+    box-shadow: inset 3px 0 0 #ffd82b !important;
+  }
+}
