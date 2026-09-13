@@ -253,3 +253,45 @@
   background:#11110f!important;
   color:#fff!important;
 }
+
+/* Rýchly záznam: vysvetlenie patrí priamo pod nadpis a intenzita má čitateľný priebeh. */
+.recordV7 > .pageIntro{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  align-items:start!important;
+  gap:0!important;
+  min-height:0!important;
+  margin-bottom:14px!important;
+}
+.recordV7 > .pageIntro .eyebrow,
+.recordV7 > .pageIntro h1,
+.recordV7 > .pageIntro p{grid-column:1!important}
+.recordV7 > .pageIntro h1{
+  max-width:900px!important;
+  margin-top:9px!important;
+  font-size:clamp(30px,3.3vw,46px)!important;
+  line-height:1.02!important;
+}
+.recordV7 > .pageIntro p{
+  max-width:720px!important;
+  margin-top:10px!important;
+  font-size:13px!important;
+  line-height:1.5!important;
+}
+.recordForm input[type="range"]{
+  --range-progress:50%;
+  background:transparent!important;
+}
+.recordForm input[type="range"]::-webkit-slider-runnable-track{
+  background:linear-gradient(to right,#ffd82b 0 var(--range-progress),#d4d4cc var(--range-progress) 100%)!important;
+}
+.recordForm input[type="range"]::-webkit-slider-thumb{margin-top:-10px!important}
+.recordForm input[type="range"]::-moz-range-track{background:#d4d4cc!important}
+.recordForm input[type="range"]::-moz-range-progress{height:4px;border-radius:999px;background:#ffd82b}
+.recordForm .range > div{align-items:center!important}
+.recordForm .range strong{align-self:center!important;margin:0!important}
+
+@media(max-width:740px){
+  .recordV7 > .pageIntro h1{font-size:29px!important}
+  .recordV7 > .pageIntro p{font-size:12px!important}
+}
