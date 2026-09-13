@@ -1471,29 +1471,34 @@ function Today({ onNavigate, onOpenLesson, entries, currentDay, readDays }: { on
   const day = EMOTION_DAYS[currentDay - 1];
   const lesson = getEmotionLesson(currentDay);
   const phaseDays = EMOTION_DAYS.filter((item) => item.phase === day.phase);
+  const phaseRead = phaseDays.filter((item) => readDays.includes(item.day)).length;
   return (
-    <>
-      <section className={styles.hero}>
-        <div className={styles.heroCopy}>
+    <section className={styles.todayDashboard}>
+      <header className={styles.todayHeader}>
+        <div className={styles.todayHeading}>
           <p className={styles.eyebrow}>DEN {currentDay} · {day.title.toUpperCase()}</p>
           <h1>Nemusíš dnes vyřešit celý život.</h1>
           <p>Stačí si všimnout, co se v tobě děje, ještě než si to začneš vysvětlovat.</p>
-          <div className={styles.handNote}>Začni u sebe.<br /><mark>Ne u dalšího návodu.</mark></div>
         </div>
-        <div className={styles.heroVisual}>
+        <div className={styles.todayProgress} aria-label={`${phaseRead} ze ${phaseDays.length} dní v aktuální etapě přečteno`}>
+          <div><span>AKTUÁLNÍ ETAPA</span><strong>{day.phase} / 3</strong></div>
+          <div className={styles.todayProgressTrack}><i style={{ width: `${(phaseRead / phaseDays.length) * 100}%` }} /></div>
+          <small>{phaseRead} z {phaseDays.length} dní přečteno</small>
+        </div>
+      </header>
+
+      <div className={styles.todayBento}>
+        <div className={styles.todayVisual}>
           <div className={styles.sun} />
           <img src={lesson.illustration.src} alt={lesson.illustration.alt} />
-          <span>všimni si</span>
+          <div className={styles.handNote}>Začni u sebe.<br /><mark>Ne u dalšího návodu.</mark></div>
         </div>
-      </section>
-
-      <section className={styles.todayLayout}>
         <article className={styles.lessonCard}>
           <div className={styles.cardMeta}><span>DNEŠNÍ ZASTAVENÍ</span><strong>{minuteLabel(day.minutes).toUpperCase()}</strong></div>
           <h2>Nejdřív něco prožijeme. Potom si vysvětlujeme, proč jsme reagovali.</h2>
           <p>Já jsem dlouho uměl fungovat, rozhodovat a být tu pro druhé. Mnohem méně jsem ale věděl, co se děje ve mně.</p>
           <p>Dnešní otázka je jednoduchá: <strong>{day.focus}</strong></p>
-          <button className={styles.textButton} onClick={() => onOpenLesson(currentDay)}>Přečíst dnešní část <span>→</span></button>
+          <button className={styles.primaryButton} onClick={() => onOpenLesson(currentDay)}>Přečíst dnešní část <span>→</span></button>
         </article>
 
         <article className={styles.actionCard}>
@@ -1503,7 +1508,7 @@ function Today({ onNavigate, onOpenLesson, entries, currentDay, readDays }: { on
           <MiniWheel />
           <button className={styles.primaryButton} onClick={() => onNavigate("zaznam")}>Zapsat svoji emoci</button>
         </article>
-      </section>
+      </div>
 
       <section className={styles.insightRow}>
         <article>
@@ -1527,7 +1532,7 @@ function Today({ onNavigate, onOpenLesson, entries, currentDay, readDays }: { on
           })}
         </div>
       </section>
-    </>
+    </section>
   );
 }
 
