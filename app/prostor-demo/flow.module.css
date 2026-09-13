@@ -4072,3 +4072,8 @@
 /* Aktívny marker railu zostáva krátkou oválnou čiarkou, nie bodkou. */
 .journeyRail button i,.pageSectionRail button i{border-radius:999px!important}
 .journeyRailActive i,.pageSectionRailActive i{width:5px!important;height:28px!important;border-radius:999px!important}
+
+/* Nadpis ďalších vrstiev drží pravý okraj aj pri zúžení na mobil. */
+.journeyV7 .nextModulesTitle{display:grid!important;grid-template-columns:1fr auto!important;align-items:end!important}
+.journeyV7 .nextModulesTitle h2{text-align:right!important}
+@media(max-width:740px){.journeyV7 .nextModulesTitle{grid-template-columns:1fr!important}.journeyV7 .nextModulesTitle h2{justify-self:end!important}}
