@@ -236,3 +236,20 @@
   outline: 2px solid #ffd82b !important;
   outline-offset: 2px;
 }
+
+/* Quick record wheel follows the neutral app palette; yellow is reserved for state accents. */
+.appV7 .miniWheel span,
+.todayV7CheckIn .miniWheel span{
+  border:1px solid rgba(17,17,15,.14)!important;
+  background:linear-gradient(145deg,#fffefa 0%,#efefe9 100%)!important;
+  color:#11110f!important;
+  box-shadow:0 5px 13px rgba(17,17,15,.08)!important;
+}
+.appV7 .miniWheel span::after,
+.todayV7CheckIn .miniWheel span::after{opacity:.08!important;mix-blend-mode:multiply!important}
+.appV7 .miniWheel i,
+.todayV7CheckIn .miniWheel i{
+  border:1px solid #11110f!important;
+  background:#11110f!important;
+  color:#fff!important;
+}

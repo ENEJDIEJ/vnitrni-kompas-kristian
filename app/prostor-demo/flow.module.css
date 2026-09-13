@@ -4073,7 +4073,16 @@
 .journeyRail button i,.pageSectionRail button i{border-radius:999px!important}
 .journeyRailActive i,.pageSectionRailActive i{width:5px!important;height:28px!important;border-radius:999px!important}
 
-/* Nadpis ďalších vrstiev drží pravý okraj aj pri zúžení na mobil. */
-.journeyV7 .nextModulesTitle{display:grid!important;grid-template-columns:1fr auto!important;align-items:end!important}
-.journeyV7 .nextModulesTitle h2{text-align:right!important}
-@media(max-width:740px){.journeyV7 .nextModulesTitle{grid-template-columns:1fr!important}.journeyV7 .nextModulesTitle h2{justify-self:end!important}}
+/* Nadpis ďalších vrstiev drží ľavé textové zarovnanie na každej šírke. */
+.journeyV7 .nextModulesTitle{display:block!important;text-align:left!important}
+.journeyV7 .nextModulesTitle h2{text-align:left!important}
+
+/* Phase controls sit on the same top line as the day range label. */
+.journeyV7 .phaseHead > i{
+  position:static!important;
+  grid-column:3!important;
+  grid-row:1!important;
+  align-self:start!important;
+  justify-self:end!important;
+  margin-top:0!important;
+}
