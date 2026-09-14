@@ -240,6 +240,9 @@ export function translateUiText(value: string, locale: Locale): string {
     // Several program cards render the day label and number as adjacent text
     // nodes (`DEN ` + `{day}`), so translate the label token on its own too.
     dynamic(/^DEN\s*$/, () => locale === "en" ? "DAY " : "TAG "),
+    dynamic(/^ETAPA\s*$/, () => locale === "en" ? "STAGE " : "ETAPPE "),
+    dynamic(/^MODUL\s*$/, () => locale === "en" ? "MODULE " : "MODUL "),
+    dynamic(/^MODUL (\d{2})$/, ([, number]) => locale === "en" ? `MODULE ${number}` : `MODUL ${number}`),
     dynamic(/^(\d{2}) · (Emoce|Potřeby|Hodnoty|Identita a vize)$/, ([, number, module]) => `${number} · ${moduleLabel(module)}`),
     dynamic(/^(\d{2}) (Dny \d+ až \d+|DNY \d+ AŽ \d+)$/, ([, number, days]) => {
       const normalized = days.replace(/^DNY /, "Dny ").replace(/ AŽ /, " až ");
