@@ -1,5 +1,11 @@
 export type Locale = "cs" | "en" | "de";
 
+// Long lesson copy is generated once into static resources. Keeping the map
+// here means the same i18n lookup serves headings, cards, lessons and form
+// attributes without a runtime translation service.
+import contentTranslationsEn from "@/app/prostor-demo/contentTranslations.en.json";
+import contentTranslationsDe from "@/app/prostor-demo/contentTranslations.de.json";
+
 export const LOCALE_STORAGE_KEY = "vnitrni-kompas-locale-v1";
 export const SIGNED_OUT_SESSION_KEY = "vnitrni-kompas-signed-out-v1";
 
@@ -200,6 +206,14 @@ const uiText: Record<string, Record<Locale, string>> = {
   "ZPŘÍSTUPNÍ SE PO DOKONČENÍ PŘEDCHOZÍ ČÁSTI NEBO AKTIVACI PŘÍSTUPU": { cs: "ZPŘÍSTUPNÍ SE PO DOKONČENÍ PŘEDCHOZÍ ČÁSTI NEBO AKTIVACI PŘÍSTUPU", en: "UNLOCKS AFTER THE PREVIOUS PART OR ACCESS ACTIVATION", de: "WIRD NACH DEM VORHERIGEN TEIL ODER DER FREISCHALTUNG ZUGÄNGLICH" },
 };
 
+const contentText: Record<string, Record<"en" | "de", string>> = {};
+Object.keys(contentTranslationsEn).forEach((source) => {
+  contentText[source] = {
+    en: contentTranslationsEn[source as keyof typeof contentTranslationsEn] ?? source,
+    de: contentTranslationsDe[source as keyof typeof contentTranslationsDe] ?? source,
+  };
+});
+
 export function translateUiText(value: string, locale: Locale): string {
   const leading = value.match(/^\s*/)?.[0] ?? "";
   const trailing = value.match(/\s*$/)?.[0] ?? "";
@@ -207,6 +221,8 @@ export function translateUiText(value: string, locale: Locale): string {
   if (locale === "cs") return value;
   const direct = uiText[core]?.[locale];
   if (direct) return `${leading}${direct}${trailing}`;
+  const localizedContent = locale === "en" || locale === "de" ? contentText[core]?.[locale] : undefined;
+  if (localizedContent && localizedContent !== core) return `${leading}${localizedContent}${trailing}`;
   const readDays = core.match(/^(\d+) z (\d+) dní přečteno$/);
   if (readDays) return `${leading}${locale === "en" ? `${readDays[1]} of ${readDays[2]} days read` : `${readDays[1]} von ${readDays[2]} Tagen gelesen`}${trailing}`;
   const totalDays = core.match(/^(\d+) přečtených dní$/);

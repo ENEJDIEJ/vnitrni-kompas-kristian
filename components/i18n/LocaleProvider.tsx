@@ -35,6 +35,21 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
         translated.set(text, next);
         if (current !== next) text.nodeValue = next;
       }
+      // Lesson prompts and controls carry copy in attributes rather than text
+      // nodes. Localize those too so translated forms never fall back to CZ.
+      const elements = document.body.querySelectorAll<HTMLElement>("[placeholder], [aria-label], [title]");
+      elements.forEach((element) => {
+        ["placeholder", "aria-label", "title"].forEach((attribute) => {
+          const value = element.getAttribute(attribute);
+          if (!value) return;
+          const previous = element.dataset[`i18n${attribute}`];
+          const source = previous === value ? element.dataset[`i18nSource${attribute}`] ?? value : value;
+          const next = translateUiText(source, locale);
+          element.dataset[`i18n${attribute}`] = next;
+          element.dataset[`i18nSource${attribute}`] = source;
+          if (next !== value) element.setAttribute(attribute, next);
+        });
+      });
     };
     apply();
     const observer = new MutationObserver(() => {
