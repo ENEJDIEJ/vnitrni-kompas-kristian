@@ -4126,7 +4126,12 @@
 .lessonV7 .expertText p,
 .lessonV7 .expertBox .expertLimit{color:#55554f!important;font-size:13px!important;line-height:1.5!important}
 .lessonV7 .expertBox .expertLimit strong{color:#11110f!important}
-.lessonV7 .expertBox .expertLimit{border-left-color:#ffd82b!important;background:#f4f4f0!important}
+.lessonV7 .expertBox .expertLimit{
+  margin-top:18px!important;
+  padding:14px 16px 12px 16px!important;
+  border-left-color:#ffd82b!important;
+  background:linear-gradient(180deg,rgba(244,244,240,.96) 0%,rgba(244,244,240,.68) 48%,rgba(244,244,240,0) 100%)!important;
+}
 
 /* Keep the help card separated from the first response field on every lesson layout. */
 .lessonV7 .practiceEntry{position:relative!important;z-index:1!important;row-gap:14px!important}
@@ -4382,5 +4387,73 @@
     min-height:96px!important;
     border-right:0!important;
     border-bottom:1px solid var(--line)!important;
+  }
+}
+
+/* Shared help card: one soft Vnitřní kompas treatment in every lesson. */
+.lessonV7 .practiceHintButton{
+  display:grid!important;
+  grid-template-columns:34px minmax(0,1fr)!important;
+  align-items:center!important;
+  width:100%!important;
+  max-width:none!important;
+  gap:11px!important;
+  margin:10px 0 18px!important;
+  padding:11px 13px!important;
+  border:1px solid rgba(17,17,15,.14)!important;
+  border-left:3px solid #ffd82b!important;
+  border-radius:10px!important;
+  background:rgba(255,255,255,.88)!important;
+  color:#11110f!important;
+  box-shadow:none!important;
+  text-align:left!important;
+}
+.lessonV7 .practiceHintButton:hover,
+.lessonV7 .practiceHintButton:focus-visible{
+  border-color:rgba(17,17,15,.28)!important;
+  border-left-color:#ffd82b!important;
+  background:#fff!important;
+}
+.lessonV7 .practiceHintButton > span:first-child{
+  display:grid!important;
+  width:32px!important;
+  height:32px!important;
+  flex-basis:32px!important;
+  place-items:center!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:#ffd82b!important;
+  color:#11110f!important;
+  font-size:14px!important;
+  line-height:1!important;
+  box-shadow:none!important;
+}
+.lessonV7 .practiceHintButton > span:last-child{
+  min-width:0!important;
+  gap:2px!important;
+}
+.lessonV7 .practiceHintButton strong{
+  font-size:11px!important;
+  line-height:1.25!important;
+}
+.lessonV7 .practiceHintButton small{
+  color:#666660!important;
+  font-size:9px!important;
+  line-height:1.4!important;
+}
+.lessonV7 .practiceHintButtonActive{
+  border-color:rgba(17,17,15,.22)!important;
+  border-left-color:#11110f!important;
+  background:#fffbed!important;
+  box-shadow:inset 3px 0 0 #ffd82b!important;
+}
+
+@media(max-width:740px){
+  .lessonV7 .practiceHintButton{
+    grid-template-columns:32px minmax(0,1fr)!important;
+    gap:10px!important;
+    margin-bottom:18px!important;
+    padding:10px 11px!important;
+    box-shadow:none!important;
   }
 }
