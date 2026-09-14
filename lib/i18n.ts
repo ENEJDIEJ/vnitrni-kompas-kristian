@@ -237,6 +237,12 @@ export function translateUiText(value: string, locale: Locale): string {
     return match ? `${leading}${render(match)}${trailing}` : undefined;
   };
   const dynamicTranslations = [
+    dynamic(/^(\d{2}) · (Emoce|Potřeby|Hodnoty|Identita a vize)$/, ([, number, module]) => `${number} · ${moduleLabel(module)}`),
+    dynamic(/^(\d{2}) (Dny \d+ až \d+|DNY \d+ AŽ \d+)$/, ([, number, days]) => {
+      const normalized = days.replace(/^DNY /, "Dny ").replace(/ AŽ /, " až ");
+      const translatedDays = normalized.replace(/^Dny (\d+) až (\d+)$/, (_full, start, end) => locale === "en" ? `Days ${start} to ${end}` : `Tage ${start} bis ${end}`);
+      return `${number} ${translatedDays}`;
+    }),
     dynamic(/^(\d+) z 84 vedených dní$/, ([, count]) => locale === "en" ? `${count} of 84 days completed` : `${count} von 84 begleiteten Tagen`),
     dynamic(/^(\d+) z 21 dní přečteno$/, ([, count]) => locale === "en" ? `${count} of 21 days read` : `${count} von 21 Tagen gelesen`),
     dynamic(/^(\d+) ze (\d+) dní v aktuální etapě přečteno$/, ([, read, total]) => locale === "en" ? `${read} of ${total} days in this stage read` : `${read} von ${total} Tagen in dieser Etappe gelesen`),
