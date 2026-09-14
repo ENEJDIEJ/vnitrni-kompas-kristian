@@ -5,4 +5,16 @@ html { --font-manrope: KKManrope, Manrope, Arial, sans-serif; --font-caveat: KKC
 html, body { margin: 0; min-height: 100%; }
 body { font-family: Manrope, Arial, sans-serif; }
 button, input, textarea { font: inherit; }
-.languageSwitcher{display:flex;align-items:center;gap:8px;color:inherit;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.languageSwitcher select{height:32px;padding:0 24px 0 10px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font-size:11px;cursor:pointer}.languageSwitcher select:focus{outline:2px solid #ffd82b;outline-offset:2px}.languageSwitcher option{color:#11110f;background:#fff}.languageSwitcherCompact span{display:none}
+/* Shared language control: the same compact yellow/black shape is used on
+   login, registration and profile settings, including the mobile header. */
+.languageSwitcher{display:flex;align-items:center;gap:8px;color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.languageSwitcherLabel{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.languageSwitcherOptions{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:#171715}
+.languageSwitcherOption{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:39px;height:27px;padding:0 9px;border:0;border-radius:999px;background:transparent;color:#a8a8a1;font:inherit;font-size:9px;letter-spacing:.06em;cursor:pointer;transition:background .18s ease,color .18s ease,transform .18s ease}
+.languageSwitcherOption:hover{color:#fff}
+.languageSwitcherOption:focus-visible{outline:2px solid #ffd82b;outline-offset:2px}
+.languageSwitcherOptionActive{background:linear-gradient(135deg,#fff17a,#ffd82b 56%,#e1b800);color:#11110f;box-shadow:inset 0 0 0 1px rgba(17,17,15,.08)}
+.languageSwitcherOptionActive:hover{color:#11110f;transform:translateY(-1px)}
+.languageSwitcherDot{width:4px;height:4px;border-radius:50%;background:currentColor;flex:0 0 4px}
+.languageSwitcherCompact .languageSwitcherOption{min-width:36px;height:26px;padding-inline:8px}
+@media(max-width:620px){.languageSwitcherOptions{gap:1px;padding:2px}.languageSwitcherOption{min-width:35px;height:25px;padding-inline:7px;font-size:8px}.languageSwitcherCompact .languageSwitcherOption{min-width:33px;padding-inline:6px}}

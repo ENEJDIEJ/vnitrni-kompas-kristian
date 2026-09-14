@@ -6,11 +6,23 @@ import { useI18n } from "./LocaleProvider";
 export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
   const { locale, setLocale, t } = useI18n();
   return (
-    <label className={compact ? "languageSwitcher languageSwitcherCompact" : "languageSwitcher"}>
-      <span>{t("language")}</span>
-      <select value={locale} onChange={(event) => setLocale(event.target.value as typeof locale)} aria-label={t("language")}>
-        {localeOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
-      </select>
-    </label>
+    <div className={compact ? "languageSwitcher languageSwitcherCompact" : "languageSwitcher"} role="group" aria-label={t("language")}>
+      <span className="languageSwitcherLabel">{t("language")}</span>
+      <div className="languageSwitcherOptions">
+        {localeOptions.map((option) => (
+          <button
+            key={option.value}
+            type="button"
+            className={`languageSwitcherOption${locale === option.value ? " languageSwitcherOptionActive" : ""}`}
+            aria-pressed={locale === option.value}
+            title={option.label}
+            onClick={() => setLocale(option.value)}
+          >
+            <span className="languageSwitcherDot" aria-hidden="true" />
+            {option.value.toUpperCase()}
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }
