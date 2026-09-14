@@ -223,6 +223,60 @@ export function translateUiText(value: string, locale: Locale): string {
   if (direct) return `${leading}${direct}${trailing}`;
   const localizedContent = locale === "en" || locale === "de" ? contentText[core]?.[locale] : undefined;
   if (localizedContent && localizedContent !== core) return `${leading}${localizedContent}${trailing}`;
+  const moduleLabel = (value: string) => {
+    const labels: Record<string, Record<"en" | "de", string>> = {
+      "Emoce": { en: "Emotions", de: "Emotionen" },
+      "Potřeby": { en: "Needs", de: "Bedürfnisse" },
+      "Hodnoty": { en: "Values", de: "Werte" },
+      "Identita a vize": { en: "Identity and vision", de: "Identität und Vision" },
+    };
+    return labels[value]?.[locale] ?? value;
+  };
+  const dynamic = (pattern: RegExp, render: (match: RegExpMatchArray) => string) => {
+    const match = core.match(pattern);
+    return match ? `${leading}${render(match)}${trailing}` : undefined;
+  };
+  const dynamicTranslations = [
+    dynamic(/^(\d+) z 84 vedených dní$/, ([, count]) => locale === "en" ? `${count} of 84 days completed` : `${count} von 84 begleiteten Tagen`),
+    dynamic(/^(\d+) z 21 dní přečteno$/, ([, count]) => locale === "en" ? `${count} of 21 days read` : `${count} von 21 Tagen gelesen`),
+    dynamic(/^(\d+) ze (\d+) dní v aktuální etapě přečteno$/, ([, read, total]) => locale === "en" ? `${read} of ${total} days in this stage read` : `${read} von ${total} Tagen in dieser Etappe gelesen`),
+    dynamic(/^(\d+) ze (\d+) dní objeveno$/, ([, read, total]) => locale === "en" ? `${read} of ${total} days discovered` : `${read} von ${total} Tagen entdeckt`),
+    dynamic(/^(\d+) přečtených dní$/, ([, count]) => locale === "en" ? `${count} days read` : `${count} gelesene Tage`),
+    dynamic(/^(\d+) ze (\d+) dní$/, ([, read, total]) => locale === "en" ? `${read} of ${total} days` : `${read} von ${total} Tagen`),
+    dynamic(/^(\d+) MINUTY?$/, ([, minutes]) => locale === "en" ? `${minutes} MINUTES` : `${minutes} MINUTEN`),
+    dynamic(/^DEN (\d+) Z (\d+)$/, ([, day, total]) => locale === "en" ? `DAY ${day} OF ${total}` : `TAG ${day} VON ${total}`),
+    dynamic(/^DEN (\d+) · PŘEČTENO ✓$/, ([, day]) => locale === "en" ? `DAY ${day} · READ ✓` : `TAG ${day} · GELESEN ✓`),
+    dynamic(/^(\d+)\. ETAPA POTŘEB DOKONČENA$/, ([, stage]) => locale === "en" ? `${stage}. NEEDS STAGE COMPLETED` : `${stage}. ETAPPE DER BEDÜRFNISSE ABGESCHLOSSEN`),
+    dynamic(/^(\d+)\. ETAPA DOKONČENA$/, ([, stage]) => locale === "en" ? `${stage}. STAGE COMPLETED` : `${stage}. ETAPPE ABGESCHLOSSEN`),
+    dynamic(/^MODUL (.+) DOKONČEN$/, ([, module]) => locale === "en" ? `MODULE ${moduleLabel(module).toUpperCase()} COMPLETED` : `MODUL ${moduleLabel(module).toUpperCase()} ABGESCHLOSSEN`),
+    dynamic(/^MŮJ OSOBNÍ REPORT · (.+)$/, ([, module]) => locale === "en" ? `MY PERSONAL REPORT · ${moduleLabel(module).toUpperCase()}` : `MEIN PERSÖNLICHER REPORT · ${moduleLabel(module).toUpperCase()}`),
+    dynamic(/^Tři etapy modulu (.+)$/, ([, module]) => locale === "en" ? `Three stages of the ${moduleLabel(module)} module` : `Drei Etappen des Moduls ${moduleLabel(module)}`),
+    dynamic(/^Dokončené etapy: (\d+) ze 3\. Každá další odpověď mapu zpřesní\.$/, ([, count]) => locale === "en" ? `Completed stages: ${count} of 3. Each answer sharpens the map.` : `Abgeschlossene Etappen: ${count} von 3. Jede weitere Antwort schärft die Karte.`),
+    dynamic(/^Dokončené etapy: (\d+) ze 3\. Každá další odpověď přidá mapě další vrstvu\.$/, ([, count]) => locale === "en" ? `Completed stages: ${count} of 3. Each answer adds another layer to the map.` : `Abgeschlossene Etappen: ${count} von 3. Jede weitere Antwort fügt der Karte eine weitere Ebene hinzu.`),
+    dynamic(/^(PROHLÉDNOUT MŮJ MILNÍK|OTEVŘÍT DEN) (\d+) →$/, ([, action, day]) => locale === "en" ? `${action === "PROHLÉDNOUT MŮJ MILNÍK" ? "VIEW MY MILESTONE" : "OPEN DAY"} ${day} →` : `${action === "PROHLÉDNOUT MŮJ MILNÍK" ? "MEINEN MEILENSTEIN ANSEHEN" : "TAG ÖFFNEN"} ${day} →`),
+    dynamic(/^ZAČÍT DEN (\d+) →$/, ([, day]) => locale === "en" ? `START DAY ${day} →` : `TAG ${day} BEGINNEN →`),
+    dynamic(/^Často zachytím (.+)\.$/, ([, emotion]) => locale === "en" ? `I often notice ${translateUiText(emotion, locale)}.` : `Oft nehme ich ${translateUiText(emotion, locale)} wahr.`),
+    dynamic(/^První tělesná stopa: (.+)\.$/, ([, signal]) => locale === "en" ? `First body signal: ${translateUiText(signal, locale)}.` : `Erstes Körpersignal: ${translateUiText(signal, locale)}.`),
+    dynamic(/^Člověk, kterým se stávám: (.*)$/, ([, value]) => locale === "en" ? `The person I am becoming: ${value}` : `Der Mensch, zu dem ich werde: ${value}`),
+    dynamic(/^Obyčejný den, který chci postupně tvořit: (.*)$/, ([, value]) => locale === "en" ? `An ordinary day I want to build over time: ${value}` : `Ein gewöhnlicher Tag, den ich nach und nach gestalten möchte: ${value}`),
+    dynamic(/^Můj obyčejný den: (.*)$/, ([, value]) => locale === "en" ? `My ordinary day: ${value}` : `Mein gewöhnlicher Tag: ${value}`),
+    dynamic(/^Moje práce a přínos: (.*)$/, ([, value]) => locale === "en" ? `My work and contribution: ${value}` : `Meine Arbeit und mein Beitrag: ${value}`),
+    dynamic(/^Moje tělo a energie: (.*)$/, ([, value]) => locale === "en" ? `My body and energy: ${value}` : `Mein Körper und meine Energie: ${value}`),
+    dynamic(/^Moje prostředí: (.*)$/, ([, value]) => locale === "en" ? `My environment: ${value}` : `Meine Umgebung: ${value}`),
+    dynamic(/^Sen, který si dovoluju: (.*)$/, ([, value]) => locale === "en" ? `A dream I allow myself: ${value}` : `Ein Traum, den ich mir erlaube: ${value}`),
+    dynamic(/^Nejbližší skutečný krok: (.*)$/, ([, value]) => locale === "en" ? `The next real step: ${value}` : `Der nächste konkrete Schritt: ${value}`),
+    dynamic(/^Kristián Karban, průvodce modulem (.+)$/, ([, module]) => locale === "en" ? `Kristián Karban, guide to the ${moduleLabel(module)} module` : `Kristián Karban, Begleiter des Moduls ${moduleLabel(module)}`),
+    dynamic(/^NÁPOVĚDA · (.*)$/, ([, value]) => locale === "en" ? `HINT · ${value}` : `HINWEIS · ${value}`),
+    dynamic(/^Přečteno ✓ · Otevřít den (\d+)$/, ([, day]) => locale === "en" ? `Read ✓ · Open day ${day}` : `Gelesen ✓ · Tag ${day} öffnen`),
+    dynamic(/^Přečteno ✓ · (.*)$/, ([, value]) => locale === "en" ? `Read ✓ · ${translateUiText(value, locale)}` : `Gelesen ✓ · ${translateUiText(value, locale)}`),
+    dynamic(/^Ještě (\d+) záznamy$/, ([, count]) => locale === "en" ? `${count} notes remaining` : `${count} Notizen übrig`),
+    dynamic(/^Ještě (\d+) tělesné signály$/, ([, count]) => locale === "en" ? `${count} body signals remaining` : `${count} Körpersignale übrig`),
+    dynamic(/^(.+) se zatím objevuje nejčastěji\.$/, ([, value]) => locale === "en" ? `${translateUiText(value, locale)} appears most often so far.` : `${translateUiText(value, locale)} erscheint bisher am häufigsten.`),
+    dynamic(/^(\d+)× odpověď „nevím“$/, ([, count]) => locale === "en" ? `${count} “I don't know” answers` : `${count} Antworten „Ich weiß es nicht“`),
+    dynamic(/^Ručně kreslená vizualizace tématu hodnot pro den (\d+)$/, ([, day]) => locale === "en" ? `Hand-drawn visualisation of the values theme for day ${day}` : `Handgezeichnete Visualisierung des Werte-Themas für Tag ${day}`),
+    dynamic(/^Ručně kreslená vizualizace identity a vize pro den (\d+)$/, ([, day]) => locale === "en" ? `Hand-drawn visualisation of identity and vision for day ${day}` : `Handgezeichnete Visualisierung von Identität und Vision für Tag ${day}`),
+  ].find(Boolean);
+  if (dynamicTranslations) return dynamicTranslations;
   const readDays = core.match(/^(\d+) z (\d+) dní přečteno$/);
   if (readDays) return `${leading}${locale === "en" ? `${readDays[1]} of ${readDays[2]} days read` : `${readDays[1]} von ${readDays[2]} Tagen gelesen`}${trailing}`;
   const totalDays = core.match(/^(\d+) přečtených dní$/);
