@@ -339,6 +339,38 @@
   }
 }
 
+/* Mobile navigation keeps the emotion log pill-shaped and visually centered. */
+@media(max-width:740px){
+  .appV7 .mobileNav .emotionThreadMobile{
+    align-self:center!important;
+    justify-self:center!important;
+    display:flex!important;
+    width:80px!important;
+    min-height:36px!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:6px!important;
+    padding:0 10px!important;
+    border:0!important;
+    border-radius:999px!important;
+    background:linear-gradient(120deg,#fff184 0%,#ffd82b 58%,#dfad00 100%)!important;
+    color:#11110f!important;
+    box-shadow:none!important;
+    line-height:1!important;
+  }
+  .appV7 .mobileNav .emotionThreadMobile>span,
+  .appV7 .mobileNav .emotionThreadMobile.mobileActive>span{
+    margin:0!important;
+    color:#11110f!important;
+    font-size:10px!important;
+    line-height:1!important;
+  }
+  .appV7 .mobileNav .emotionThreadMobile.mobileActive{
+    color:#11110f!important;
+  }
+}
+
 /* Highlight the continuous emotion log as a centered yellow navigation pill. */
 .appV7 .emotionThreadNav{
   display:flex!important;
