@@ -11,6 +11,19 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   useEffect(() => setLocaleState(getStoredLocale()), []);
   useEffect(() => {
     document.documentElement.lang = locale;
+    document.title = locale === "en"
+      ? "Inner Compass · private preview"
+      : locale === "de"
+        ? "Innerer Kompass · private Vorschau"
+        : "Vnitřní kompas · soukromý návrh";
+    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    if (description) {
+      description.content = locale === "en"
+        ? "Private preview of the Inner Compass interface."
+        : locale === "de"
+          ? "Private Vorschau der Innerer-Kompass-Oberfläche."
+          : "Soukromý návrh rozhraní Vnitřního kompasu.";
+    }
     try { window.localStorage.setItem(LOCALE_STORAGE_KEY, locale); } catch { /* Keep the current selection in memory. */ }
   }, [locale]);
 
