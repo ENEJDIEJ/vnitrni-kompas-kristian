@@ -295,3 +295,46 @@
   .recordV7 > .pageIntro h1{font-size:29px!important}
   .recordV7 > .pageIntro p{font-size:12px!important}
 }
+
+/* The record steps read as one centered group instead of three distant columns. */
+.recordV7Form .recordSteps{
+  grid-template-columns:repeat(3,minmax(118px,170px))!important;
+  justify-content:center!important;
+  gap:18px!important;
+  padding:8px 18px!important;
+}
+.recordV7Form .recordSteps li{
+  grid-template-columns:28px auto!important;
+  justify-content:center!important;
+  gap:8px!important;
+}
+.recordV7Form .recordSteps li:not(:last-child)::after{
+  left:calc(100% + 4px)!important;
+  right:auto!important;
+  top:50%!important;
+  width:10px!important;
+}
+
+/* On wide previews the workspace grows with the screen instead of staying tablet-sized. */
+@media(min-width:1600px){
+  .appV7 .content{
+    width:min(2040px,calc(100% - 48px))!important;
+    padding-inline:28px!important;
+  }
+}
+
+@media(max-width:740px){
+  .recordV7Form .recordSteps{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:4px!important;
+    padding:6px!important;
+  }
+  .recordV7Form .recordSteps li{
+    grid-template-columns:24px auto!important;
+    gap:5px!important;
+  }
+  .recordV7Form .recordSteps li:not(:last-child)::after{
+    left:calc(100% + 1px)!important;
+    width:4px!important;
+  }
+}

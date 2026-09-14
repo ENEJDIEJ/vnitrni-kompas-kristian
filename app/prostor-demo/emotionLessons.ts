@@ -79,7 +79,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-noticing-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-noticing-v1.webp",
       alt: "Ručně kreslená postava, která si všímá změny v těle",
       caption: "Vnější svět může chvíli počkat. Teď jen zjišťuješ, co se změnilo uvnitř.",
     },
@@ -134,7 +134,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-event-story-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-event-story-v1.webp",
       alt: "Ručně kreslená postava, která si všímá jedné konkrétní chvíle",
       caption: "Nejdřív popiš okamžik. Výklad můžeš přidat až potom.",
     },
@@ -185,7 +185,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-body-signal-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-body-signal-v1.webp",
       alt: "Ručně kreslená postava v kontaktu se svým tělem",
       caption: "Čelist, ramena, dech, ruce, žaludek a tempo. Začni tam, kde si změny dokážeš všimnout nejsnáze.",
     },
@@ -240,7 +240,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-emotion-naming-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-emotion-naming-v1.webp",
       alt: "Ručně kreslená postava, která hledá nejbližší slovo pro emoci",
       caption: "Začni širokou rodinou. Potom zkus jedno slovo, které je o krok blíž.",
     },
@@ -295,7 +295,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-intensity-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-intensity-v1.webp",
       alt: "Ručně kreslená postava, která sleduje sílu své emoce",
       caption: "Číslo neurčuje, jestli reaguješ správně. Pomáhá ti poznat, kdy sis změny všiml.",
     },
@@ -346,7 +346,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-impulse-choice-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-impulse-choice-v1.webp",
       alt: "Ručně kreslená postava, která si všímá svého impulzu",
       caption: "Emoce může ukázat směr první chuti. Rozhodnutí může zahrnout i další informace.",
     },
@@ -401,7 +401,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-pattern-clue-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-pattern-clue-v1.webp",
       alt: "Ručně kreslená postava, která se ohlíží za prvním týdnem",
       caption: "Nejprve sbíráš konkrétní chvíle. Teprve potom hledáš, co se v nich vrací.",
     },
@@ -864,7 +864,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-pattern-clue-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-pattern-clue-v1.webp",
       alt: "Ručně kreslené opakující se situace propojené jednou společnou nití",
       caption: "Kulisy se mohou měnit. Společná nit bývá někdy schovaná uvnitř reakce.",
     },
@@ -920,7 +920,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-early-signal-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-early-signal-v1.webp",
       alt: "Ručně kreslená postava, která zachytila první malý signál před silnou reakcí",
       caption: "Nečekáš na alarm. Učíš se poznat první malé světlo, které se rozsvítí.",
     },
@@ -977,7 +977,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-usual-step-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-usual-step-v1.webp",
       alt: "Ručně kreslená postava stojící před několika známými způsoby reakce",
       caption: "Známý krok může působit automaticky. Přesto ho můžeš začít pozorovat.",
     },
@@ -1034,7 +1034,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-short-relief-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-short-relief-v1.webp",
       alt: "Ručně kreslená postava, která na chvíli odložila napětí, ale vidí jeho pozdější návrat",
       caption: "Krátká úleva může být skutečná. Stejně skutečná může být i její pozdější cena.",
     },
@@ -1090,7 +1090,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-after-impact-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-after-impact-v1.webp",
       alt: "Ručně kreslená postava sledující stopu, kterou za sebou zanechala její reakce",
       caption: "Reakce nekončí poslední větou. Něco po ní zůstává v tobě, mezi lidmi i v situaci.",
     },
@@ -1148,7 +1148,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-impulse-choice-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-impulse-choice-v1.webp",
       alt: "Ručně kreslená postava, která mezi impulzem a reakcí objevila malou odbočku",
       caption: "Volba nemusí být velká. Někdy začíná jednou větou, jedním nádechem nebo krátkým odkladem.",
     },
@@ -1207,7 +1207,7 @@ export const EMOTION_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/kk-hand-drawn-doodle-emotional-map-v1.png",
+      src: "/prostor-assets/kk-hand-drawn-doodle-emotional-map-v1.webp",
       alt: "Ručně kreslená osobní mapa propojující situaci, emoci, signál, reakci a místo pro volbu",
       caption: "Mapa ti neříká, kdo jsi. Vrací ti to, čeho sis dokázal všimnout.",
     },

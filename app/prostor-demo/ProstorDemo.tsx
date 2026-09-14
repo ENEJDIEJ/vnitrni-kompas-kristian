@@ -1535,7 +1535,7 @@ function Today({ onNavigate, onOpenLesson, entries, currentDay, readDays }: { on
           </div>
           <figure className={styles.todayV7Visual}>
             <div className={styles.sun} />
-            <img src={lesson.illustration.src} alt={lesson.illustration.alt} />
+            <img src={lesson.illustration.src} alt={lesson.illustration.alt} loading="eager" decoding="async" fetchPriority="high" />
             <figcaption className={styles.handNote}>Začni u sebe.</figcaption>
           </figure>
         </article>
@@ -2219,7 +2219,7 @@ function AdvancedModuleMap({ kind, onNavigate, onOpenLesson, readDays, practiceE
             <p>V osobním kompasu už máš směr. Teď z něj vytvoříš psanou a obrazovou vizi, ke které se můžeš vracet. Ne jako k příkazu. Jako k připomínce života, který chceš postupně tvořit.</p>
             <button className={styles.primaryButton} onClick={() => onNavigate("vize-board")}>Vytvořit moji obrazovou vizi</button>
           </div>
-          <img src="/prostor-assets/identity-day-19.png" alt="Ručně kreslená postava tvoří vlastní obraz budoucnosti" />
+          <img src="/prostor-assets/identity-day-19.webp" alt="Ručně kreslená postava tvoří vlastní obraz budoucnosti" loading="lazy" decoding="async" />
         </section>
       ) : null}
 
@@ -2685,7 +2685,7 @@ function VisionBoard({ data, identityEntries, onChange, onNavigate }: { data: Vi
           <span className={styles.eyebrow}>MŮJ PSANÝ VISION BOARD</span>
           <h2>Život, který chci postupně tvořit.</h2>
           <div className={flow.writtenVisionImage}>
-            {data.image ? <img src={data.image} alt="Tvoje vlastní obrazová vize" /> : <img src="/prostor-assets/identity-day-20.png" alt="Ručně kreslený klidný prostor pro budoucí vizi" />}
+            {data.image ? <img src={data.image} alt="Tvoje vlastní obrazová vize" /> : <img src="/prostor-assets/identity-day-20.webp" alt="Ručně kreslený klidný prostor pro budoucí vizi" loading="lazy" decoding="async" />}
           </div>
           {VISION_FIELDS.map((item) => (
             <article key={item.id}>
@@ -2720,12 +2720,12 @@ function VisionBoard({ data, identityEntries, onChange, onNavigate }: { data: Vi
           {data.image ? <button className={flow.visionRemove} onClick={() => updateField("image", "")}>Odebrat obrázek</button> : null}
         </div>
         <figure className={data.image ? flow.visionResultReady : ""}>
-          {data.image ? <img src={data.image} alt="Tvoje vlastní obrazová vize" /> : <><img src="/prostor-assets/identity-day-21.png" alt="Ručně kreslená cesta přes most směrem k vizi" /><figcaption>Tady se objeví tvoje vlastní obrazová vize.</figcaption></>}
+          {data.image ? <img src={data.image} alt="Tvoje vlastní obrazová vize" /> : <><img src="/prostor-assets/identity-day-21.webp" alt="Ručně kreslená cesta přes most směrem k vizi" loading="lazy" decoding="async" /><figcaption>Tady se objeví tvoje vlastní obrazová vize.</figcaption></>}
         </figure>
       </section>
 
       <section id="vize-zaver" className={flow.visionClosing}>
-        <img src="/prostor-assets/identity-day-18.png" alt="Ručně kreslený most směrem ke slunci" />
+        <img src="/prostor-assets/identity-day-18.webp" alt="Ručně kreslený most směrem ke slunci" loading="lazy" decoding="async" />
         <div>
           <span className={styles.eyebrow}>TOHLE NENÍ KONEC</span>
           <h2>Dovol si snít ve velkém. Potom udělej jeden skutečný krok.</h2>
@@ -2788,27 +2788,6 @@ function ModuleLesson({ day, onNavigate, onComplete, readDays, practiceEntries, 
     setPracticeAnswers(existing?.answers ?? {});
     setShowPracticeExample(false);
   }, [day, practiceEntries]);
-
-  useEffect(() => {
-    const nextLesson =
-      day >= totalDays
-        ? null
-        : backView === "hodnoty"
-          ? getValuesLesson(day + 1)
-          : backView === "identita"
-            ? getIdentityLesson(day + 1)
-            : backView === "potreby"
-              ? getNeedsLesson(day + 1)
-              : getEmotionLesson(day + 1);
-    [lesson.illustration.src, nextLesson?.illustration.src]
-      .filter((src): src is string => Boolean(src))
-      .forEach((src) => {
-        const image = new Image();
-        image.fetchPriority = "high";
-        image.decoding = "async";
-        image.src = src;
-      });
-  }, [backView, day, lesson.illustration.src, totalDays]);
 
   const structuredPractice = Boolean(lesson.practice.fields?.length);
   const applyPracticeExample = () => {
@@ -2939,9 +2918,9 @@ function ModuleLesson({ day, onNavigate, onComplete, readDays, practiceEntries, 
             ].filter(Boolean).join(" ") || undefined}
             src={lesson.illustration.src}
             alt={lesson.illustration.alt}
-            loading="eager"
-            decoding="sync"
-            fetchPriority="high"
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
           />
           <figcaption>{lesson.illustration.caption}</figcaption>
         </figure>

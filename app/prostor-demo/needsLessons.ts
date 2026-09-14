@@ -28,7 +28,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-01-important.png",
+      src: "/prostor-assets/needs-day-01-important.webp",
       alt: "Ručně kreslená postava sleduje stopu od emoce k tomu, co je pro ni důležité",
       caption: "Nemusíš hned vědět. Stačí se vydat po první stopě.",
     },
@@ -84,7 +84,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-02-strength.png",
+      src: "/prostor-assets/needs-day-02-strength.webp",
       alt: "Ručně kreslená postava odkládá těžký batoh a přijímá pomocnou ruku",
       caption: "Síla nemusí znamenat nést všechno bez pomoci.",
     },
@@ -147,7 +147,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-03-families.png",
+      src: "/prostor-assets/needs-day-03-families.webp",
       alt: "Ručně kreslená mapa šesti cest k rodinám potřeb",
       caption: "Šest cest. Ne šest škatulek.",
     },
@@ -203,7 +203,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-04-emotion-need.png",
+      src: "/prostor-assets/needs-day-04-emotion-need.webp",
       alt: "Ručně kreslená postava odděluje emoci od potřeby do dvou propojených bublin",
       caption: "Emoce a potřeba spolu souvisejí. Nejsou to ale stejné věci.",
     },
@@ -259,7 +259,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-05-fulfilled.png",
+      src: "/prostor-assets/needs-day-05-fulfilled.webp",
       alt: "Ručně kreslená postava si všímá malé dobré chvíle a toho, co ji podpořilo",
       caption: "I úleva a radost nesou informaci.",
     },
@@ -315,7 +315,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-06-options.png",
+      src: "/prostor-assets/needs-day-06-options.webp",
       alt: "Ručně kreslená postava vidí více cest od jedné potřeby",
       caption: "Jedna potřeba může mít více cest.",
     },
@@ -372,7 +372,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-07-map.png",
+      src: "/prostor-assets/needs-day-07-map.webp",
       alt: "Ručně kreslená postava skládá z několika stop první mapu potřeb",
       caption: "Mapa nevzniká z jedné chvíle. Vzniká z toho, co se začne opakovat.",
     },
@@ -431,7 +431,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-08-strategy.png",
+      src: "/prostor-assets/needs-day-08-strategy.webp",
       alt: "Ručně kreslená postava odděluje důležitou potřebu od konkrétního kroku",
       caption: "To, co potřebuješ, není totéž jako první krok, který tě napadne.",
     },
@@ -487,7 +487,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-09-paths.png",
+      src: "/prostor-assets/needs-day-09-paths.webp",
       alt: "Ručně kreslená postava stojí před několika otevřenými cestami",
       caption: "Nemusíš hned vybrat nejlepší cestu. Nejdřív potřebuješ vidět, že jich je víc.",
     },
@@ -545,7 +545,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-10-influence.png",
+      src: "/prostor-assets/needs-day-10-influence.webp",
       alt: "Ručně kreslená postava třídí situaci na vlastní vliv, prosbu a oblast mimo kontrolu",
       caption: "Odpovědnost začíná přesným rozlišením toho, co můžeš a nemůžeš ovlivnit.",
     },
@@ -602,7 +602,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-11-together.png",
+      src: "/prostor-assets/needs-day-11-together.webp",
       alt: "Dvě ručně kreslené postavy společně drží jeden most",
       caption: "Některé potřeby jsou tvoje. Jejich naplnění ale vzniká mezi lidmi.",
     },
@@ -659,7 +659,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-12-hidden-agreement.png",
+      src: "/prostor-assets/needs-day-12-hidden-agreement.webp",
       alt: "Dvě ručně kreslené postavy, z nichž jedna drží neviditelnou dohodu",
       caption: "Druhý člověk nemůže znát pravidlo, které zůstalo jen v tvojí hlavě.",
     },
@@ -716,7 +716,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-13-request.png",
+      src: "/prostor-assets/needs-day-13-request.webp",
       alt: "Ručně kreslená postava podává otevřenou prosbu a druhá má prostor odpovědět",
       caption: "Prosba otevírá rozhovor. Nekontroluje jeho výsledek.",
     },
@@ -773,7 +773,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-14-strategy-map.png",
+      src: "/prostor-assets/needs-day-14-strategy-map.webp",
       alt: "Ručně kreslená postava skládá mapu potřeby, strategie, účinku a nové cesty",
       caption: "Mapa není seznam chyb. Je to přehled možností, které už dokážeš vidět.",
     },
@@ -834,7 +834,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-15-sensitive.png",
+      src: "/prostor-assets/needs-day-15-sensitive.webp",
       alt: "Ručně kreslená postava si všímá jedné potřeby, která se ozývá výrazněji",
       caption: "Citlivost není závada. Je to místo, které si zaslouží přesnější pozornost.",
     },
@@ -891,7 +891,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-16-origin.png",
+      src: "/prostor-assets/needs-day-16-origin.webp",
       alt: "Ručně kreslená postava sleduje stopu známé strategie do minulosti a zpět do současnosti",
       caption: "Porozumět původu neznamená zůstat ve starém způsobu.",
     },
@@ -948,7 +948,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-17-return.png",
+      src: "/prostor-assets/needs-day-17-return.webp",
       alt: "Ručně kreslená postava se vrací ke známé cestě, protože nabízí rychlou úlevu",
       caption: "Známá strategie se vrací, protože něco umí udělat opravdu rychle.",
     },
@@ -1005,7 +1005,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-18-cost.png",
+      src: "/prostor-assets/needs-day-18-cost.webp",
       alt: "Ručně kreslená postava vidí rychlou úlevu a pozdější cenu stejné strategie",
       caption: "Podívej se na celý účinek, ne jen na první minutu.",
     },
@@ -1064,7 +1064,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-19-menu.png",
+      src: "/prostor-assets/needs-day-19-menu.webp",
       alt: "Ručně kreslená postava si vytváří nabídku tří nových možností",
       caption: "Volba vzniká ve chvíli, kdy máš v nabídce víc než jeden známý krok.",
     },
@@ -1122,7 +1122,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-20-experiment.png",
+      src: "/prostor-assets/needs-day-20-experiment.webp",
       alt: "Ručně kreslená postava bezpečně zkouší jeden malý nový krok",
       caption: "Nezkoušíš, jestli jsi dost dobrý. Zjišťuješ, co ti pomáhá.",
     },
@@ -1181,7 +1181,7 @@ export const NEEDS_LESSONS: EmotionLesson[] = [
       ],
     },
     illustration: {
-      src: "/prostor-assets/needs-day-21-manual.png",
+      src: "/prostor-assets/needs-day-21-manual.webp",
       alt: "Ručně kreslená postava drží dokončený osobní manuál potřeb",
       caption: "Nezískal jsi nálepku. Získal jsi mapu, se kterou můžeš dál pracovat.",
     },

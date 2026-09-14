@@ -4300,3 +4300,87 @@
   .reportV7 .programModules article,
   .reportV7 .programExperiments button{min-height:0!important;padding:14px!important}
 }
+
+/* Final responsive polish: readable phase cards, centered ending and plain text actions. */
+.inlineLink,
+.lessonV7 .lessonNav > button{
+  min-height:0!important;
+  padding:6px 0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  text-decoration:none!important;
+}
+.inlineLink:hover,
+.inlineLink:focus-visible,
+.lessonV7 .lessonNav > button:hover,
+.lessonV7 .lessonNav > button:focus-visible{
+  text-decoration:underline!important;
+  text-decoration-thickness:1px!important;
+  text-underline-offset:5px!important;
+}
+.lessonV7 .lessonFooter{
+  justify-items:center!important;
+  text-align:center!important;
+}
+.lessonV7 .lessonClosing{
+  justify-self:center!important;
+  text-align:center!important;
+}
+.lessonV7 .lessonActions{
+  display:flex!important;
+  width:100%!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:12px!important;
+}
+.lessonV7 .lessonActions .inlineLink{
+  width:auto!important;
+}
+
+@media(max-width:1380px){
+  .journeyV7 .journeyDetail{
+    grid-template-columns:1fr!important;
+  }
+  .journeyV7 .journeyIntro{
+    grid-column:1!important;
+  }
+  .journeyV7 .phaseBlock{
+    display:grid!important;
+    grid-template-columns:210px minmax(0,1fr)!important;
+    width:100%!important;
+  }
+  .journeyV7 .phaseOpen .phaseHead{
+    min-height:132px!important;
+    border-right:1px solid var(--line)!important;
+    border-bottom:0!important;
+  }
+  .journeyV7 .phaseCollapsed{
+    grid-template-columns:1fr!important;
+  }
+  .journeyV7 .phaseCollapsed .phaseHead{
+    grid-column:1/-1!important;
+    min-height:82px!important;
+    border-right:0!important;
+    border-bottom:0!important;
+  }
+  .journeyV7 .phaseHead p{
+    overflow:visible!important;
+    text-overflow:clip!important;
+    white-space:normal!important;
+    -webkit-line-clamp:unset!important;
+  }
+}
+
+@media(max-width:740px){
+  .journeyV7 .phaseBlock{
+    grid-template-columns:1fr!important;
+  }
+  .journeyV7 .phaseOpen .phaseHead{
+    min-height:96px!important;
+    border-right:0!important;
+    border-bottom:1px solid var(--line)!important;
+  }
+}

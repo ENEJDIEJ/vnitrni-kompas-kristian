@@ -47,7 +47,7 @@ function createValuesLesson(seed: LessonSeed): EmotionLesson {
     recognition: VALUE_RECOGNITION_COPY[seed.day - 1],
     education: VALUE_EDUCATION_COPY[seed.day - 1],
     illustration: {
-      src: `/prostor-assets/values-day-${String(seed.day).padStart(2, "0")}.png`,
+      src: `/prostor-assets/values-day-${String(seed.day).padStart(2, "0")}.webp`,
       alt: `Ručně kreslená vizualizace tématu hodnot pro den ${seed.day}`,
       caption: dayTwoCopy?.illustrationCaption ?? seed.insight,
     },
@@ -64,7 +64,7 @@ function createIdentityLesson(seed: LessonSeed): EmotionLesson {
     recognition: IDENTITY_RECOGNITION_COPY[seed.day - 1],
     education: IDENTITY_EDUCATION_COPY[seed.day - 1],
     illustration: {
-      src: `/prostor-assets/identity-day-${String(seed.day).padStart(2, "0")}.png`,
+      src: `/prostor-assets/identity-day-${String(seed.day).padStart(2, "0")}.webp`,
       alt: `Ručně kreslená vizualizace identity a vize pro den ${seed.day}`,
       caption: seed.question,
     },
