@@ -4457,3 +4457,19 @@
     box-shadow:none!important;
   }
 }
+
+/* Final placement: keep the phase expand/collapse control against the card edge. */
+.journeyV7 .phaseHead > i{
+  position:absolute!important;
+  top:14px!important;
+  right:12px!important;
+  margin:0!important;
+  grid-area:auto!important;
+  place-self:auto!important;
+}
+@media(max-width:740px){
+  .journeyV7 .phaseHead > i{
+    top:12px!important;
+    right:10px!important;
+  }
+}
