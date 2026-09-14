@@ -37,9 +37,9 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       }
       // Lesson prompts and controls carry copy in attributes rather than text
       // nodes. Localize those too so translated forms never fall back to CZ.
-      const elements = document.body.querySelectorAll<HTMLElement>("[placeholder], [aria-label], [title]");
+      const elements = document.body.querySelectorAll<HTMLElement>("[placeholder], [aria-label], [title], [alt]");
       elements.forEach((element) => {
-        ["placeholder", "aria-label", "title"].forEach((attribute) => {
+        ["placeholder", "aria-label", "title", "alt"].forEach((attribute) => {
           const value = element.getAttribute(attribute);
           if (!value) return;
           const sourceAttribute = `data-i18n-source-${attribute}`;
