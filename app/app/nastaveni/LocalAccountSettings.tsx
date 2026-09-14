@@ -49,7 +49,7 @@ export function LocalAccountSettings() {
 
   function logout() {
     clearSessionData();
-    window.location.assign(`/signout-with-chatgpt?return_to=${encodeURIComponent("/login")}`);
+    window.location.assign(`/signout-with-chatgpt?return_to=${encodeURIComponent("/login/")}`);
   }
 
   return (
