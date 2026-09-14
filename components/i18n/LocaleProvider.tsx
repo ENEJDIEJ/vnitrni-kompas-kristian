@@ -42,11 +42,10 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
         ["placeholder", "aria-label", "title"].forEach((attribute) => {
           const value = element.getAttribute(attribute);
           if (!value) return;
-          const previous = element.dataset[`i18n${attribute}`];
-          const source = previous === value ? element.dataset[`i18nSource${attribute}`] ?? value : value;
+          const sourceAttribute = `data-i18n-source-${attribute}`;
+          const source = element.getAttribute(sourceAttribute) ?? value;
           const next = translateUiText(source, locale);
-          element.dataset[`i18n${attribute}`] = next;
-          element.dataset[`i18nSource${attribute}`] = source;
+          element.setAttribute(sourceAttribute, source);
           if (next !== value) element.setAttribute(attribute, next);
         });
       });
