@@ -1,7 +1,19 @@
 {
   "name": "vnitrni-kompas-sites-redesign",
   "private": true,
-  "scripts": { "build": "next build", "dev": "next dev" },
-  "dependencies": { "next": "16.2.12", "react": "19.2.4", "react-dom": "19.2.4" },
-  "devDependencies": { "@types/node": "20.19.21", "@types/react": "19.2.7", "@types/react-dom": "19.2.3", "typescript": "5.9.3" }
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "next": "16.3.5",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.21",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3"
+  }
 }
