@@ -5,3 +5,4 @@ html { --font-manrope: KKManrope, Manrope, Arial, sans-serif; --font-caveat: KKC
 html, body { margin: 0; min-height: 100%; }
 body { font-family: Manrope, Arial, sans-serif; }
 button, input, textarea { font: inherit; }
+.languageSwitcher{display:flex;align-items:center;gap:8px;color:inherit;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.languageSwitcher select{height:32px;padding:0 24px 0 10px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font-size:11px;cursor:pointer}.languageSwitcher select:focus{outline:2px solid #ffd82b;outline-offset:2px}.languageSwitcher option{color:#11110f;background:#fff}.languageSwitcherCompact span{display:none}

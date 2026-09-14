@@ -21,6 +21,7 @@ import {
   type ProgramModuleStateCode,
   type ProgramStatePayload,
 } from "@/lib/program-state";
+import { SIGNED_OUT_SESSION_KEY } from "@/lib/i18n";
 import { WebOnly } from "@/components/program/WebOnly";
 import flow from "./flow.module.css";
 import styles from "./prostor.module.css";
@@ -429,6 +430,7 @@ export function ProstorDemo({
   const hasModuleAccess = (module: ModuleKey) =>
     allowedModules.includes(ACCESS_CODE[module]);
 
+  const [signedOut, setSignedOut] = useState(false);
   const [view, setView] = useState<View>(firstAllowedView);
   const [activeModuleKey, setActiveModuleKey] = useState<ModuleKey>(firstAllowedModule);
   const [emotionEntryReturnView, setEmotionEntryReturnView] = useState<View>("dnes");
@@ -463,6 +465,24 @@ export function ProstorDemo({
   const [serverHydrated, setServerHydrated] = useState(false);
   const serverSaveTimerRef = useRef<number | null>(null);
   const pendingScrollRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const enforceSignedOut = () => {
+      try {
+        if (window.sessionStorage.getItem(SIGNED_OUT_SESSION_KEY) === "1") {
+          setSignedOut(true);
+          window.location.replace("/login");
+        }
+      } catch {
+        // Hosted sign-out remains enforced by the Sites auth cookie.
+      }
+    };
+    enforceSignedOut();
+    window.addEventListener("pageshow", enforceSignedOut);
+    return () => window.removeEventListener("pageshow", enforceSignedOut);
+  }, []);
+
+  if (signedOut) return null;
 
   useEffect(() => {
     const demoTarget = new URLSearchParams(window.location.search).get("demo");
