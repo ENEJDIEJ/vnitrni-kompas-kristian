@@ -174,6 +174,19 @@ const uiText: Record<string, Record<Locale, string>> = {
   "Zpět": { cs: "Zpět", en: "Back", de: "Zurück" },
   "Zpět na cestu": { cs: "Zpět na cestu", en: "Back to path", de: "Zurück zum Weg" },
   "Přeskočit": { cs: "Přeskočit", en: "Skip", de: "Überspringen" },
+  "Moduly programu": { cs: "Moduly programu", en: "Program modules", de: "Programmmodule" },
+  "Rychlý výběr části stránky": { cs: "Rychlý výběr části stránky", en: "Quick page navigation", de: "Schnellauswahl auf der Seite" },
+  "Navigace lekcí": { cs: "Navigace lekcí", en: "Lesson navigation", de: "Lektionsnavigation" },
+  "ÚVODNÍ KONZULTACE ZDARMA": { cs: "ÚVODNÍ KONZULTACE ZDARMA", en: "FREE INTRODUCTORY CONSULTATION", de: "KOSTENLOSES ERSTGESPRÄCH" },
+  "POZNÁVÁŠ SE V TOM?": { cs: "POZNÁVÁŠ SE V TOM?", en: "DO YOU RECOGNIZE YOURSELF?", de: "ERKENNST DU DICH DARIN?" },
+  "POJĎME TOMU ROZUMĚT": { cs: "POJĎME TOMU ROZUMĚT", en: "LET'S UNDERSTAND IT", de: "LASS ES UNS VERSTEHEN" },
+  "TEĎ SI TO VYZKOUŠEJ": { cs: "TEĎ SI TO VYZKOUŠEJ", en: "TRY IT NOW", de: "PROBIERE ES JETZT AUS" },
+  "OTÁZKY K ZASTAVENÍ": { cs: "OTÁZKY K ZASTAVENÍ", en: "PAUSE QUESTIONS", de: "FRAGEN ZUM INNEHALTEN" },
+  "TVŮJ ZÁZNAM": { cs: "TVŮJ ZÁZNAM", en: "YOUR NOTE", de: "DEINE NOTIZ" },
+  "Potřebuju nápovědu": { cs: "Potřebuju nápovědu", en: "I need a hint", de: "Ich brauche einen Hinweis" },
+  "AKTUALIZOVAT V MAPĚ": { cs: "AKTUALIZOVAT V MAPĚ", en: "UPDATE IN MAP", de: "IN KARTE AKTUALISIEREN" },
+  "Smazat tento záznam": { cs: "Smazat tento záznam", en: "Delete this note", de: "Diese Notiz löschen" },
+  "PŘEČTENO": { cs: "PŘEČTENO", en: "READ", de: "GELESEN" },
   "CELÝ MODUL JE OTEVŘENÝ": { cs: "CELÝ MODUL JE OTEVŘENÝ", en: "THE WHOLE MODULE IS OPEN", de: "DAS GANZE MODUL IST OFFEN" },
   "ZÁVĚREČNÁ INTEGRACE · DNY 85 AŽ 90": { cs: "ZÁVĚREČNÁ INTEGRACE · DNY 85 AŽ 90", en: "FINAL INTEGRATION · DAYS 85 TO 90", de: "ABSCHLIESSENDE INTEGRATION · TAGE 85 BIS 90" },
   "Nahrát profilovou fotku": { cs: "Nahrát profilovou fotku", en: "Upload profile photo", de: "Profilfoto hochladen" },
@@ -198,6 +211,10 @@ export function translateUiText(value: string, locale: Locale): string {
   if (readDays) return `${leading}${locale === "en" ? `${readDays[1]} of ${readDays[2]} days read` : `${readDays[1]} von ${readDays[2]} Tagen gelesen`}${trailing}`;
   const totalDays = core.match(/^(\d+) přečtených dní$/);
   if (totalDays) return `${leading}${locale === "en" ? `${totalDays[1]} days read` : `${totalDays[1]} gelesene Tage`}${trailing}`;
+  const lessonRead = core.match(/^DEN (\d+) · PŘEČTENO ✓$/);
+  if (lessonRead) return `${leading}${locale === "en" ? `DAY ${lessonRead[1]} · READ ✓` : `TAG ${lessonRead[1]} · GELESEN ✓`}${trailing}`;
+  const minutes = core.match(/^(\d+) MINUT$/);
+  if (minutes) return `${leading}${locale === "en" ? `${minutes[1]} MINUTES` : `${minutes[1]} MINUTEN`}${trailing}`;
   return value;
 }
 
