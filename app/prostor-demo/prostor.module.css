@@ -338,3 +338,40 @@
     width:4px!important;
   }
 }
+
+/* Highlight the continuous emotion log as a centered yellow navigation pill. */
+.appV7 .emotionThreadNav{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  min-height:40px!important;
+  padding:0 14px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:linear-gradient(120deg,#fff184 0%,#ffd82b 58%,#dfad00 100%)!important;
+  color:#11110f!important;
+  box-shadow:none!important;
+  line-height:1!important;
+}
+.appV7 .emotionThreadNav>span{
+  margin:0!important;
+  color:#11110f!important;
+  font-size:10px!important;
+}
+.appV7 .emotionThreadNav>div{
+  display:flex!important;
+  align-items:center!important;
+  min-width:0!important;
+}
+.appV7 .emotionThreadNav>div strong{
+  color:#11110f!important;
+  font-size:11px!important;
+  line-height:1!important;
+}
+.appV7 .emotionThreadNav:hover,
+.appV7 .emotionThreadNav:focus-visible{
+  background:linear-gradient(120deg,#fff6a6 0%,#ffe04b 58%,#e7b800 100%)!important;
+  color:#11110f!important;
+}
+.appV7 .emotionThreadNav.activeNav::before{display:none!important}
